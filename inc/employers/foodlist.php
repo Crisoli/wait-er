@@ -1,6 +1,14 @@
-
+<form method="post">
+<input type="submit" name="logout" Value="logout"></input>
+</form>
 <?php
-session_start();
+if(isset($_POST['logout'])){  
+session_start(); 
+session_destroy(); 
+header("location:index.php");
+exit();
+}
+
 if(isset($_POST['add_to_cart'])){
   if(isset($_SESSION['shopping_cart'])){
     $item_array_id = array_column($_SESSION['shopping_cart'], "item_id");
@@ -56,12 +64,12 @@ if(isset($_GET['action']))
       ?>
 
     <form id="form" method="post" action="foodlist.php?action=add&id=<?php echo $menurow['id']; ?>">
-      <img src="<?php echo $menurow["filename"]; ?>" class='img-responsive' />
-      <h4 class="text-info"><?php echo $menurow['product']; ?></h4>
-      <h4 class="text-danger">$<?php echo $menurow['value'];?></h4>
+      <img src="<?php echo $menurow["filenam"]; ?>" class='img-responsive' />
+      <h4 class="text-info"><?php echo $menurow['name']; ?></h4>
+      <h4 class="text-danger">$<?php echo $menurow['price'];?></h4>
       <input type="text" name="quantity" class="form-conthol" value="1" />
       <input type="hidden" name="hidden_name" value="<?php echo $menurow['name']; ?>" />
-      <input type="hidden" name="hidden_price" value="<?php echo $menurow['value']; ?>" />
+      <input type="hidden" name="hidden_price" value="<?php echo $menurow['price']; ?>" />
       <input type="submit" name="add_to_cart"x class="btn btn-success" value="Add to Cart" />
       </form>
     
@@ -97,7 +105,7 @@ if(!empty($_SESSION['shopping_cart']))
   <td colspan="3" align="right">Total</td>
   <td align="right">$ <?php echo number_format($total, 2); ?></td>
   
-  <?php
+<?php
 }
 ?>
 

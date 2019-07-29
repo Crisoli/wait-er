@@ -1,10 +1,9 @@
 <?php
 mysqli_report(MYSQLI_REPORT_STRICT);
-session_start();
 
 $HOST = 'localhost';
-$DB_USERNAME = 'cristian081';
-$DB_PASS = '';
+$DB_USERNAME = 'root';
+$DB_PASS = 'usbw';
 $DB_NAME = 'wait-er';
 $mysqli = new mysqli($HOST, $DB_USERNAME, $DB_PASS,$DB_NAME);
 return $mysqli;

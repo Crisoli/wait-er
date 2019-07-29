@@ -7,25 +7,23 @@ $loginquery = $mysqli->query("SELECT * FROM accounts WHERE username='".$user."' 
 $rowcount = mysqli_num_rows($loginquery);
 if($rowcount == 1){
 		while ($row = $loginquery->fetch_assoc()) {
-			session_start();
 			$loggeduser=  $_SESSION['username'] = $user;
 			$usertype = $row['usertype'];
 					}
 			if($usertype==11){
-			//header('');
+			session_start();
 			$_SESSION['admin']=true;
+			//header('');
 			}
 			elseif($usertype==10){
-			header('location:foodlist.php');
+			session_start();
 			$_SESSION['admin']=false;
+			header('location:foodlist.php');
 			}
 }
 else {
+	session_start();
 	$_SESSION['codigodesamedata']=1;
-	//header('location:samedata.php');
-	echo $user;
-	
-
 }
 	    }
 			?>
