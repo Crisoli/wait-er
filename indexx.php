@@ -1,10 +1,12 @@
 <?php
 echo 'Current PHP version: ' . phpversion();
 ?>
+<?php require_once 'config.php'; ?>
+<?php require_once 'inc/database.php'; ?>
 <?php
 
  session_start();
- $connect = mysqli_connect("localhost", "root", "usbw", "wait-er");
+
  if(isset($_POST["add_to_cart"]))
  {
       if(isset($_SESSION["shopping_cart"]))
@@ -67,11 +69,10 @@ echo 'Current PHP version: ' . phpversion();
            <div class="container" style="width:700px;">
                 <h3 align="center">Simple PHP Mysql Shopping Cart</h3><br />
                 <?php
-                $query = "SELECT * FROM foodmenu ORDER BY id ASC";
-                $result = mysqli_query($connect, $query);
-                if(mysqli_num_rows($result) > 0)
+                $query = $mysqli->query("SELECT * FROM foodmenu ORDER BY id ASC");
+                if(mysqli_num_rows($query) > 0)
                 {
-                     while($row = mysqli_fetch_array($result))
+                     while($row = mysqli_fetch_array($query))
                      {
                 ?>
                 <div class="col-md-4">
@@ -126,14 +127,24 @@ echo 'Current PHP version: ' . phpversion();
                                <td align="right">$ <?php echo number_format($total, 2); ?></td>
                                <td></td>
                           </tr>
+<form method="post">
                           <?php
-                          }
                           if (isset($_POST['submit'])) {
+                            $request_create = $mysqli->query("INSERT INTO requests_numbers VALUES (null, '".$total."','Pendente')");
+                            $request_select_last_inserted_id = $mysqli->query("SELECT LAST_INSERT_ID()");
+                            echo $request_select_last_inserted_id;
                           foreach ($_SESSION["shopping_cart"] as $key => $value) {
-                            $shopping_cart_insert = $mysqli->query("INSERT INTO ");
+                            $item_id = $values['item_id'];
+                            $item_quantity = $values['item_quantity'];
+                              $shopping_cart_insert = $mysqli->query("INSERT INTO requests VALUES (null, '".$values['item_id']."', '".$values['item_quantity']."','1')");
+                            }
                           }
                           }
+
+
                           ?>
+                          <input type="submit" name="submit"></input>
+                        </form>
                      </table>
                 </div>
            </div>
