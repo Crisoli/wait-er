@@ -1,58 +1,86 @@
 <body>
-    <!-- não mexer (eu preciso desse aviso para tomar cuidado 
+  <!-- não mexer (eu preciso desse aviso para tomar cuidado
       <form action='/login/authentication.php' method='post'> -->
-    <!-- não mexer -->
+  <!-- não mexer -->
+   <div class="row">
+  <div class="col-12"></div>
+</div>
+   <div class="row">
+  <div class="col-12"></div>
+</div>
 
-    <div class='center-align'>
-        
-        <div class='row'>
-           
-            <form class='col s12' method='post'>
-                <div class='col s12 m8 offset-m1 l4 offset-l7'>
-                    <div class='card-panel grey lighten-5 z-depth-1'>
-                        <div class='row valign-wrapper'>
-                            <p>
-                            </p>
-                            <div class='col s12'><span class='flow-text'>E-Waiter</span></div>
-                            <div class='container'>
-                                <div class='row'>
-                                    <p></p>
-                                    <p>
-                                        <br>
-                                        <div class='input-field inline col s3 l3'>
-                                            <i class='material-icons prefix'>person_outline</i>
-                                            <input id='icon_prefix' placeholder='' type='text' name='username' id='username' required class='' required>
-                                            <label for='username'>Username</label>
-                                    </p>
-                                    </br>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class='container'>
-                                <div class='row'>
-                                    <div class='input-field col s4 m4 l7'>
-                                        <i class='material-icons prefix'>lock_outline</i>
-                                        <input type='password' name='password' placeholder='' id='password' required class='' required>
-                                        <label for='password'>Password</label>
-                                    </div>
-                                </div>
-                                <a class='btn-floating waves-effect waves-dark green-gray darken-3'>
-                                    <i class='large material-icons'>chevron_right</i>
-                                    <input type='submit' value='Login'></input>
-                                  
-                                </a>
-                                 <button><a href='\ewaiter\inc\employers\cardapio.php'>Ir para o cardápio</a></button>
-                                <br />
-                                <br />
-            </form>
+
+  <div class="row">
+    <div class="col-3 offset-1">
+      <div class='card-panel grey lighten-5 z-depth-3'>
+        <div class='row  container valign-wrapper'>
+          <div class='col s2 l2' >
+            <img src="Waiter.png" class="w-100 p-100">
             </div>
+            <div class='container'>
+              <div class='row'>
+                <!--Caixa de texto-->
+              </div>
+              <form action='/login/authentication.php' method='post'>
+                <div class='input-field inline col s12 l12'>
+                  <p>
+                    <input type="text" name="nome" placeholder="Nome" required>
+                    </p>
+                    <p>
+                   <input type='password' name='password' placeholder='Senha' id='password' required class='' required>
+                    </p>
+                    <!--Botão-->
+                    <a class='btn-floating waves-effect waves-dark green-gray darken-3 center'>
+                      <i class='large material-icons'>chevron_right</i>
+                      <input type='submit' value='Login'></input>
+                    </a>
+
+                    <!--  -->
+                  </p>
+                </br>
+              </div>
             </div>
-            </div>
-            </div>
+          </div>
         </div>
+      </div>
+       <div class="col-7 d-none d-sm-block ">
 
-</body>
-<?php 
+        <div class='row  container valign-wrapper'>
+          <div class='col s1 l5' >
+
+            <img src="teste2.jpeg" style="
+            position: absolute;
+            top: 7px;
+            left: -30px;
+            " class="img-fluid  float-right w-90 p-10 " alt="Responsive image">
+              </div>
+             </div>
+           </div>
+          </div>
+        </div>
+    </div>
+  </form>
+
+
+ <script>
+var myIndex = 0;
+carousel();
+
+function carousel() {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  myIndex++;
+  if (myIndex > x.length) {myIndex = 1}
+  x[myIndex-1].style.display = "block";
+  setTimeout(carousel, 5000); // Change image every 2 seconds
+}
+</script>
+
+</div></body>
+<?php
    include('login/authentication.php');
    include('login/samedata.php');
-   ?>
+?>
