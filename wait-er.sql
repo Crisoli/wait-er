@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: 24-Jul-2019 às 09:48
+-- Generation Time: 29-Jul-2019 às 12:31
 -- Versão do servidor: 5.6.34
 -- PHP Version: 5.6.32
 
@@ -69,40 +69,43 @@ INSERT INTO `category` (`id`, `name`) VALUES
 CREATE TABLE `foodmenu` (
   `id` int(11) NOT NULL,
   `name` varchar(255) DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL,
   `price` decimal(65,2) DEFAULT NULL,
-  `id_category` varchar(255) DEFAULT NULL,
-  `filename` varchar(255) DEFAULT NULL
+  `id_category` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `foodmenu`
 --
 
-INSERT INTO `foodmenu` (`id`, `name`, `price`, `id_category`, `filename`) VALUES
-(1, 'batata', '3.50', '1', 'tabom'),
-(2, 'frita', '1.50', '1', 'atapo');
+INSERT INTO `foodmenu` (`id`, `name`, `image`, `price`, `id_category`) VALUES
+(2, 'frita', 'atapo', '1.50', '1'),
+(999, 'batata', 'tabom', '3.50', '1');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `tbl_product`
+-- Estrutura da tabela `requests`
 --
 
-CREATE TABLE `tbl_product` (
+CREATE TABLE `requests` (
   `id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `image` varchar(255) NOT NULL,
-  `price` double(10,2) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `id_foodmenu` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `request_number` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
 
 --
--- Extraindo dados da tabela `tbl_product`
+-- Estrutura da tabela `requests_numbers`
 --
 
-INSERT INTO `tbl_product` (`id`, `name`, `image`, `price`) VALUES
-(1, 'Samsung J2 Pro', '1.jpg', 100.00),
-(2, 'HP Notebook', '2.jpg', 299.00),
-(3, 'Panasonic T44 Lite', '3.jpg', 125.00);
+CREATE TABLE `requests_numbers` (
+  `id` int(11) NOT NULL,
+  `total` decimal(10,2) NOT NULL,
+  `status` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Indexes for dumped tables
@@ -127,9 +130,15 @@ ALTER TABLE `foodmenu`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tbl_product`
+-- Indexes for table `requests`
 --
-ALTER TABLE `tbl_product`
+ALTER TABLE `requests`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `requests_numbers`
+--
+ALTER TABLE `requests_numbers`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -155,10 +164,16 @@ ALTER TABLE `foodmenu`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `tbl_product`
+-- AUTO_INCREMENT for table `requests`
 --
-ALTER TABLE `tbl_product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+ALTER TABLE `requests`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `requests_numbers`
+--
+ALTER TABLE `requests_numbers`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
