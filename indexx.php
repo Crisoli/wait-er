@@ -113,7 +113,7 @@ echo 'Current PHP version: ' . phpversion();
                           ?>
                           <tr>
                                <td><?php echo $values["item_name"]; ?></td>
-                               <td><?php echo $values["item_quantity"]; ?></td>
+                               <td><input type="number" value="<?php echo $values["item_quantity"]; ?>"></input></td>
                                <td>$ <?php echo $values["item_price"]; ?></td>
                                <td>$ <?php echo number_format($values["item_quantity"] * $values["item_price"], 2); ?></td>
                                <td><a href="indexx.php?action=delete&id=<?php echo $values["item_id"]; ?>"><span class="text-danger">Remove</span></a></td>
@@ -130,9 +130,9 @@ echo 'Current PHP version: ' . phpversion();
 <form method="post">
                           <?php
                           if (isset($_POST['submit'])) {
-                            $request_create = $mysqli->query("INSERT INTO requests_numbers VALUES (null, '".$total."','Pendente')");
+                            $request_create = $mysqli->query("INSERT INTO requests_numbers VALUES (null, '".$total."','Pendente','O amor é uma flor roxa, que nasce nos corações dos trouxas','1','12')");
                             $request_select_last_inserted_id = $mysqli->query("SELECT LAST_INSERT_ID()");
-                            echo $request_select_last_inserted_id;
+                            //echo $request_select_last_inserted_id;
                           foreach ($_SESSION["shopping_cart"] as $key => $value) {
                             $item_id = $values['item_id'];
                             $item_quantity = $values['item_quantity'];

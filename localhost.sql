@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: 30-Jul-2019 às 17:49
+-- Generation Time: 31-Jul-2019 às 12:31
 -- Versão do servidor: 5.6.34
 -- PHP Version: 5.6.32
 
@@ -41,6 +41,13 @@ CREATE TABLE `accounts` (
   `creator_id` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Extraindo dados da tabela `accounts`
+--
+
+INSERT INTO `accounts` (`id`, `username`, `email`, `phonenumber`, `description`, `password`, `usertype`, `creator_id`) VALUES
+(6, 'Cristierato', 'h3has@viphone.eu.org', '+1-202-555-0180', 'sohentais.com', 'cudemacacoloko', 10, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -67,6 +74,13 @@ CREATE TABLE `category` (
   `accounts_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Extraindo dados da tabela `category`
+--
+
+INSERT INTO `category` (`id`, `name`, `accounts_id`) VALUES
+(4, 'Pre-teen loli', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -84,6 +98,14 @@ CREATE TABLE `foodmenu` (
   `promodesc` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Extraindo dados da tabela `foodmenu`
+--
+
+INSERT INTO `foodmenu` (`id`, `name`, `image`, `price`, `category_id`, `accounts_id`, `promo`, `promodesc`) VALUES
+(1002, 'Sheila', 'inc/img/sheila.jpg', '1710000.00', 1, 1, 1, 'Saudavel'),
+(1003, 'Enzo', 'inc/img/enzo.png', '1650000.00', 1, 1, 1, 'Avantajado');
+
 -- --------------------------------------------------------
 
 --
@@ -96,6 +118,14 @@ CREATE TABLE `requests` (
   `quantity` int(11) NOT NULL,
   `requests_numbers_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `requests`
+--
+
+INSERT INTO `requests` (`id`, `foodmenu_id`, `quantity`, `requests_numbers_id`) VALUES
+(13, 1003, 1, 1),
+(14, 1003, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -125,6 +155,13 @@ CREATE TABLE `tables` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
+-- Extraindo dados da tabela `tables`
+--
+
+INSERT INTO `tables` (`table_number`, `status`, `size`) VALUES
+(12, 'Livre', 'Grande');
+
+--
 -- Indexes for dumped tables
 --
 
@@ -132,8 +169,7 @@ CREATE TABLE `tables` (
 -- Indexes for table `accounts`
 --
 ALTER TABLE `accounts`
-  ADD PRIMARY KEY (`id`,`creator_id`),
-  ADD KEY `fk_accounts_accounts1_idx` (`creator_id`);
+  ADD PRIMARY KEY (`id`,`creator_id`);
 
 --
 -- Indexes for table `bulletinboard`
@@ -146,8 +182,7 @@ ALTER TABLE `bulletinboard`
 --
 ALTER TABLE `category`
   ADD PRIMARY KEY (`id`,`accounts_id`),
-  ADD UNIQUE KEY `name` (`name`),
-  ADD KEY `fk_category_accounts1_idx` (`accounts_id`);
+  ADD UNIQUE KEY `name` (`name`);
 
 --
 -- Indexes for table `foodmenu`
@@ -186,7 +221,7 @@ ALTER TABLE `tables`
 -- AUTO_INCREMENT for table `accounts`
 --
 ALTER TABLE `accounts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `bulletinboard`
@@ -198,55 +233,29 @@ ALTER TABLE `bulletinboard`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `foodmenu`
 --
 ALTER TABLE `foodmenu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1001;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1004;
 
 --
 -- AUTO_INCREMENT for table `requests`
 --
 ALTER TABLE `requests`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `requests_numbers`
 --
 ALTER TABLE `requests_numbers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- Constraints for dumped tables
 --
-
---
--- Limitadores para a tabela `accounts`
---
-ALTER TABLE `accounts`
-  ADD CONSTRAINT `fk_accounts_accounts1` FOREIGN KEY (`creator_id`) REFERENCES `accounts` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Limitadores para a tabela `category`
---
-ALTER TABLE `category`
-  ADD CONSTRAINT `fk_category_accounts1` FOREIGN KEY (`accounts_id`) REFERENCES `accounts` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Limitadores para a tabela `foodmenu`
---
-ALTER TABLE `foodmenu`
-  ADD CONSTRAINT `fk_foodmenu_accounts1` FOREIGN KEY (`accounts_id`) REFERENCES `accounts` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_foodmenu_category1` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Limitadores para a tabela `requests`
---
-ALTER TABLE `requests`
-  ADD CONSTRAINT `fk_requests_foodmenu1` FOREIGN KEY (`foodmenu_id`) REFERENCES `foodmenu` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_requests_requests_numbers1` FOREIGN KEY (`requests_numbers_id`) REFERENCES `requests_numbers` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Limitadores para a tabela `requests_numbers`
