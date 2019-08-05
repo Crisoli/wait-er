@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: 31-Jul-2019 às 12:31
+-- Generation Time: 05-Ago-2019 às 15:27
 -- Versão do servidor: 5.6.34
 -- PHP Version: 5.6.32
 
@@ -124,8 +124,22 @@ CREATE TABLE `requests` (
 --
 
 INSERT INTO `requests` (`id`, `foodmenu_id`, `quantity`, `requests_numbers_id`) VALUES
-(13, 1003, 1, 1),
-(14, 1003, 1, 1);
+(99, 1003, 1, 78),
+(100, 1003, 1, 78),
+(101, 1003, 1, 79),
+(102, 1003, 1, 79),
+(103, 1003, 1, 80),
+(104, 1003, 1, 80),
+(105, 1002, 1, 81),
+(106, 1002, 1, 81),
+(107, 1003, 1, 82),
+(108, 1003, 1, 82),
+(109, 1003, 1, 83),
+(110, 1003, 1, 83),
+(111, 1002, 1, 86),
+(112, 1003, 1, 86),
+(113, 1002, 1, 87),
+(114, 1003, 1, 87);
 
 -- --------------------------------------------------------
 
@@ -139,8 +153,26 @@ CREATE TABLE `requests_numbers` (
   `status` varchar(255) NOT NULL,
   `obs` varchar(255) DEFAULT NULL,
   `accounts_id` int(11) NOT NULL,
-  `id_table` int(11) NOT NULL
+  `id_table` int(11) NOT NULL,
+  `started` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `finished` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `requests_numbers`
+--
+
+INSERT INTO `requests_numbers` (`id`, `total`, `status`, `obs`, `accounts_id`, `id_table`, `started`, `finished`) VALUES
+(78, '3360000.00', '1', '1', 1, 1, '2019-08-05 15:02:41', NULL),
+(79, '3360000.00', '1', '1', 1, 1, '2019-08-05 15:02:43', NULL),
+(80, '3360000.00', '1', '1', 1, 1, '2019-08-05 15:02:44', NULL),
+(81, '3360000.00', '1', '1', 1, 1, '2019-08-05 15:15:58', NULL),
+(82, '3360000.00', '1', '1', 1, 1, '2019-08-05 15:22:13', NULL),
+(83, '3360000.00', '1', '1', 1, 1, '2019-08-05 15:22:15', NULL),
+(84, '3360000.00', '1', '1', 1, 1, '2019-08-05 15:25:20', NULL),
+(85, '3360000.00', '1', '1', 1, 1, '2019-08-05 15:25:44', NULL),
+(86, '3360000.00', '1', '1', 1, 1, '2019-08-05 15:26:12', NULL),
+(87, '3360000.00', '1', '1', 1, 1, '2019-08-05 15:26:14', NULL);
 
 -- --------------------------------------------------------
 
@@ -204,8 +236,7 @@ ALTER TABLE `requests`
 -- Indexes for table `requests_numbers`
 --
 ALTER TABLE `requests_numbers`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_requests_numbers_accounts1_idx` (`accounts_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `tables`
@@ -245,23 +276,13 @@ ALTER TABLE `foodmenu`
 -- AUTO_INCREMENT for table `requests`
 --
 ALTER TABLE `requests`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=115;
 
 --
 -- AUTO_INCREMENT for table `requests_numbers`
 --
 ALTER TABLE `requests_numbers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
-
---
--- Constraints for dumped tables
---
-
---
--- Limitadores para a tabela `requests_numbers`
---
-ALTER TABLE `requests_numbers`
-  ADD CONSTRAINT `fk_requests_numbers_accounts1` FOREIGN KEY (`accounts_id`) REFERENCES `accounts` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
