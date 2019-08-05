@@ -49,17 +49,17 @@ echo 'Current PHP version: ' . phpversion();
                 if($values["item_id"] == $_GET["id"])
                 {
                      unset($_SESSION["shopping_cart"][$keys]);
-                     echo '<script>alert("Item Removed")</script>';
                      echo '<script>window.location="indexx.php"</script>';
                 }
            }
       }
+
  }
  ?>
  <!DOCTYPE html>
  <html>
       <head>
-           <title>Webslesson Tutorial | Simple PHP Mysql Shopping Cart</title>
+           <title>Wait-er | Carrinho</title>
            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
@@ -98,12 +98,13 @@ echo 'Current PHP version: ' . phpversion();
                 <div class="table-responsive">
                      <table class="table table-bordered">
                           <tr>
-                               <th width="40%">Item Name</th>
+                               <th width="35%">Item Name</th>
                                <th width="10%">Quantity</th>
                                <th width="20%">Price</th>
                                <th width="15%">Total</th>
-                               <th width="5%">Action</th>
+                               <th width="10%">Action</th>
                           </tr>
+                          <form method="post">
                           <?php
                           if(!empty($_SESSION["shopping_cart"]))
                           {
@@ -112,11 +113,12 @@ echo 'Current PHP version: ' . phpversion();
                                {
                           ?>
                           <tr>
+                                <td><?php echo $values['item_id']; ?></td>
                                <td><?php echo $values["item_name"]; ?></td>
-                               <td><input type="number" value="<?php echo $values["item_quantity"]; ?>"></input></td>
+                               <td><?php echo $values["item_quantity"]; ?></td>
                                <td>$ <?php echo $values["item_price"]; ?></td>
                                <td>$ <?php echo number_format($values["item_quantity"] * $values["item_price"], 2); ?></td>
-                               <td><a href="indexx.php?action=delete&id=<?php echo $values["item_id"]; ?>"><span class="text-danger">Remove</span></a></td>
+                               <td><a href="indexx.php?action=update&id=<?php echo $values["item_id"];?>"></a><p><a href="indexx.php?action=delete&id=<?php echo $values["item_id"]; ?>"><span class="text-danger">Remove</span></a></td>
                           </tr>
                           <?php
                                     $total = $total + ($values["item_quantity"] * $values["item_price"]);
@@ -127,17 +129,21 @@ echo 'Current PHP version: ' . phpversion();
                                <td align="right">$ <?php echo number_format($total, 2); ?></td>
                                <td></td>
                           </tr>
-<form method="post">
+
                           <?php
                           if (isset($_POST['submit'])) {
-                            $request_create = $mysqli->query("INSERT INTO requests_numbers VALUES (null, '".$total."','Pendente','O amor é uma flor roxa, que nasce nos corações dos trouxas','1','12')");
-                            $request_select_last_inserted_id = $mysqli->query("SELECT LAST_INSERT_ID()");
-                            //echo $request_select_last_inserted_id;
-                          foreach ($_SESSION["shopping_cart"] as $key => $value) {
+                            $request_create = $mysqli->query("INSERT INTO requests_numbers VALUES (null, '".$total."','1','1','1','1',null,null)");
+                            $request = $mysqli->query("SELECT id FROM requests_numbers ORDER BY id DESC LIMIT 1");
+                            while($rowid = mysqli_fetch_array($request))
+                            {
+                            $lastid = $rowid['id'];
+                            }
+                          foreach ($_SESSION["shopping_cart"] as $key => $values) {
                             $item_id = $values['item_id'];
                             $item_quantity = $values['item_quantity'];
-                              $shopping_cart_insert = $mysqli->query("INSERT INTO requests VALUES (null, '".$values['item_id']."', '".$values['item_quantity']."','1')");
+                            $shopping_cart_insert = $mysqli->query("INSERT INTO requests VALUES (null, '".$item_id."', '".$item_quantity."','".$lastid."')");
                             }
+
                           }
                           }
 
