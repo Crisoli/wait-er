@@ -39,7 +39,8 @@
           <?php
           if (isset($_POST['submit'])) {
             $obs = $_POST['obs'];
-            $request_create = $mysqli->query("INSERT INTO requests_numbers VALUES (null, '".$total."','Pendente','".$obs."','1','1',null,null)");
+            $table = $_POST['table'];
+            $request_create = $mysqli->query("INSERT INTO requests_numbers VALUES (null, '".$total."','Pendente','".$obs."','".$userid."','1',null,null)");
             $request = $mysqli->query("SELECT id FROM requests_numbers ORDER BY id DESC LIMIT 1");
             while($rowid = mysqli_fetch_array($request))
             {
@@ -56,6 +57,7 @@
 
 
           ?>
+          <input type="number" name="table" placeholder="Numero da Mesa"></input>
           <input type="text" name="obs" placeholder="Observações"> </input>
           <input type="submit" name="submit"></input>
         </form>
