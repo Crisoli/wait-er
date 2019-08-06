@@ -1,6 +1,9 @@
 
 
 <?php
+if (isset($_SESSION['codigodesamedata'])) {
+	
+
 if ($_SESSION['codigodesamedata'] == 1){
   echo "
 <div class='alert alert-danger' role='alert'>
@@ -16,11 +19,6 @@ session_destroy();
 </div>";
     }
 session_destroy();
+
+}
    ?>
-
-   <?php
-
-error_reporting(0);
-ini_set(“display_errors”, 0 );
-
-?>
