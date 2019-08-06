@@ -1,7 +1,5 @@
 <body>
-    <!-- não mexer (eu preciso desse aviso para tomar cuidado
-      <form action='/login/authentication.php' method='post'> -->
-    <!-- não mexer -->
+
     <div class="row">
         <div class="col-12"></div>
     </div>
@@ -13,14 +11,14 @@
         <div class="col-3 offset-1">
             <div class='card-panel grey lighten-5 z-depth-3'>
                 <div class='row  container valign-wrapper'>
-
-                        <img src="inc/img/Waiter.png" class="w-100 p-100">
+                  
+                        <img src="Waiter.png" class="w-100 p-100">
                     </div>
                     <div class='container'>
                         <div class='row'>
                             <!--Caixa de texto-->
                         </div>
-                        <form action='/login/authentication.php' method='post'>
+                        <form method='post'>
                             <div class='input-field inline col s12 l12'>
                                 <p>
                                     <input type="text" name="nome" placeholder="Nome" required>
@@ -51,7 +49,7 @@ padding:2%;
             <div class='row  valign-wrapper'>
                 <div class='col s1 l5'>
 
-                    <img src="inc/img/teste2.jpeg" class="" >
+                    <img src="teste2.jpeg" class="" >
                 </div>
             </div>
         </div>
@@ -81,8 +79,8 @@ padding:2%;
     </div>
 </body>
 <?php
-   include('login/authentication.php');
-   //include('login/samedata.php');
+   include('inc/login/authentication.php');
+   include('inc/login/samedata.php');
 ?>
 <style>
 .row{
