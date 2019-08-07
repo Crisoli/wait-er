@@ -1,16 +1,7 @@
 <?php
-include 'inc/headerfun.php';
+ include 'inc/headerfun2.php';
 include 'inc/employers/shoppingcartarray.php';
 ?>
-<!DOCTYPE html>
-<html>
-     <head>
-          <title>Wait-er | Carrinho</title>
-          <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-          <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
-          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-     </head>
      <body>
           <br />
           <div class="container" style="">
@@ -61,10 +52,8 @@ include 'inc/employers/shoppingcartarray.php';
                     include 'inc/employers/shoppingcartinsert.php';
                }
                ?>
-
                     </table>
                </div>
           </div>
           <br />
      </body>
-</html>
