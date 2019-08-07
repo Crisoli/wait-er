@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: 05-Ago-2019 às 15:27
+-- Generation Time: 07-Ago-2019 às 12:36
 -- Versão do servidor: 5.6.34
 -- PHP Version: 5.6.32
 
@@ -18,6 +18,11 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
+--
+-- Database: `test`
+--
+CREATE DATABASE IF NOT EXISTS `test` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `test`;
 --
 -- Database: `waiter`
 --
@@ -46,7 +51,7 @@ CREATE TABLE `accounts` (
 --
 
 INSERT INTO `accounts` (`id`, `username`, `email`, `phonenumber`, `description`, `password`, `usertype`, `creator_id`) VALUES
-(6, 'Cristierato', 'h3has@viphone.eu.org', '+1-202-555-0180', 'sohentais.com', 'cudemacacoloko', 10, 1);
+(6, 'cris', 'h3has@viphone.eu.org', '+1-202-555-0180', 'sohentais.com', 'cris', 10, 1);
 
 -- --------------------------------------------------------
 
@@ -124,22 +129,8 @@ CREATE TABLE `requests` (
 --
 
 INSERT INTO `requests` (`id`, `foodmenu_id`, `quantity`, `requests_numbers_id`) VALUES
-(99, 1003, 1, 78),
-(100, 1003, 1, 78),
-(101, 1003, 1, 79),
-(102, 1003, 1, 79),
-(103, 1003, 1, 80),
-(104, 1003, 1, 80),
-(105, 1002, 1, 81),
-(106, 1002, 1, 81),
-(107, 1003, 1, 82),
-(108, 1003, 1, 82),
-(109, 1003, 1, 83),
-(110, 1003, 1, 83),
-(111, 1002, 1, 86),
-(112, 1003, 1, 86),
-(113, 1002, 1, 87),
-(114, 1003, 1, 87);
+(123, 1002, 1, 92),
+(124, 1003, 1, 92);
 
 -- --------------------------------------------------------
 
@@ -163,16 +154,10 @@ CREATE TABLE `requests_numbers` (
 --
 
 INSERT INTO `requests_numbers` (`id`, `total`, `status`, `obs`, `accounts_id`, `id_table`, `started`, `finished`) VALUES
-(78, '3360000.00', '1', '1', 1, 1, '2019-08-05 15:02:41', NULL),
-(79, '3360000.00', '1', '1', 1, 1, '2019-08-05 15:02:43', NULL),
-(80, '3360000.00', '1', '1', 1, 1, '2019-08-05 15:02:44', NULL),
-(81, '3360000.00', '1', '1', 1, 1, '2019-08-05 15:15:58', NULL),
-(82, '3360000.00', '1', '1', 1, 1, '2019-08-05 15:22:13', NULL),
-(83, '3360000.00', '1', '1', 1, 1, '2019-08-05 15:22:15', NULL),
-(84, '3360000.00', '1', '1', 1, 1, '2019-08-05 15:25:20', NULL),
-(85, '3360000.00', '1', '1', 1, 1, '2019-08-05 15:25:44', NULL),
-(86, '3360000.00', '1', '1', 1, 1, '2019-08-05 15:26:12', NULL),
-(87, '3360000.00', '1', '1', 1, 1, '2019-08-05 15:26:14', NULL);
+(89, '3360000.00', 'Pendente', 'Quero leite em pÃ³', 6, 1, '2019-08-07 12:00:49', NULL),
+(90, '3360000.00', 'Pendente', 'Quero leite em pÃƒÂ³', 6, 2, '2019-08-07 12:02:00', NULL),
+(91, '3360000.00', 'Pendente', 'Quero leite em pÃƒÆ’Ã‚Â³', 6, 12, '2019-08-07 12:02:15', NULL),
+(92, '3360000.00', 'Pendente', 'Quero leite em pÃƒÆ’Ã‚Â³', 6, 12, '2019-08-07 12:03:07', NULL);
 
 -- --------------------------------------------------------
 
@@ -181,7 +166,7 @@ INSERT INTO `requests_numbers` (`id`, `total`, `status`, `obs`, `accounts_id`, `
 --
 
 CREATE TABLE `tables` (
-  `table_number` int(11) NOT NULL,
+  `table_number` int(3) UNSIGNED ZEROFILL NOT NULL,
   `status` varchar(255) NOT NULL,
   `size` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -191,7 +176,9 @@ CREATE TABLE `tables` (
 --
 
 INSERT INTO `tables` (`table_number`, `status`, `size`) VALUES
-(12, 'Livre', 'Grande');
+(001, 'Em uso', 'Pequena'),
+(002, 'Livre', 'Média'),
+(012, 'Livre', 'Grande');
 
 --
 -- Indexes for dumped tables
@@ -276,13 +263,13 @@ ALTER TABLE `foodmenu`
 -- AUTO_INCREMENT for table `requests`
 --
 ALTER TABLE `requests`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=115;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=125;
 
 --
 -- AUTO_INCREMENT for table `requests_numbers`
 --
 ALTER TABLE `requests_numbers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
