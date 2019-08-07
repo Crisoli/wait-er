@@ -1,4 +1,5 @@
 <?php
+include 'inc/headerfun.php';
 include 'inc/employers/shoppingcartarray.php';
 ?>
 <!DOCTYPE html>
@@ -46,7 +47,7 @@ include 'inc/employers/shoppingcartarray.php';
 
 
 
-                            
+
                                </div>
                                </div>
 
