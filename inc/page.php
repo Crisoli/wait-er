@@ -11,7 +11,7 @@
         <div class="col-3 offset-1">
             <div class='card-panel grey lighten-5 z-depth-3'>
                 <div class='row  container valign-wrapper'>
-                  
+
                         <img src="Waiter.png" class="w-100 p-100">
                     </div>
                     <div class='container'>
@@ -21,7 +21,7 @@
                         <form method='post'>
                             <div class='input-field inline col s12 l12'>
                                 <p>
-                                    <input type="text" name="nome" placeholder="Nome" required>
+                                    <input type="text" name="username" placeholder="Nome" required>
                                 </p>
                                 <p>
                                     <input type='password' name='password' placeholder='Senha' id='password' required class='' required>
