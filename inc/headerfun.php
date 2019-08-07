@@ -6,7 +6,7 @@
       $('.menu').toggle(500);
     })
   });
-  <?php 
+  <?php
     $connect = mysqli_connect("localhost", "root", "usbw", "wait-er");
   ?>
 </script>
