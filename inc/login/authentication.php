@@ -6,21 +6,18 @@ $password= $_POST['password'];
 $loginquery = $mysqli->query("SELECT * FROM accounts WHERE username='".$user."' and password='".$password."'");
 $rowcount = mysqli_num_rows($loginquery);
 if($rowcount == 1){
+	session_start();
 		while ($row = $loginquery->fetch_assoc()) {
 			$loggeduser=  $_SESSION['username'] = $user;
 			$usertype = $row['usertype'];
-			$userid = $row['id'];
+			$_SESSION['userid'] = $row['id'];
 					}
 			if($usertype==11){
-			session_start();
 			$_SESSION['admin']=true;
-			$_SESSION['userid'] = $userid;
-			//header('');
+			header('location:unusualadminpagename.php');
 			}
 			elseif($usertype==10){
-			session_start();
 			$_SESSION['admin']=false;
-			$_SESSION['userid'] = $userid;
 			header('location:foodlist.php');
 			}
 }
