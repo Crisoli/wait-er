@@ -3,9 +3,11 @@
 include 'inc/employers/shoppingcartarray.php';
 ?>
      <body>
-          <br />
-          <div class="container" style="">
-               <h3 align="center">Simple PHP Mysql Shopping Cart</h3><br />
+
+          <br/>
+          <div class="container">
+                  <div class="row">
+                    <div class="col s12 m7 l4 offset-l4">
                <?php
                $query = $mysqli->query("SELECT * FROM foodmenu ORDER BY id ASC");
                if(mysqli_num_rows($query) > 0)
@@ -15,15 +17,17 @@ include 'inc/employers/shoppingcartarray.php';
                ?>
 
 
-                  <div class="row">
-                 <div class="col s7 m4 l4">
-                    <div class="card">
-          <div class="card-image">
+
+
+                    <div class="card small">
+
+                  <div class="card-image">
 
                     <form method="post" action="foodlist.php?action=add&id=<?php echo $row["id"]; ?>">
 
 
-                              <img src="<?php echo $row["image"]; ?>" class=" circle  float-left " alt=""/>
+
+                              <img src="<?php echo $row["image"]; ?>" class=" " alt=""/>
 
                              </div>
                              <div class="card-content">
@@ -37,13 +41,12 @@ include 'inc/employers/shoppingcartarray.php';
                              <div class="card-action">
                                <div class="col s2 m4 l2 float-right">
                               <input type="text" name="quantity" class="form-control" value="1" />
-                                <input type="submit" name="add_to_cart" style="" class="btn btn-danger float-right" value="+" />
+
+                                <div class="card-tittle">
+                                <input type="submit" name="add_to_cart" style="" class="waves-effect waves-teal btn-flat float-right" value="+"/>
+
+                                </div>
 </div>
-
-
-
-
-
                                </div>
                                </div>
  </div>
@@ -59,6 +62,7 @@ include 'inc/employers/shoppingcartarray.php';
                ?>
                     </table>
 
+          </div>
           </div>
           <br />
      </body>
