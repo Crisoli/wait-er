@@ -13,11 +13,11 @@ if($rowcount == 1){
 			$_SESSION['userid'] = $row['id'];
 					}
 			if($usertype==11){
-			$_SESSION['admin']=true;
+			$_SESSION['admin']='true';
 			header('location:unusualadminpagename.php');
 			}
 			elseif($usertype==10){
-			$_SESSION['admin']=false;
+			$_SESSION['admin']='false';
 			header('location:foodlist.php');
 			}
 }
