@@ -13,35 +13,40 @@ include 'inc/employers/shoppingcartarray.php';
                     while($row = mysqli_fetch_array($query))
                     {
                ?>
-               <div class="col s12 m4 l5">
+
 
                   <div class="row">
-
-                    <div class="container">
+                 <div class="col s7 m4 l4">
+                    <div class="card">
+          <div class="card-image">
 
                     <form method="post" action="foodlist.php?action=add&id=<?php echo $row["id"]; ?>">
 
-                              <div style="width:10em; margin:2px;">
-                              <img src="<?php echo $row["image"]; ?>" class=" rounded float-left " alt=""/>
+
+                              <img src="<?php echo $row["image"]; ?>" class=" circle  float-left " alt=""/>
+
                              </div>
+                             <div class="card-content">
 
                               <h4 class="text-info"><?php echo $row["name"]; ?></h4>
-                              <h4 class="text-danger">$ <?php echo $row["price"]; ?></h4>
+                              <h4 class="text-danger">R$ <?php echo $row["price"]; ?></h4>
 
-
-                               <div class="col s2 m4 l5 float-right">
-                              <p><input type="text" name="quantity" class="form-control" value="1" />
-                                <input type="submit" name="add_to_cart" style="" class="btn btn-danger float-right" value="+" /></p>
-</div>
                               <br><input type="hidden" name="hidden_name" value="<?php echo $row["name"]; ?>" />
                               <input type="hidden" name="hidden_price" value="<?php echo $row["price"]; ?>" /></br>
 
+                             <div class="card-action">
+                               <div class="col s2 m4 l2 float-right">
+                              <input type="text" name="quantity" class="form-control" value="1" />
+                                <input type="submit" name="add_to_cart" style="" class="btn btn-danger float-right" value="+" />
+</div>
+
+
 
 
 
                                </div>
                                </div>
-
+ </div>
 
                                  <!---  fim da parte de produtos -->
 
@@ -53,7 +58,7 @@ include 'inc/employers/shoppingcartarray.php';
                }
                ?>
                     </table>
-               </div>
+
           </div>
           <br />
      </body>
