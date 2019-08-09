@@ -14,7 +14,7 @@ if(!isset($_SESSION['admin'])){
       <div class='row'>
           <div class='offset-1'>
               <div class='col s12 l10 m10 offset-1 '>
-              <div class='card-panel grey lighten-5 z-depth-3'>
+              <div class=''>
                   <div class='row container valign-wrapper'>
 
                       <img src='inc/img/Waiter.png' class='w-100 p-100'>
