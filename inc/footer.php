@@ -1,9 +1,9 @@
 
 </main>
-<footer class="page-footer">
+<footer class="page-footer " style="background-image: linear-gradient(to top, #48c6ef 0%, #6f86d6 100%);">
 			<div class="container">
 				<div class="row">
-					<div class="col l6 s12">
+					<div class="col l12 s12">
 						<h5 class="white-text">Waiter</h5>
 						<p class="grey-text text-lighten-4">Alguma frase legal</p>
 					</div>

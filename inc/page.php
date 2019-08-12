@@ -32,7 +32,7 @@ if(!isset($_SESSION['admin'])){
                                   <input type='password' name='password' placeholder='Senha' id='password' required class='' required>
                               </p>
                               <!--Botão-->
-                              <a class='btn-floating waves-effect waves-dark green-gray darken-3 center'>
+                              <a class='btn-floating' style='background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);'>
                                   <i class='large material-icons'>chevron_right</i>
                                   <input type='submit' value='Login'></input>
                               </a>
@@ -66,7 +66,7 @@ else{echo "string";
     echo "toptopzera";
   }
   else {
-  echo '<h1>Um erro MUITO inesperado aconteceu (Como se conseguiu encontrar esse erro?)</h1>';
+  echo '<h1>Um erro MUITO inesperado aconteceu (Como cê conseguiu encontrar esse erro?)</h1>';
   }
 }
 
