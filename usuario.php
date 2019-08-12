@@ -18,21 +18,21 @@ include('inc/database.php');
 				<div class="col s6 m6">E-mail:<input type="text" name="useremail" placeholder="Digite seu e-mail aqui." required=""></input></div></p>
 				<div class="col s12 m12"><SPAN>Tipo de usuário:</SPAN></br>
 					<label>
-			        	<input class="with-gap" name="usertype" type="radio" value='3' checked />
+			        	<input class="with-gap" name="usertype" type="radio" value='13' checked />
 			        	<span>Funcionário</span>
 			      	</label>
 					<label>
-				        <input class="with-gap" name="usertype" type="radio" value='2' />
+				        <input class="with-gap" name="usertype" type="radio" value='12' />
 				        <span>Gerente</span>
 				    </label>
 				    <label>
-				        <input class="with-gap" name="usertype" type="radio" value='1'/>
+				        <input class="with-gap" name="usertype" type="radio" value='11'/>
 				        <span>Administrador</span>
 				    </label></p></div>
 				<div class="col s6 m6">Número de telefone:<input type="number" name="userphone" placeholder="Digite o seu numéro para contato." required=""></input></p></div>
 				<div class="col s6 m6">Descrição: <input type="text" name="description" placeholder="Faça uma breve descrição" required=""></p></div>
 				<div class="col s12 m12">Senha:<input type="password" name="userpassword" placeholder="Digite sua senha aqui." required=""></p></div></p>
-				<input class="col s6 m2" type="submit" name="">	
+				<input class="col s6 m2" type="submit" name="">
 			</form>
 		</div>
 	</div>
@@ -47,7 +47,7 @@ include('inc/database.php');
 		$password= $_POST['userpassword'];
 		$description= $_POST['description'];
 		//mysql insert//
-		$userinsert= "INSERT INTO `accounts` (`id`, `username`, `email`, `phonenumber`, `description`, `password`, `usertype`, `creator_id`) VALUES (NULL, '$name', '$email', '$phone', '$description', '$password', '$usertype,', '1');";
+		$userinsert= "INSERT INTO accounts VALUES (NULL, '$name', '$email', '$phone', '$description', '$password', '$usertype,', '$_SESSION['userid']');";
 		if ($mysqli->query($userinsert) === TRUE) {
 			header("location:usuario.php");
 		} else {
