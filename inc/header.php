@@ -1,4 +1,7 @@
-
+<?php
+echo 'Current PHP version: ' . phpversion();
+date_default_timezone_set('America/Sao_Paulo');
+?>
 <!DOCTYPE html>
 <html>
 
