@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: 07-Ago-2019 às 12:36
+-- Generation Time: 12-Ago-2019 às 15:03
 -- Versão do servidor: 5.6.34
 -- PHP Version: 5.6.32
 
@@ -18,11 +18,6 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
---
--- Database: `test`
---
-CREATE DATABASE IF NOT EXISTS `test` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `test`;
 --
 -- Database: `waiter`
 --
@@ -145,19 +140,21 @@ CREATE TABLE `requests_numbers` (
   `obs` varchar(255) DEFAULT NULL,
   `accounts_id` int(11) NOT NULL,
   `id_table` int(11) NOT NULL,
-  `started` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `finished` timestamp NULL DEFAULT NULL
+  `started` date NOT NULL,
+  `started_hour` time DEFAULT NULL,
+  `finished` date DEFAULT NULL,
+  `finished_hour` time DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `requests_numbers`
 --
 
-INSERT INTO `requests_numbers` (`id`, `total`, `status`, `obs`, `accounts_id`, `id_table`, `started`, `finished`) VALUES
-(89, '3360000.00', 'Pendente', 'Quero leite em pÃ³', 6, 1, '2019-08-07 12:00:49', NULL),
-(90, '3360000.00', 'Pendente', 'Quero leite em pÃƒÂ³', 6, 2, '2019-08-07 12:02:00', NULL),
-(91, '3360000.00', 'Pendente', 'Quero leite em pÃƒÆ’Ã‚Â³', 6, 12, '2019-08-07 12:02:15', NULL),
-(92, '3360000.00', 'Pendente', 'Quero leite em pÃƒÆ’Ã‚Â³', 6, 12, '2019-08-07 12:03:07', NULL);
+INSERT INTO `requests_numbers` (`id`, `total`, `status`, `obs`, `accounts_id`, `id_table`, `started`, `started_hour`, `finished`, `finished_hour`) VALUES
+(89, '3360000.00', 'Finalizado', 'Quero leite em pÃ³', 6, 1, '2019-08-12', NULL, '2019-08-12', '12:03:05'),
+(90, '3360000.00', 'Pendente', 'Quero leite em pÃƒÂ³', 6, 2, '2019-08-12', NULL, '2019-08-12', '12:02:55'),
+(91, '3360000.00', 'Finalizado', 'Quero leite em pÃƒÆ’Ã‚Â³', 6, 12, '2019-08-12', NULL, '2019-08-12', '11:41:32'),
+(92, '3360000.00', 'Finalizado', 'Quero leite em pÃƒÆ’Ã‚Â³', 6, 12, '2019-08-12', NULL, '2019-08-12', '12:03:21');
 
 -- --------------------------------------------------------
 
