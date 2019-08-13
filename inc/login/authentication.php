@@ -14,7 +14,7 @@ if($rowcount == 1){
 					}
 			if($usertype==11){
 			$_SESSION['admin']='true';
-			header('location:unusualadminpagename.php');
+			header('location:comanda.php');
 			}
 			elseif($usertype==10){
 			$_SESSION['admin']='false';
