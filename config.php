@@ -1,5 +1,5 @@
 <?php
-/** O nome do banco de dados*/	define('DB_NAME', 'waiter');		
+/** O nome do banco de dados*/	define('DB_NAME', 'waiter');
 /** Usuário do banco de dados MySQL */	define('DB_USER', 'cristian081');
 /** Senha do banco de dados MySQL */	define('DB_PASSWORD', '');
 /** nome do host do MySQL */	define('DB_HOST', 'localhost');
