@@ -1,5 +1,5 @@
 <?php
-echo 'Current PHP version: ' . phpversion();
+
 date_default_timezone_set('America/Sao_Paulo');
 $date = date('Y-m-d', time());
 $hour= date('h:i:s', time());
