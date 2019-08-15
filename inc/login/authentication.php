@@ -8,7 +8,8 @@ $rowcount = mysqli_num_rows($loginquery);
 if($rowcount == 1){
 	session_start();
 		while ($row = $loginquery->fetch_assoc()) {
-			$loggeduser=  $_SESSION['username'] = $user;
+			$_SESSION['img'] = $row['img'];
+			$_SESSION['username'] = $row['username'];
 			$usertype = $row['usertype'];
 			$_SESSION['userid'] = $row['id'];
 					}
