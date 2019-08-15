@@ -47,7 +47,7 @@ include('inc/database.php');
 		$password= $_POST['userpassword'];
 		$description= $_POST['description'];
 		//mysql insert//
-		$userinsert= "INSERT INTO accounts VALUES (NULL, '$name', '$email', '$phone', '$description', '$password', '$usertype,', '$_SESSION['userid']');";
+		$userinsert= "INSERT INTO accounts VALUES (NULL, '$name','$img', '$email', '$phone', '$description', '$password', '$usertype,', '$_SESSION['userid']');";
 		if ($mysqli->query($userinsert) === TRUE) {
 			header("location:usuario.php");
 		} else {
