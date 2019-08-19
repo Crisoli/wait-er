@@ -29,10 +29,12 @@ include('inc/database.php');
 				        <input class="with-gap" name="usertype" type="radio" value='11'/>
 				        <span>Administrador</span>
 				    </label></p></div>
-				<div class="col s6 m6">Número de telefone:<input type="number" name="userphone" placeholder="Digite o seu numéro para contato." required=""></input></p></div>
+				<div class="col s6 m6">Número de telefone:<input type="text" name="userphone" placeholder="Digite o seu numéro para contato." required=""></input></p></div>
 				<div class="col s6 m6">Descrição: <input type="text" name="description" placeholder="Faça uma breve descrição" required=""></p></div>
 				<div class="col s12 m12">Senha:<input type="password" name="userpassword" placeholder="Digite sua senha aqui." required=""></p></div></p>
-				<input class="col s6 m2" type="submit" name="">
+				</div>
+    			<button class="btn waves-effect waves-light" type="submit" name="action">Submit
+  				</button>
 			</form>
 		</div>
 	</div>
@@ -47,7 +49,7 @@ include('inc/database.php');
 		$password= $_POST['userpassword'];
 		$description= $_POST['description'];
 		//mysql insert//
-		$userinsert= "INSERT INTO accounts VALUES (NULL, '$name','$img', '$email', '$phone', '$description', '$password', '$usertype,', '$_SESSION['userid']');";
+		$userinsert= "INSERT INTO accounts VALUES (NULL, '$name','$img', '$email', '$phone', '$description', '$password', '$usertype,', '".$_SESSION['userid']."');";
 		if ($mysqli->query($userinsert) === TRUE) {
 			header("location:usuario.php");
 		} else {
