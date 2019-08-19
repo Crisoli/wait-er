@@ -1,6 +1,7 @@
 <?php
- include 'inc/sidemenu.php';
 include 'inc/employers/shoppingcartarray.php';
+
+ include 'inc/sidemenu.php';
 ?>
      <body style="font-family: 'Exo 2', sans-serif;">
 
@@ -62,8 +63,10 @@ include 'inc/employers/shoppingcartarray.php';
 
                <?php
                     }
-                    include 'inc/employers/shoppingcartinsert.php';
+
                }
+               include 'inc/employers/shoppingcartinsert.php';
+
                ?>
 
                </div>
