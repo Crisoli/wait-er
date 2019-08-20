@@ -1,15 +1,5 @@
-<div style="clear:both"></div>
-<br />
-<h3>Order Details</h3>
-<div class="table-responsive">
-     <table class="table table-bordered">
-          <tr>
-               <th width="31vw">Item Name</th>
-               <th width="6vw">Quantity</th>
-               <th width="16vw">Price</th>
-               <th width="11vw">Total</th>
-               <th width="6vw">Action</th>
-          </tr>
+
+
           <form method="post">
           <?php
 if (!empty($_SESSION["shopping_cart"]))
@@ -18,36 +8,33 @@ if (!empty($_SESSION["shopping_cart"]))
     foreach ($_SESSION["shopping_cart"] as $keys => $values)
       {
 ?>
-        <tr>
-               <td><?php
+
+               <?php
         echo $values["item_name"];
-?></td>
-               <td><?php
+?>
+               <?php
         echo $values["item_quantity"];
-?></td>
-               <td>$ <?php
+?>
+               $ <?php
         echo $values["item_price"];
-?></td>
-               <td>$ <?php
+?>
+              $ <?php
         echo number_format($values["item_quantity"] * $values["item_price"], 2);
-?></td>
-               <td><a href="foodlist.php?action=update&id=<?php
+?>
+               <a href="foodlist.php?action=update&id=<?php
         echo $values["item_id"];
-?>"></a><p><a href="foodlist.php?action=delete&id=<?php
+?>"></a><a href="foodlist.php?action=delete&id=<?php
         echo $values["item_id"];
-?>"><span class="text-danger">Remove</span></a></td>
-          </tr>
+?>"><span class="text-danger">Remove</span></a>
+
           <?php
         $total = $total + ($values["item_quantity"] * $values["item_price"]);
       }
 ?>
-        <tr>
-               <td colspan="3" align="right">Total</td>
-               <td align="right">$ <?php
+
+               $ <?php
     echo number_format($total, 2);
-?></td>
-               <td></td>
-          </tr>
+?>
 
           <?php
     if (isset($_POST['submit']))
