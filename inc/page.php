@@ -1,7 +1,11 @@
 <?php
-   include('inc/login/authentication.php');
-   include('inc/login/samedata.php');
+
+if (session_status() == PHP_SESSION_NONE) {
+session_start();
+ }
+
 if(!isset($_SESSION['admin'])){
+  include('inc/login/authentication.php');
   echo "<body>
 
       <div class='row'>
@@ -56,12 +60,12 @@ if(!isset($_SESSION['admin'])){
       </form>
   </body>";
 }
-else{echo "string";
+else{
   if ($_SESSION['admin'] == 'true') {
-    echo "top";
+    header('Location: comanda.php');
   }
   elseif ($_SESSION['admin'] == 'false') {
-    echo "toptopzera";
+    header('Location: foodlist.php');
   }
   else {
   echo '<h1>Um erro MUITO inesperado aconteceu (Como cê conseguiu encontrar esse erro?)</h1>';
