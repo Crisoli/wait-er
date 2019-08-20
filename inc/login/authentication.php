@@ -1,4 +1,6 @@
 
+
+
 <?php
 if(isset($_POST['username']) && isset($_POST['password'])){
 $user= $_POST['username'];
@@ -23,8 +25,10 @@ if($rowcount == 1){
 			}
 }
 else {
-	session_start();
-	$_SESSION['codigodesamedata']=1;
+	echo "
+	<div class='alert alert-danger' role='alert'>
+	<p><strong>ERRO:</strong>Seu usuario e/ou sua senha esta incorreto.</p>
+	</div>";
 }
 	    }
 			?>
