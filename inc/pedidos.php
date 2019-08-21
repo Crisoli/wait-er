@@ -11,7 +11,7 @@ if(mysqli_num_rows($requestpen) > 0)
 <form method="post">
 <div>
   <input type="hidden" value=<?php echo $pen['id'];?> name="id">
-  <?php echo 'Pendente'?>
+ 
   <?php echo $pen['id'];?>
   <?php echo $pen['status'];?>
   <?php echo $pen['obs'];?>
@@ -42,7 +42,6 @@ if(mysqli_num_rows($requestrec) > 0)
 ?>
 
 <div>
-  <?php echo 'Finalizado Recentemente'?>
   <?php echo $rec['id'];?>
   <?php echo $rec['status'];?>
   <?php echo $rec['obs'];?>
@@ -65,7 +64,6 @@ if(mysqli_num_rows($requestfin) > 0)
      {
 ?>
 <div>
-  <?php echo 'Finalizado'?>
   <?php echo $fin['id'];?>
   <?php echo $fin['status'];?>
   <?php echo $fin['obs'];?>
