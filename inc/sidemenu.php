@@ -11,7 +11,7 @@
 
 <div class="row">
   <nav style="background-color:black;">
-      <a href="#" data-activates="slide-out2" class="button-collapse show-on-medium-and-up"><i class="material-icons right-align">menu</i></a>
+      <a href="#" data-activates="slide-out2" class="button-collapse show-on-medium-and-up right"><i class="material-icons">menu</i></a>
      <a href="#" data-activates="slide-out" class="button-collapse show-on-medium-and-up"><i class="material-icons">menu</i></a>
 
       <a href="#" class="brand-logo center">  <img src='inc/img/Waiterlogo.png' style='max-height:200%; max-width:100px;'> </a>
@@ -45,15 +45,11 @@
 
     </div>
 
-    <div class="container" style="width:100px;">
+    <div class="container" >
 
-        <ul id="slide-out2" class="side-nav " style="background-color:white;">
+        <ul id="slide-out2" class="side-nav " style="background-color:white; width:95%;">
 
-
-
-
-          <li><a class="waves-effect white-text" href="#!"><i class="material-icons white-text">archive</i>Estoque</a></li>
-        <?php include 'inc/employers/shoppingcartinsert.php';  ?>
+             <?php include 'inc/employers/shoppingcartinsert.php';  ?>
 
 
        </ul>
