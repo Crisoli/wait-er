@@ -18,13 +18,13 @@ include 'inc/employers/shoppingcartarray.php';
                     {
                ?>
 
-                   <div class="col s12 m3 l3">
+                   <div class="col s12 m12 l12">
                   <div class="card midium">
 
                            <div class="card-image">
 
                             <form method="post" action="foodlist.php?action=add&id=<?php echo $row["id"]; ?>">
-                            <img src="<?php echo $row["image"]; ?>" class="responsive-img" alt=""/>
+                            <img src="<?php echo $row["image"]; ?>" class="responsive-img" alt=" " />
 
                             </div>
 
@@ -42,16 +42,17 @@ include 'inc/employers/shoppingcartarray.php';
 
                              <input type="hidden" name="hidden_price" value="<?php echo $row["price"]; ?>" />
 
-                            </div>
-
+                           </div>
 
                             <div class="card-action">
-                            <input type="submit" name="add_to_cart" style="background-color:#FF291F" class="btn btn-danger btn-flat white-text" value="+"/>
-                            <div class="col s2 m4 l2 ">
+                            <div class="col s12 m12 l12 ">
                              <input type="text" name="quantity" class="form-control" value="1" />
+                             </div>
+
+                             <input type="submit" name="add_to_cart" style="background-color:#FF291F;  width:100%;" class="btn btn-danger white-text" value="Add"/>
 
                              </div>
-                             </div>
+
 
 
 
@@ -65,7 +66,7 @@ include 'inc/employers/shoppingcartarray.php';
                     }
 
                }
-               include 'inc/employers/shoppingcartinsert.php';
+
 
                ?>
 

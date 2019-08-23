@@ -1,5 +1,4 @@
 
-
           <form method="post">
           <?php
 if (!empty($_SESSION["shopping_cart"]))
