@@ -23,7 +23,7 @@
 
           <br><a href="#user"><img class="circle z-depth-2" style="max-height:200%; max-width:70px;" src="<?php echo $_SESSION['img'];?>"></a></br>
           <a href="#name"><span class="white-text"><?php echo $_SESSION['username'];?></span></a>
-          <a href="#email"><span class="white-text">Logoff</span></a>
+          <a href='logoff.php' name='logoff'><span class="white-text">Logoff</span></a>
         </div></li>
 
 
