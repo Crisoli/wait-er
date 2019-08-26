@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!-- JQuery / Materialize CSS + JavaScript imports -->
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css" rel="stylesheet" />
@@ -11,7 +12,12 @@
 
 <div class="row">
   <nav style="background-color:black;">
-      <a href="#" data-activates="slide-out2" class="button-collapse show-on-medium-and-up right"><i class="material-icons">menu</i></a>
+  <?php if($_SESSION['admin']=='false'){
+    echo "
+      <a href='#' data-activates='slide-out2' class='button-collapse show-on-medium-and-up right'><i class='material-icons'>menu</i></a>
+      ";
+  };
+  ?>
      <a href="#" data-activates="slide-out" class="button-collapse show-on-medium-and-up"><i class="material-icons">menu</i></a>
 
       <a href="#" class="brand-logo center">  <img src='inc/img/Waiterlogo.png' style='max-height:200%; max-width:100px;'> </a>
@@ -27,37 +33,41 @@
         </div></li>
 
 
-
-          <li><a class="waves-effect white-text" href="#!"><i class="material-icons white-text">archive</i>Estoque</a></li>
-
-
-          <li><a class="waves-effect white-text" href="#!"><i class="material-icons white-text">assignment_ind</i>Funcionários</a></li>
-
-
-          <li><a class="waves-effect white-text" href="#!"><i class="material-icons white-text">content_paste</i>Pedidos</a></li>
-
-          <li><a class="waves-effect white-text" href="#!"><i class="material-icons white-text">local_library</i>Cardápio</a></li>
-
-
-          <li><a class="waves-effect white-text" href="#!"><i class="material-icons white-text">people_outline</i>Ranking</a></li>
-       </ul>
-
-
-    </div>
-
-    <div class="container" >
-
-        <ul id="slide-out2" class="side-nav " style="background-color:white; width:95%;">
-
-             <?php include 'inc/employers/shoppingcartinsert.php';  ?>
-
+<?php 
+if($_SESSION['admin']=='true'){
+  echo "
+  <li><a class='waves-effect white-text' href='#!'><i class='material-icons white-text'>archive</i>Estoque</a></li>
+  <li><a class='waves-effect white-text' href='#!'><i class='material-icons white-text'>assignment_ind</i>Funcionários</a></li>
+  <li><a class='waves-effect white-text' href='#!'><i class='material-icons white-text'>content_paste</i>Pedidos</a></li>
+  ";
+};
+?>
+<li><a class='waves-effect white-text' href='#!'><i class='material-icons white-text'>local_library</i>Cardápio</a></li>
+<li><a class='waves-effect white-text' href='#!'><i class='material-icons white-text'>people_outline</i>Ranking</a></li>
 
        </ul>
 
+<?php
+if($_SESSION['admin']=='false'){
+echo "</div>
 
-    </div>
+<div class='container' >
+
+    <ul id='slide-out2' class='side-nav' style='background-color:white; width:95%;'>
+";
+          include 'inc/employers/shoppingcartinsert.php';
+         
+echo "
+
+   </ul>
+
 
 </div>
+
+</div>";
+}
+?>
+    
 
 <script type="text/javascript">
 	$(".button-collapse").sideNav();
