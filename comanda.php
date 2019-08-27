@@ -3,7 +3,7 @@
 <?php require_once 'inc/database.php'; ?>
 <?php     include 'inc/sidemenu.php'; ?>
 <?php include(HEADER_TEMPLATE); ?>
-<?php 
+<?php
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
      }
@@ -19,10 +19,11 @@ elseif($_SESSION['pagead']=='3'){
 }
 elseif($_SESSION['pagead']=='4'){
     include('inc/admin/usuariocad.php');
-}    
+}
      }
      else{
-        header('location:index.php');
-     } 
+       echo "<script>window.location.href = 'index.php'</script>";
+
+     }
 ?>
 <?php include(FOOTER_TEMPLATE); ?>
