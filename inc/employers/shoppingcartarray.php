@@ -7,7 +7,6 @@ require_once 'inc/database.php';
 ?>
 <?php
 
-session_start();
 
 if (isset($_POST["add_to_cart"]))
   {
