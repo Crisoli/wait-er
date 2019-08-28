@@ -16,6 +16,7 @@ $hour= date('h:i:s', time());
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="style.css" />
 
+    <!--Let browser know website is optimized for mobile--><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
    <!-- Materialize CSS --> <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css" rel="stylesheet" />
    <!-- Materialize JS --> <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
    <!-- JQuery --> <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

@@ -1,6 +1,6 @@
 
 </main>
-<footer class="page-footer " style="background-image: linear-gradient(to top, #48c6ef 0%, #6f86d6 100%);">
+<footer class="" style="">
 			<div class="container">
 				<div class="row">
 					<div class="col l12 s12">

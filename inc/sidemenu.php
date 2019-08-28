@@ -11,7 +11,7 @@
 
 
 <div class="row">
-  <nav style="background-color:black;">
+  <nav style="background-color:black; position: fixed;" class="navbar-fixed">
   <?php if($_SESSION['admin']=='false'){
     echo "
       <a href='#' data-activates='slide-out2' class='button-collapse show-on-medium-and-up right'><i class='material-icons'>menu</i></a>
@@ -33,7 +33,7 @@
         </div></li>
 
 
-<?php 
+<?php
 if($_SESSION['admin']=='true'){
   echo "
   <li><a class='waves-effect white-text' href='#!'><i class='material-icons white-text'>archive</i>Estoque</a></li>
@@ -56,7 +56,7 @@ echo "</div>
     <ul id='slide-out2' class='side-nav' style='background-color:white; width:95%;'>
 ";
           include 'inc/employers/shoppingcartinsert.php';
-         
+
 echo "
 
    </ul>
@@ -67,17 +67,17 @@ echo "
 </div>";
 }
 ?>
-    
+
 
 <script type="text/javascript">
-	$(".button-collapse").sideNav();
+
 </script>
 
 <script type="text/javascript">
-	$(".slide-out").sideNav();
-  $('.slide-out').sideNav({
+	$(".button-collapse").sideNav();
+  $('.button-collapse').sideNav({
       menuWidth: 300, // Normal 300
-      edge: 'left', // Definir se o menu vai ficar na direita ou esquerda
+      edge:'right', // Definir se o menu vai ficar na direita ou esquerda
       closeOnClick: true, //
       draggable: true, //
       onOpen: function(el) { },
@@ -86,11 +86,12 @@ echo "
   );
   $('.slide-out2').sideNav({
       menuWidth: 300, // Normal 300
-      edge: 'right', // Definir se o menu vai ficar na direita ou esquerda
+      edge:'right', // Definir se o menu vai ficar na direita ou esquerda
       closeOnClick: true, //
       draggable: true, //
       onOpen: function(el) { },
       onClose: function(el) { },
     }
   );
+
 </script>
