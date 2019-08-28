@@ -19,14 +19,14 @@ if(!isset($_SESSION['admin'])){
               <div class=''>
                   <div class='row container valign-wrapper'>
 
-                      <img src='inc/img/Waiter.png' class='w-100 p-100 show-on-large'>
+                      <img src='inc/img/Waiter.png' class='show-on-large center-align' style='max-width:40%; width:30%;'>
                   </div>
                   <div class='container'>
                       <div class='row'>
                           <!--Caixa de texto-->
                       </div>
                       <form method='post'>
-                          <div class='input-field inline col s12 l12'>
+                          <div class='col s12 m5 l5'>
                               <p>
                                   <input type='text' name='username' placeholder='Nome' required>
                               </p>
@@ -34,10 +34,7 @@ if(!isset($_SESSION['admin'])){
                                   <input type='password' name='password' placeholder='Senha' id='password' required class='' required>
                               </p>
                               <!--Botão-->
-                              <a class='btn-floating' style='background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);'>
-                                  <i class='large material-icons'>chevron_right</i>
-                                  <input type='submit' value='Login'></input>
-                              </a>
+                                  <input type='submit' class:'' style=' border: none; border-radius: 60%; width:50px; height:50px; background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%); font-color:white;' value='>'></input>
                               <!--  -->
                               </p>
                           </div>
@@ -46,16 +43,17 @@ if(!isset($_SESSION['admin'])){
               </div>
           </div>
 
-          <div class='col s12 l5 m2 d-none d-xl-block show-on-large'>
                 <div class='container'>
               <div class='row container valign-wrapper'>
 
-
+                    <div class='hide-on-small-only'>
                     <img src='inc/img/teste2.jpeg' class=' w-100 p-100'>
+                    </div>
+
                   </div>
               </div>
           </div>
-      </div>
+
 
       </form>
   </body>";
