@@ -188,7 +188,7 @@ if(mysqli_num_rows($requestpen) > 0)
 <?php
 if(isset($_POST['id'])){
 $finalizar = $mysqli->query("UPDATE requests_numbers SET status='Finalizado',finished='".$date."',finished_hour='".$hour."', finish_id='".$_SESSION['userid']."' WHERE id = '".$_POST['id']."'");
-header('location:comanda.php');
+echo '<script>window.location="comanda.php"</script>';
     }
 }
     }
