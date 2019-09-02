@@ -9,7 +9,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
 
 <!-- HTML -->
-
+<div id="page-container">
+<div id="content-wrap">
 
 <div class="row">
   <nav style="background-color:black; position: fixed;" class="navbar-fixed">
