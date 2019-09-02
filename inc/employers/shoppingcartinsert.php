@@ -20,9 +20,7 @@ if (!empty($_SESSION["shopping_cart"]))
               $ <?php
         echo number_format($values["item_quantity"] * $values["item_price"], 2);
 ?>
-               <a href="foodlist.php?action=update&id=<?php
-        echo $values["item_id"];
-?>"></a><a href="foodlist.php?action=delete&id=<?php
+               </a><a href="foodlist.php?action=delete&id=<?php
         echo $values["item_id"];
 ?>"><span class="text-danger">Remove</span></a>
 
@@ -41,6 +39,9 @@ if (!empty($_SESSION["shopping_cart"]))
         $userid         = $_SESSION['userid'];
         $obs            = $_POST['obs'];
         $table          = $_POST['table'];
+        date_default_timezone_set('America/Sao_Paulo');
+        $date = date('Y-m-d', time());
+        $hour= date('h:i:s', time());
         $request_create = $mysqli->query("INSERT INTO requests_numbers VALUES (null, '" . $total . "','Pendente','" . $obs . "','" . $table . "','" . $date . "','" . $hour . "','" . $userid . "',null,null,null)");
         $request        = $mysqli->query("SELECT id FROM requests_numbers ORDER BY id DESC LIMIT 1");
         while ($rowid = mysqli_fetch_array($request))

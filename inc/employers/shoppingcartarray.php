@@ -26,9 +26,10 @@ if (isset($_POST["add_to_cart"]))
           }
         else
           {
-            echo '<script>alert("Item Already Added")</script>';
-            echo '<script>window.location="foodlist.php"</script>';
+            $key = array_search($_GET["id"], $item_array_id);
+            $_SESSION["shopping_cart"][$key]["item_quantity"] += $_POST["quantity"];
           }
+          echo '<script>window.location="foodlist.php"</script>';
       }
     else
       {
