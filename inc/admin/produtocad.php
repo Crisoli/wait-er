@@ -1,17 +1,3 @@
-<?php
-	mysqli_report(MYSQLI_REPORT_STRICT);
-
-$HOST = 'localhost';
-$DB_USERNAME = 'root';
-$DB_PASS = 'usbw';
-$DB_NAME = 'waiter';
-$mysqli = new mysqli($HOST, $DB_USERNAME, $DB_PASS,$DB_NAME);
-?>
- <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
 <body>
 	<div class="container">
