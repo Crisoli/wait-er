@@ -14,7 +14,7 @@
   <nav style="background-color:black; position: fixed;" class="navbar-fixed">
   <?php if($_SESSION['admin']=='false'){
     echo "
-      <a href='#' data-activates='slide-out2' class='button-collapse show-on-medium-and-up right'><i class='material-icons'>menu</i></a>
+      <a href='#' data-activates='slide-out2' class='button-collapse show-on-medium-and-up right sidenav1 '><i class='material-icons'>menu</i></a>
       ";
   };
   ?>
@@ -36,13 +36,9 @@
 <?php
 if($_SESSION['admin']=='true'){
   echo "
-  redirect.php?role=facebook
-  <li><a class='waves-effect white-text' href='comanda.php?pagead=5'><i class='material-icons white-text'>archive</i>Estoque</a></li>
-  <li><a class='waves-effect white-text' href='comanda.php?pagead=2'><i class='material-icons white-text'>assignment_ind</i>Funcionários</a></li>
-  <li><a class='waves-effect white-text' href='comanda.php?pagead=1'><i class='material-icons white-text'>content_paste</i>Pedidos</a></li>
-  <li><a class='waves-effect white-text' href='comanda.php?pagead=3'><i class='material-icons white-text'>archive</i>Adicionar ao Cardápio</a></li>
-  <li><a class='waves-effect white-text' href='comanda.php?pagead=4'><i class='material-icons white-text'>archive</i>Registrar Funcionário</a></li>
-
+  <li><a class='waves-effect white-text' href='#!'><i class='material-icons white-text'>archive</i>Estoque</a></li>
+  <li><a class='waves-effect white-text' href='#!'><i class='material-icons white-text'>assignment_ind</i>Funcionários</a></li>
+  <li><a class='waves-effect white-text' href='#!'><i class='material-icons white-text'>content_paste</i>Pedidos</a></li>
   ";
 };
 ?>
@@ -79,16 +75,7 @@ echo "
 
 <script type="text/javascript">
 	$(".button-collapse").sideNav();
-  $('.button-collapse').sideNav({
-      menuWidth: 300, // Normal 300
-      edge:'right', // Definir se o menu vai ficar na direita ou esquerda
-      closeOnClick: true, //
-      draggable: true, //
-      onOpen: function(el) { },
-      onClose: function(el) { },
-    }
-  );
-  $('.slide-out2').sideNav({
+  $('.button-collapse.sidenav1').sideNav({
       menuWidth: 300, // Normal 300
       edge:'right', // Definir se o menu vai ficar na direita ou esquerda
       closeOnClick: true, //
