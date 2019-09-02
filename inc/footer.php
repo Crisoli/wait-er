@@ -1,25 +1,30 @@
 
 </main>
-<footer class="" style="">
-			<div class="container">
-				<div class="row">
-					<div class="col l12 s12">
-						<h5 class="white-text">Waiter</h5>
-						<p class="grey-text text-lighten-4">Alguma frase legal</p>
-					</div>
-					<div class="col l4 offset-l2 s12">
-						<h5 class="white-text">Links</h5>
-						<ul>
-							<li><a class="grey-text text-lighten-3" href="#!">Instagram</a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
+</div>
+<footer id="footer">
 			<div class="footer-copyright">
 				<div class="container">
 				© 2019 Waiter Copyright
 				</div>
 			</div>
 		</footer>
+</div>
+<style>
+#page-container {
+  position: relative;
+  min-height: 100vh;
+}
+
+#content-wrap {
+  padding-bottom: 2.5rem;    /* Footer height */
+}
+
+#footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 2.5rem;            /* Footer height */
+}
+</style>
 
     </html>
