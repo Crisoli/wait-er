@@ -24,3 +24,6 @@ $hour= date('h:i:s', time());
    <!-- Google Icons --> <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 </head>
+<div id="page-container">
+<div id="content-wrap">
+
