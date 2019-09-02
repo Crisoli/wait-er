@@ -36,9 +36,13 @@
 <?php
 if($_SESSION['admin']=='true'){
   echo "
-  <li><a class='waves-effect white-text' href='#!'><i class='material-icons white-text'>archive</i>Estoque</a></li>
-  <li><a class='waves-effect white-text' href='#!'><i class='material-icons white-text'>assignment_ind</i>Funcionários</a></li>
-  <li><a class='waves-effect white-text' href='#!'><i class='material-icons white-text'>content_paste</i>Pedidos</a></li>
+  redirect.php?role=facebook
+  <li><a class='waves-effect white-text' href='comanda.php?pagead=5'><i class='material-icons white-text'>archive</i>Estoque</a></li>
+  <li><a class='waves-effect white-text' href='comanda.php?pagead=2'><i class='material-icons white-text'>assignment_ind</i>Funcionários</a></li>
+  <li><a class='waves-effect white-text' href='comanda.php?pagead=1'><i class='material-icons white-text'>content_paste</i>Pedidos</a></li>
+  <li><a class='waves-effect white-text' href='comanda.php?pagead=3'><i class='material-icons white-text'>archive</i>Adicionar ao Cardápio</a></li>
+  <li><a class='waves-effect white-text' href='comanda.php?pagead=4'><i class='material-icons white-text'>archive</i>Registrar Funcionário</a></li>
+
   ";
 };
 ?>
