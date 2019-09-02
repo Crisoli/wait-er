@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: 21-Ago-2019 às 12:37
+-- Generation Time: 02-Set-2019 às 20:21
 -- Versão do servidor: 5.6.34
 -- PHP Version: 5.6.32
 
@@ -47,7 +47,7 @@ CREATE TABLE `accounts` (
 --
 
 INSERT INTO `accounts` (`id`, `username`, `img`, `email`, `phonenumber`, `description`, `password`, `usertype`, `creator_id`) VALUES
-(6, 'cris', 'macaco', 'h3has@viphone.eu.org', '+1-202-555-0180', 'sohentais.com', 'cris', 10, 1);
+(6, 'cris', 'macaco', 'h3has@viphone.eu.org', '+1-202-555-0180', 'sohentais.com', 'cris', 11, 1);
 
 -- --------------------------------------------------------
 
@@ -105,7 +105,14 @@ CREATE TABLE `foodmenu` (
 
 INSERT INTO `foodmenu` (`id`, `name`, `image`, `price`, `category_id`, `accounts_id`, `promo`, `promodesc`) VALUES
 (1002, 'Frango', 'inc/img/uploads/frango.jpg', '18.50', 1, 1, 1, 'Saudavel'),
-(1003, 'Batata', 'inc/img/uploads/batatas.jpg', '10.50', 1, 1, 1, 'Avantajado');
+(1003, 'Batata', 'inc/img/uploads/batatas.jpg', '10.50', 1, 1, 1, 'Avantajado'),
+(1004, 'Lula frita', 'inc/img/uploads/lula.jpg', '20.00', 1, 1, 1, 'nopromo'),
+(1005, 'Camarão', 'inc/img/uploads/camarao.jpg', '25.00', 1, 1, 1, 'nopromo'),
+(1006, 'Cebola Empanada', 'inc/img/uploads/cebola.jpg', '8.00', 1, 1, 1, 'nopromo'),
+(1007, 'Coca Cola (Lata)', 'inc/img/uploads/coca.jpg', '5.00', 1, 1, 1, 'nopromo'),
+(1008, 'Simba 2L', 'inc/img/uploads/simba.jpg', '3.00', 1, 1, 1, 'nopromo'),
+(1009, 'Parmenides (Atomo)', 'inc/img/uploads/parmenides.jpg', '250.00', 1, 1, 1, 'nopromo'),
+(1010, 'X-Burguer', 'inc/img/uploads/xburguer.jpg', '7.00', 1, 1, 1, 'nopromo');
 
 -- --------------------------------------------------------
 
@@ -261,7 +268,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `foodmenu`
 --
 ALTER TABLE `foodmenu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1004;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1011;
 
 --
 -- AUTO_INCREMENT for table `requests`
