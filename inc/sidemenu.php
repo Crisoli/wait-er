@@ -1,3 +1,4 @@
+
 <?php session_start(); ?>
 <!-- JQuery / Materialize CSS + JavaScript imports -->
 
@@ -36,41 +37,35 @@
 <?php
 if($_SESSION['admin']=='true'){
   echo "
-  <li><a class='waves-effect white-text' href='#!'><i class='material-icons white-text'>archive</i>Estoque</a></li>
-  <li><a class='waves-effect white-text' href='#!'><i class='material-icons white-text'>assignment_ind</i>Funcionários</a></li>
-  <li><a class='waves-effect white-text' href='#!'><i class='material-icons white-text'>content_paste</i>Pedidos</a></li>
+  <li><a class='waves-effect white-text' href='redirect.php?pagead=5'><i class='material-icons white-text'>archive</i>Estoque</a></li>
+  <li><a class='waves-effect white-text' href='redirect.php?pagead=2'><i class='material-icons white-text'>assignment_ind</i>Funcionários</a></li>
+  <li><a class='waves-effect white-text' href='redirect.php?pagead=1'><i class='material-icons white-text'>content_paste</i>Pedidos</a></li>
+  <li><a class='waves-effect white-text' href='redirect.php?pagead=3'><i class='material-icons white-text'>archive</i>Adicionar ao Cardápio</a></li>
+  <li><a class='waves-effect white-text' href='redirect.php?pagead=4'><i class='material-icons white-text'>archive</i>Registrar Funcionário</a></li>
   ";
 };
 ?>
-<li><a class='waves-effect white-text' href='#!'><i class='material-icons white-text'>local_library</i>Cardápio</a></li>
-<li><a class='waves-effect white-text' href='#!'><i class='material-icons white-text'>people_outline</i>Ranking</a></li>
+<li><a class='waves-effect white-text' href='redirect.php?pagead=6&pagefu=1'><i class='material-icons white-text'>local_library</i>Cardápio</a></li>
+<li><a class='waves-effect white-text' href='redirect.php?pagead=7&pagefu=2'><i class='material-icons white-text'>people_outline</i>Ranking</a></li>
 
        </ul>
 
 <?php
 if($_SESSION['admin']=='false'){
 echo "</div>
-
 <div class='container' >
-
     <ul id='slide-out2' class='side-nav' style='background-color:white; width:95%;'>
 ";
           include 'inc/employers/shoppingcartinsert.php';
-
 echo "
-
    </ul>
-
-
 </div>
-
 </div>";
 }
 ?>
 
 
 <script type="text/javascript">
-
 </script>
 
 <script type="text/javascript">
@@ -84,5 +79,4 @@ echo "
       onClose: function(el) { },
     }
   );
-
 </script>
