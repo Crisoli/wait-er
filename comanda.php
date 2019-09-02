@@ -9,9 +9,10 @@
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
      }
+     
      if($_SESSION['admin']=='true'){
          if(!isset($_SESSION['pagead'])){
-             $_SESSION['pagead']=='1';
+             $_SESSION['pagead']='1';
          }
 if($_SESSION['pagead']=='1'){
     include('inc/admin/pedidos.php');
