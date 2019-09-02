@@ -1,3 +1,17 @@
+<?php
+	mysqli_report(MYSQLI_REPORT_STRICT);
+
+$HOST = 'localhost';
+$DB_USERNAME = 'root';
+$DB_PASS = 'usbw';
+$DB_NAME = 'waiter';
+$mysqli = new mysqli($HOST, $DB_USERNAME, $DB_PASS,$DB_NAME);
+?>
+ <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
 <body>
 	<div class="container">
@@ -35,7 +49,7 @@
 
 		$ext = strtolower(substr($_FILES['fileUpload']['name'],-4)); //Pegando extensão do arquivo
 		$new_name =$_POST['productname'] . $ext; //Definindo um novo nome para o arquivo
-		$dir = 'inc/img/uploads/'; //Diretório para uploads
+		$dir = 'img/uploads/'; //Diretório para uploads
 
 		move_uploaded_file($_FILES['fileUpload']['tmp_name'], $dir.$new_name); //Fazer upload do arquivo
 		$direct= $dir.$new_name;
@@ -47,7 +61,7 @@
 			echo "$mysqli->error";
 		}
 		else{
-			header('location:cadastroprodutos.php');
+			header('location:produtocad.php');
 		}
 	}//Fazer upload do arquivo
 	else{
