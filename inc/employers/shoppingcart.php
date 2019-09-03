@@ -5,8 +5,8 @@ include 'inc/employers/shoppingcartarray.php';
      <body style="font-family: 'Exo 2', sans-serif;">
 
           <br/>
-          <div class="container">
             <div class="row">
+              <div class="col s7 m7 l7">
 
                <?php
                $query = $mysqli->query("SELECT * FROM foodmenu ORDER BY id ASC");
@@ -22,7 +22,6 @@ include 'inc/employers/shoppingcartarray.php';
                             <form method="post" action="foodlist.php?action=add&id=<?php echo $row["id"]; ?>">
 
 
-                                  <div class="col s10 m10 l7">
                                     <div class="card">
                                       <div class="card-image">
                                         <img src="<?php echo $row["image"]; ?>" />
@@ -38,7 +37,6 @@ include 'inc/employers/shoppingcartarray.php';
                                         <p><?php echo $row['promodesc'];?></p>
                                       </div>
                                     </div>
-                                  </div>
 
 
 
@@ -53,13 +51,12 @@ include 'inc/employers/shoppingcartarray.php';
 
 
                ?>
-               <div class="col s2 m4 l5" style="
-">
+             </div>
+
+               <div class="col s5 m5 l5">
                  AAAAAAAAAAA
                </div>
                </div>
-           </div>
-                    </table>
 
 
      </body>
