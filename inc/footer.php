@@ -25,6 +25,10 @@
   width: 100%;
   height: 2.5rem;            /* Footer height */
 }
+#navbar {
+  background-color:black;
+	min-width: 100vw;
+}
 </style>
 
     </html>
