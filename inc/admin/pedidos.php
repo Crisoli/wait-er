@@ -1,7 +1,4 @@
-<?php
-	include 'database.php';
-	include('header.php');
- ?>
+
 <?php
 
 session_start();
