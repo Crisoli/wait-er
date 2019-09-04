@@ -1,7 +1,6 @@
 
 <?php
 
-session_start();
 //Echo pedidos pendentes
 $requestpen = $mysqli->query("SELECT * FROM requests_numbers WHERE status = 'Pendente'");
 if(mysqli_num_rows($requestpen) > 0)
