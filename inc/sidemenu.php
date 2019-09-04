@@ -11,7 +11,8 @@
 <div id="page-container">
 <div id="content-wrap">
 
-  <nav id="navbar" class="navbar-fixed">
+  <nav id="navbar" class="nav-extended">
+    <div class="nav-wrapper">
   <?php if($_SESSION['admin']=='false'){
     echo "
       <a href='#' data-activates='slide-out2' class='button-collapse show-on-medium-and-up right sidenav1 '><i class='material-icons'>menu</i></a>
@@ -22,9 +23,34 @@
 
       <a href="#" class="brand-logo center">  <img src='inc/img/Waiterlogo.png' style='max-height:200%; max-width:100px;'> </a>
 
-
-
+<?php
+if(isset($_SESSION['pagead'])){
+  if($_SESSION['pagead']==1){
+    ?><div class='nav-content'>
+  <ul class='tabs tabs-transparent'>
+    <li class='tab'><a href='#pen'>Pendentes</a></li>
+    <li class='tab'><a href='#fin'>Finalizados</a></li>
+    <li class='tab'><a href='#rec'>Finalizados recentemente</a></li>
+  </ul>
+   </div>
+   <?php
+  }
+}
+     ?>
+   </div>
   </nav>
+<?php
+  if(isset($_SESSION['pagead'])){
+    if($_SESSION['pagead']==1){
+      ?>
+    <div id="pen" class="col s12">Test 1</div>
+    <div id="fin" class="col s12">Test 2</div>
+    <div id="rec" class="col s12">Test 3</div>
+    <?php
+   }
+ }
+      ?>
+
         <ul id="slide-out" class="side-nav " style="background-color:black;">
         <div class="user-view">
           <a href="#user"><img class="circle z-depth-2" style="max-height:200%; max-width:70px;" src="<?php echo $_SESSION['img'];?>"></a></br>
