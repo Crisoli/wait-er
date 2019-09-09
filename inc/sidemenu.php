@@ -39,17 +39,7 @@ if(isset($_SESSION['pagead'])){
      ?>
    </div>
   </nav>
-<?php
-  if(isset($_SESSION['pagead'])){
-    if($_SESSION['pagead']==1){
-      ?>
-    <div id="pen" class="col s12">Test 1</div>
-    <div id="fin" class="col s12">Test 2</div>
-    <div id="rec" class="col s12">Test 3</div>
-    <?php
-   }
- }
-      ?>
+
 
         <ul id="slide-out" class="side-nav " style="background-color:black;">
         <div class="user-view">
