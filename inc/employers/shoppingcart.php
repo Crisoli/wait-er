@@ -3,7 +3,6 @@ include 'inc/employers/shoppingcartarray.php';
 
 ?>
      <body style="font-family: 'Exo 2', sans-serif;">
-
           <br/>
             <div class="row">
 
@@ -16,15 +15,13 @@ include 'inc/employers/shoppingcartarray.php';
                     {
                ?>
 
-
-
-                              <div class="col s12 m7 l4 offset-l1">
+                              <div class="col s12 m4 l3">
                                <form method="post" action="foodlist.php?action=add&id=<?php echo $row["id"]; ?>">
 
 
                                     <div class="card">
                                           <div class="card-image">
-                                            <img src="<?php echo $row["image"]; ?>" />
+                                            <img src="<?php echo $row["image"]; ?>" style="height:200px;"/>
                                             <span class="card-title black-text"><?php echo $row["name"]; ?></span>
                                             <input type="hidden" name="hidden_name"  value="<?php echo $row["name"]; ?>" />
                                             <input type="hidden" name="hidden_price" value="<?php echo $row["price"]; ?>" />
