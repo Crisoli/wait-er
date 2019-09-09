@@ -6,23 +6,8 @@ session_start();
 
 if(!isset($_SESSION['admin'])){
   include('inc/login/authentication.php');
-  echo "
-      <!--- login aqui ---->
-  ";
-}
-else{
-  if ($_SESSION['admin'] == 'true') {
-    header('Location: comanda.php');
-  }
-  elseif ($_SESSION['admin'] == 'false') {
-    header('Location: foodlist.php');
-  }
-  else {
-  echo '<h1>Um erro MUITO inesperado aconteceu (Como cê conseguiu encontrar esse erro?)</h1>';
-  }
-}
+ ?> 
 
-?>
 <body>
  <style>
 #wallpa{
@@ -156,3 +141,19 @@ else{
 
 
 </body>
+
+ <?php
+}
+else{
+  if ($_SESSION['admin'] == 'true') {
+    header('Location: comanda.php');
+  }
+  elseif ($_SESSION['admin'] == 'false') {
+    header('Location: foodlist.php');
+  }
+  else {
+  echo '<h1>Um erro MUITO inesperado aconteceu (Como cê conseguiu encontrar esse erro?)</h1>';
+  }
+}
+?>
+
