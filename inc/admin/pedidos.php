@@ -1,4 +1,10 @@
 <?php
+  if(isset($_SESSION['pagead'])){
+    if($_SESSION['pagead']==1){
+      ?>
+    <div id="pen" class="col s12">
+    
+    <?php
 
 //Echo pedidos pendentes
 $requestpen = $mysqli->query("SELECT * FROM requests_numbers WHERE status = 'Pendente'");
@@ -41,8 +47,13 @@ if(mysqli_num_rows($requestpen) > 0)
         </div>
 
     </form>
-
+    
+    </div>
+    <div id="rec" class="col s12">
+    
     <?php
+//Finalizados recentemento
+
 if(isset($_POST['id'])){
 $finalizar = $mysqli->query("UPDATE requests_numbers SET status='Finalizado',finished='".$date."',finished_hour='".$hour."', finish_id='".$_SESSION['userid']."' WHERE id = '".$_POST['id']."'");
 echo '<script>window.location="comanda.php"</script>';
@@ -50,7 +61,7 @@ echo '<script>window.location="comanda.php"</script>';
 }
     }
 
-$requestrec = $mysqli->query("SELECT * FROM requests_numbers WHERE status = 'Finalizado' AND started = '".$date."'");
+$requestrec = $mysqli->query("SELECT * FROM requests_numbers WHERE status = 'Finalizado' AND finished = '".$date."'");
 if(mysqli_num_rows($requestrec) > 0)
 {
      while($rec = mysqli_fetch_array($requestrec))
@@ -92,8 +103,11 @@ if(mysqli_num_rows($requestrec) > 0)
 }
     }
 ?>
-
-            <?php
+    
+    </div>
+    <div id="fin" class="col s12">
+    
+    <?php
 //Echo pedidos finalizados
 $requestfin = $mysqli->query("SELECT * FROM requests_numbers WHERE status = 'Finalizado'");
 if(mysqli_num_rows($requestfin) > 0)
@@ -137,6 +151,18 @@ if(mysqli_num_rows($requestfin) > 0)
 }
     }
 ?>
+    
+    </div>
+    <?php
+   }
+ }
+      ?>
+
+
+
+    
+
+           
                     <script type="text/javascript">
                         $(document).ready(function() {
                             $('.collapsible').collapsible();
