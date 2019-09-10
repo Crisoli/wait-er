@@ -46,7 +46,7 @@ $categorys = $mysqli->query("SELECT * FROM category");
     while($rys = mysqli_fetch_array($categorys))
     {
       ?>
-      <li class='tab'><a href='redirect.php?cat=<?php echo $rys['name'];?>'><?php echo $rys['name'];?></a></li>
+      <li class=''><a href='redirect.php?cat=<?php echo $rys['id'];?>&pagefu=1'><?php echo $rys['name'];?></a></li>
       <?php
     }
   }
@@ -96,6 +96,7 @@ echo "
    </ul>
 </div>";
 }
+
 ?>
 
 
