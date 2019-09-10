@@ -58,9 +58,18 @@ if($_SESSION['admin']=='true'){
   ";
 };
 ?>
+
+<?php
+if($_SESSION['admin']=='false'){
+
+  echo"
   <li><a class='waves-effect white-text' href='redirect.php?pagead=6&pagefu=1'><i class='material-icons white-text'>local_library</i>Cardápio</a></li>
   <li><a class='waves-effect white-text' href='redirect.php?pagead=7&pagefu=2'><i class='material-icons white-text'>people_outline</i>Ranking</a></li>
-    </ul>
+  ";
+    
+};
+?>
+  </ul>
 <?php
 if($_SESSION['admin']=='false'){
 echo "
