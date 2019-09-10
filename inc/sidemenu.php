@@ -36,6 +36,21 @@ if(isset($_SESSION['pagead'])){
    <?php
   }
 }
+if(isset($_SESSION['pagefu'])){
+  if($_SESSION['pagefu']==1){
+    ?>
+    <div class='nav-content'>
+      <ul class='tabs tabs-transparent'>
+        <?php
+$categorys = $mysqli->query("SELECT * FROM category");
+    while($rys = mysqli_fetch_array($categorys))
+    {
+      ?>
+      <li class='tab'><a href='redirect.php?cat=<?php echo $rys['name'];?>'><?php echo $rys['name'];?></a></li>
+      <?php
+    }
+  }
+}
      ?>
    </div>
   </nav>
@@ -66,7 +81,7 @@ if($_SESSION['admin']=='false'){
   <li><a class='waves-effect white-text' href='redirect.php?pagead=6&pagefu=1'><i class='material-icons white-text'>local_library</i>Cardápio</a></li>
   <li><a class='waves-effect white-text' href='redirect.php?pagead=7&pagefu=2'><i class='material-icons white-text'>people_outline</i>Ranking</a></li>
   ";
-    
+
 };
 ?>
   </ul>
