@@ -1,6 +1,14 @@
 
           <form method="post">
           <?php
+
+
+$HOST = 'localhost';
+$DB_USERNAME = 'root';
+$DB_PASS = 'usbw';
+$DB_NAME = 'waiter';
+$mysqli = new mysqli($HOST, $DB_USERNAME, $DB_PASS,$DB_NAME);
+          
 if (!empty($_SESSION["shopping_cart"]))
   {
     $total = 0;
@@ -36,18 +44,17 @@ if (!empty($_SESSION["shopping_cart"]))
           <?php
     if (isset($_POST['submit']))
       {
-        $userid         = $_SESSION['userid'];
-        $obs            = $_POST['obs'];
-        $table          = $_POST['table'];
+        $_SESSION['total']           = $total;
+        $_SESSION['obs']             = $_POST['obs'];
+        $_SESSION['table']           = $_POST['table'];
         date_default_timezone_set('America/Sao_Paulo');
         $date = date('Y-m-d', time());
         $hour= date('h:i:s', time());
-        $request_create = $mysqli->query("INSERT INTO requests_numbers VALUES (null, '" . $total . "','Pendente','" . $obs . "','" . $table . "','" . $date . "','" . $hour . "','" . $userid . "',null,null,null)");
+        $request_create = $mysqli->query("INSERT INTO requests_numbers VALUES (null, '" . $_SESSION['total'] . "','Pendente','" . $_SESSION['obs'] . "','" . $_SESSION['table'] . "','" . $date . "','" . $hour . "','" . $_SESSION['userid'] . "',null,null,null)");
         $request        = $mysqli->query("SELECT id FROM requests_numbers ORDER BY id DESC LIMIT 1");
         while ($rowid = mysqli_fetch_array($request))
           {
             $lastid = $rowid['id'];
-            unset($_SESSION["shopping_cart"][$keys]);
           }
         foreach ($_SESSION["shopping_cart"] as $key => $values)
           {
