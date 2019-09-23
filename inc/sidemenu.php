@@ -46,7 +46,7 @@ $categorys = $mysqli->query("SELECT * FROM category");
     while($rys = mysqli_fetch_array($categorys))
     {
       ?>
-      <li class=''><a href='redirect.php?cat=<?php echo $rys['id'];?>&pagefu=1'><?php echo $rys['name'];?></a></li>
+      <li class='tab'><a href='redirect.php?cat=<?php echo $rys['id'];?>&pagefu=1'><?php echo $rys['name'];?></a></li>
       <?php
     }
   }
@@ -87,16 +87,43 @@ if($_SESSION['admin']=='false'){
   </ul>
 <?php
 if($_SESSION['admin']=='false'){
-echo "
+?>
+
 <div class='container'>
     <ul id='slide-out2' class='side-nav' style='background-color:white; width:95%;'>
-";
-          include 'inc/employers/shoppingcartinsert.php';
-echo "
-   </ul>
-</div>";
-}
+    <div id='slide-out2_ajax'>
+    </div>
+    <script>
+    // 1. create a new XMLHttpRequest object -- an object like any other!
+    var myRequest = new XMLHttpRequest();
+    // 2. open the request and pass the HTTP method name and the resource as parameters
+    myRequest.open('GET', 'inc/employers/employers_select/side_select.php');
+    // 3. write a function that runs anytime the state of the AJAX request changes
+    myRequest.onreadystatechange = function () {
+    // 4. check if the request has a readyState of 4, which indicates the server has responded (complete)
+    if (myRequest.readyState === 4) {
+    // 5. insert the text sent by the server into the HTML of the 'ajax-content'
+    document.getElementById('slide-out2_ajax').innerHTML = myRequest.responseText;
+                                  }
+                                             };
+    $(document).ready(function side_show(){
+     myRequest.send();
+     document.getElementById('reveal').style.display = 'none';
+                       });
 
+                       setInterval(function side_show(){
+                $('#slide-out2_ajax').load('inc/employers/employers_select/side_select.php');
+             }, 2000) /* time in milliseconds (ie 2 seconds)*/
+
+    </script>
+<?php
+          include 'inc/employers/insert.php';
+?>
+
+   </ul>
+</div>
+<?php
+}
 ?>
 
 
