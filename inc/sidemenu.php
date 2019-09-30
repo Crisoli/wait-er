@@ -59,8 +59,8 @@ $categorys = $mysqli->query("SELECT * FROM category");
 
         <ul id="slide-out" class="side-nav " style="background-color:black;">
         <div class="user-view">
-          <a href="#user"><img class="circle z-depth-2" style="max-height:200%; max-width:70px; position:relative; padding-top:30px;" src="<?php echo $_SESSION['img'];?>"></a></br>
-          <a href="#name"><span class="white-text"><?php echo $_SESSION['username'];?></span></a>
+          <a href="redirect.php?pagefu=profile&pagead=profile"><img class="circle z-depth-2" style="max-height:200%; max-width:70px; position:relative; padding-top:30px;" src="<?php echo $_SESSION['img'];?>"></a>
+          <a href="redirect.php?pagefu=profile&pagead=profile"><span class="white-text"><?php echo $_SESSION['username'];?></span></a>
           <a href='logoff.php' name='logoff'><span class="white-text">Logoff</span></a>
         </div>
 <?php
