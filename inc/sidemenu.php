@@ -46,12 +46,13 @@ $categorys = $mysqli->query("SELECT * FROM category");
     while($rys = mysqli_fetch_array($categorys))
     {
       ?>
-      <li class='tab'><a href='redirect.php?cat=<?php echo $rys['id'];?>&pagefu=1'><?php echo $rys['name'];?></a></li>
+      <li class='tab'><a href='#menu<?php echo $rys['id'];?>'><?php echo $rys['name'];?></a></li>
       <?php
     }
   }
 }
      ?>
+   </ul>
    </div>
   </nav>
 
