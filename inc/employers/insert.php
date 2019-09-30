@@ -32,17 +32,32 @@ foreach ($_SESSION["shopping_cart"] as $key => $values)
 }
 
 ?>
-<select placeholder='Numero da Mesa' name='table' class="browser-default">
 
-<?php
-$tablesreq = $mysqli->query("SELECT * FROM tables");
-while ($rowtable = mysqli_fetch_array($tablesreq))
-{
-echo utf8_encode('<option value=' . $rowtable['table_number'] . '>' . $rowtable['table_number'] . ' - ' . $rowtable['size'] . ' - ' . $rowtable['status'] . '</option>');
+<script>
+// 1. create a new XMLHttpRequest object -- an object like any other!
+var myRequest = new XMLHttpRequest();
+// 2. open the request and pass the HTTP method name and the resource as parameters
+myRequest.open('GET', 'inc/employers/employers_select/table_select.php');
+// 3. write a function that runs anytime the state of the AJAX request changes
+myRequest.onreadystatechange = function () {
+// 4. check if the request has a readyState of 4, which indicates the server has responded (complete)
+if (myRequest.readyState === 4) {
+// 5. insert the text sent by the server into the HTML of the 'ajax-content'
+document.getElementById('tables_ajax').innerHTML = myRequest.responseText;
+                              }
+                                         };
+$(document).ready(function side_show(){
+ myRequest.send();
+ document.getElementById('reveal').style.display = 'none';
+                   });
 
-}
-?>
-</select>
+                   setInterval(function side_show(){
+            $('#tables_ajax').load('inc/employers/employers_select/table_select.php');
+         }, 60000) 
+
+</script>
+<div id='tables_ajax'>
+</div>
 <input type="text" name="obs" placeholder="Observações"> </input>
 <input type="submit" name="submit"></input>
 </form>
