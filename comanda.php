@@ -9,7 +9,7 @@
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
      }
-     
+
      if($_SESSION['admin']=='true'){
          if(!isset($_SESSION['pagead'])){
              $_SESSION['pagead']='1';
@@ -28,6 +28,9 @@ elseif($_SESSION['pagead']=='4'){
 }
 elseif($_SESSION['pagead']=='5'){
     include('inc/admin/estoque.php');
+}
+elseif($_SESSION['pagead']=='profile'){
+    include('inc/profile.php');
 }
      }
      else{

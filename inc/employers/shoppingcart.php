@@ -1,51 +1,117 @@
-<?php
-include 'inc/employers/shoppingcartarray.php';
-
-?>
-
 
 
      <body style="font-family: 'Exo 2', sans-serif;">
           <br/>
-            <div class='grid'>
 
-         
-              <?php
+          <script>
+     $(function () {
+
+       $('form').on('submit', function (e) {
+         e.preventDefault();
+         $.ajax({
+             type     : "POST",
+             url      : 'foodlist.php',
+             data     : $(this).serialize(),
+             success: function (sucezo) {
+               alert(sucezo);
+             }
+         });
+
+       });
+
+     });
+   </script>
+            <?php
+
+            if (isset($_POST["add_to_cart"]))
+              {
+                if (isset($_SESSION["shopping_cart"]))
+                  {
+                    $item_array_id = array_column($_SESSION["shopping_cart"], "item_id");
+                    if (!in_array($_GET["id"], $item_array_id))
+                      {
+                        $count                             = count($_SESSION["shopping_cart"]);
+                        $item_array                        = array(
+                            'item_id' => $_GET["id"],
+                            'item_name' => $_POST["hidden_name"],
+                            'item_price' => $_POST["hidden_price"],
+                            'item_quantity' => $_POST["quantity"]
+                        );
+                        $_SESSION["shopping_cart"][$count] = $item_array;
+                      }
+                    else
+                      {
+                        $key = array_search($_GET["id"], $item_array_id);
+                        $_SESSION["shopping_cart"][$key]["item_quantity"] += $_POST["quantity"];
+                      }
+                  }
+                else
+                  {
+                    $item_array                   = array(
+                        'item_id' => $_GET["id"],
+                        'item_name' => $_POST["hidden_name"],
+                        'item_price' => $_POST["hidden_price"],
+                        'item_quantity' => $_POST["quantity"]
+                    );
+                    $_SESSION["shopping_cart"][0] = $item_array;
+                  }
+              }
+            if (isset($_GET["action"]))
+              {
+                if ($_GET["action"] == "delete")
+                  {
+                    foreach ($_SESSION["shopping_cart"] as $keys => $values)
+                      {
+                        if ($values["item_id"] == $_GET["id"])
+                          {
+                             unset($_SESSION["shopping_cart"][$keys]);
+                          }
+                      }
+                  }
+
+              }
+            ?>
 
 
-               $query = $mysqli->query("SELECT * FROM foodmenu WHERE category_id = '".$_SESSION['category']."'");
-                    while($row = mysqli_fetch_array($query))
-                    {
-               ?>
-                               <form method="post" action="foodlist.php?action=add&id=<?php echo $row["id"]; ?>">
-                                      <div class="card">
-                                          <div class="card-image">
-                                            <img src="<?php echo $row["image"]; ?>"/>
-                                            <span class="card-title black-text"><?php echo $row["name"]; ?></span>
-                                            <input type="hidden" name="hidden_name"  value="<?php echo $row["name"]; ?>" />
-                                            <input type="hidden" name="hidden_price" value="<?php echo $row["price"]; ?>" />
 
-                                            <input type='submit' class="btn-floating halfway-fab waves-light red darken-1" ; name='add_to_cart' style="border:none;" value="+"></input>
-                                          </div>
-                                          <input type="number" name="quantity" class="form-control" value="1" style="border-bottom: 2px solid black; background-color:; width:40%; position: absolute; right: 0px;"/>
-                                          <div class="card-content">
-                                            <h5 class="">R$ <?php echo $row["price"]; ?></h5>
-                                            <p><?php echo $row['promodesc'];?></p>
-                                          </div>
-                                    </div>
-                    </form>
-               <?php
-                    }
+            <?php
 
-               ?>
-            </div>
+            $categorys = $mysqli->query("SELECT * FROM category");
+                while($rys = mysqli_fetch_array($categorys))
+                {
+                  ?>
+                  <div id='menu<?php echo $rys['id'];?>'>
+                  <?php
+                $query = $mysqli->query("SELECT * FROM foodmenu WHERE category_id = '".$rys['id']."'");
 
-               <script>
+            while($row = mysqli_fetch_array($query))
+            {
 
-               FlexMasonry.init('.grid',{
-                 responsive: true,
-               });
+                ?>
 
-               </script>
+                             <form id='<?php echo $row['id'] ?>' method='post' action='foodlist.php?action=add&id="<?php echo $row['id'] ?>'>
+                                    <div class='card'>
+                                        <div class='card-image'>
+                                          <img src='<?php echo $row['image'] ?>'/>
+                                          <span class='card-title black-text'><?php echo $row['name'] ?></span>
+                                          <input type='hidden' name='hidden_name'  value='<?php echo $row['name'] ?>' />
+                                          <input type='hidden' name='hidden_price' value='<?php echo $row['price'] ?>' />
+
+                                          <input type='submit' class='btn-floating halfway-fab waves-light red darken-1' ; name='add_to_cart' style='border:none;' value='+'></input>
+                                        </div>
+                                        <input type='number' name='quantity' class='form-control' value='1' style='border-bottom: 2px solid black; background-color:; width:40%; position: absolute; right: 0px;'/>
+                                        <div class='card-content'>
+                                          <h5 class=''>R$<?php echo $row['price']?>"</h5>
+                                          <p><?php echo $row['promodesc']?>"</p>
+                                        </div>
+                                  </div>
+                  </form>
+                  <?php
+                  }
+                  ?>
+                </div>
+                  <?php
+                  }
+            ?>
 
      </body>
