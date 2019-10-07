@@ -11,15 +11,15 @@
 			</div>
 
 			<div class="input-field col s12">
-			<select name="category" class="col s6" style="display:initial;"> 
+			<select name="category" class="col s6" style="display:initial;">
 			<option value='' disabled selected>Selecione uma categoria</option>
 <?php
 $categoryselect = $mysqli->query('SELECT * FROM category');
 	while($cat = mysqli_fetch_array($categoryselect))
 	{
 	?>
-		<option value="<?php echo $cat['id'];?>"><?php echo $cat['name'];?></option>	
-<?php	
+		<option value="<?php echo $cat['id'];?>"><?php echo $cat['name'];?></option>
+<?php
 	};
 ?>
 			</select>
@@ -56,7 +56,7 @@ $categoryselect = $mysqli->query('SELECT * FROM category');
 		$desc= $_POST['productdesc'];
 		$value= $_POST['productval'];
 		$category= $_POST['category'];
-		$insert= "INSERT INTO foodmenu VALUES (null,'".$name."','".$direct."','".$value."','".$category."','".$_SESSION['userid']."','null','null')";
+		$insert= "INSERT INTO foodmenu VALUES (null,'".$name."','".$direct."','".$value."','".$category."','".$_SESSION['userid']."','null','null','null')";
 		if(!$mysqli->query($insert)){
 			echo "$mysqli->error";
 		}
