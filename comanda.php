@@ -32,6 +32,9 @@ elseif($_SESSION['pagead']=='5'){
 elseif($_SESSION['pagead']=='profile'){
     include('inc/profile.php');
 }
+elseif($_SESSION['pagead']=='6'){
+    include('inc/employers/shoppingcart.php');
+}
      }
      else{
        echo "<script>window.location.href = 'index.php'</script>";
