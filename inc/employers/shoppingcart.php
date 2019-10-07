@@ -3,24 +3,8 @@
      <body style="font-family: 'Exo 2', sans-serif;">
           <br/>
 
-          <script>
-     $(function () {
 
-       $('form').on('submit', function (e) {
-         e.preventDefault();
-         $.ajax({
-             type     : "POST",
-             url      : 'foodlist.php',
-             data     : $(this).serialize(),
-             success: function (sucezo) {
-               alert(sucezo);
-             }
-         });
 
-       });
-
-     });
-   </script>
             <?php
 
             if (isset($_POST["add_to_cart"]))
@@ -71,25 +55,33 @@
 
               }
             ?>
-
+            <form method='post'>
+            <input type='text' name='search'/>
+            <input type='submit'/>
+            </form>
 
 
             <?php
 
             $categorys = $mysqli->query("SELECT * FROM category");
+
                 while($rys = mysqli_fetch_array($categorys))
                 {
                   ?>
                   <div id='menu<?php echo $rys['id'];?>'>
                   <?php
-                $query = $mysqli->query("SELECT * FROM foodmenu WHERE category_id = '".$rys['id']."'");
-
+                  if(isset($_POST['search'])){
+                $query = $mysqli->query("SELECT * FROM `foodmenu` WHERE category_id = '".$rys['id']."' and name LIKE '".$_POST['search']."%' ORDER BY promo DESC");
+                  }
+                  else{
+                $query = $mysqli->query("SELECT * FROM foodmenu WHERE category_id = '".$rys['id']."' ORDER BY promo DESC");
+                      }
             while($row = mysqli_fetch_array($query))
             {
 
                 ?>
 
-                             <form id='<?php echo $row['id'] ?>' method='post' action='foodlist.php?action=add&id="<?php echo $row['id'] ?>'>
+                             <form id='<?php echo $row['id'] ?>' method='post' action='foodlist.php?action=add&id=<?php echo $row['id'] ?>'>
                                     <div class='card'>
                                         <div class='card-image'>
                                           <img src='<?php echo $row['image'] ?>'/>
@@ -101,8 +93,8 @@
                                         </div>
                                         <input type='number' name='quantity' class='form-control' value='1' style='border-bottom: 2px solid black; background-color:; width:40%; position: absolute; right: 0px;'/>
                                         <div class='card-content'>
-                                          <h5 class=''>R$<?php echo $row['price']?>"</h5>
-                                          <p><?php echo $row['promodesc']?>"</p>
+                                          <h5 class=''>R$<?php echo $row['price']?></h5>
+                                          <p><?php echo $row['promodesc']?></p>
                                         </div>
                                   </div>
                   </form>
