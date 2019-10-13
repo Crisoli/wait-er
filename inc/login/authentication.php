@@ -27,7 +27,7 @@ if($rowcount == 1){
 else {
 	echo "
 	<div class='alert alert-danger' role='alert'>
-	<p><strong>ERRO:</strong>Seu usuario e/ou sua senha esta incorreto.</p>
+	<p><div class='card-panel #f44336 red'><strong>ERRO:</strong>Seu usuario e/ou sua senha esta incorreto. </div></p>
 	</div>";
 }
 	    }
