@@ -13,13 +13,15 @@ if(mysqli_num_rows($requestpen) > 0)
      while($pen = mysqli_fetch_array($requestpen))
      {
 ?>
-   
+      <input type="hidden" value=<?php echo $pen['id'];?> name="id">
             <div class="col s12 m6 l4">
                 <div class="card large">
                     <div class="card-content white-text" style="background-color:#FF3028; height:30%;">
                         <p>
                             <h4> Mesa: <?php echo $pen['id_table'];?></h4> N° do pedido:
                             <?php echo $pen['id'];?>
+                            <br><input type="submit" name="update" value="Finalizar Pedido"></input>
+
                         </p>
                     </div>
                     <div class="card-tabs">
@@ -45,7 +47,7 @@ while($name1= mysqli_fetch_array($namesel1))
 }
         }
 ?>
-                       
+
                         </div>
                         <div id="anotacoes<?php echo $pen['id'];?>">
                             <?php echo "<b>Observações: <br></b>".$pen['obs'];?>
@@ -53,27 +55,30 @@ while($name1= mysqli_fetch_array($namesel1))
                     </div>
                 </div>
             </div>
-        
+
     <?php
      }
     }
+
+    if(isset($_POST['id'])){
+    $finalizar = $mysqli->query("UPDATE requests_numbers SET status='Finalizado',finished='".$date."',finished_hour='".$hour."', finish_id='".$_SESSION['userid']."' WHERE id = '".$_POST['id']."'");
+    echo '<script>window.location="comanda.php"</script>';
+    }
+
     ?>
     </div>
     </form>
     <div id="rec">
     <?php
 //Finalizados recentemente
-if(isset($_POST['id'])){
-$finalizar = $mysqli->query("UPDATE requests_numbers SET status='Finalizado',finished='".$date."',finished_hour='".$hour."', finish_id='".$_SESSION['userid']."' WHERE id = '".$_POST['id']."'");
-echo '<script>window.location="comanda.php"</script>';
-}
+
 $requestrec = $mysqli->query("SELECT * FROM requests_numbers WHERE status = 'Finalizado' AND finished = '".$date."'");
 if(mysqli_num_rows($requestrec) > 0)
 {
      while($rec = mysqli_fetch_array($requestrec))
      {
 ?>
-      
+
             <div class="col s12 m6 l4">
                 <div class="card large">
                     <div class="card-content white-text" style="background-color:#411B87; height:30%;">
@@ -105,7 +110,7 @@ while($name2= mysqli_fetch_array($namesel2))
 }
         }
 ?>
-                       
+
                         </div>
                         <div id="anotacoes<?php echo $rec['id'];?>">
                             <?php echo "<b>Observações: <br></b>".$rec['obs'];?>
@@ -113,7 +118,7 @@ while($name2= mysqli_fetch_array($namesel2))
                     </div>
                 </div>
             </div>
- 
+
         <?php
 }
     }
@@ -128,7 +133,7 @@ if(mysqli_num_rows($requestfin) > 0)
      while($fin = mysqli_fetch_array($requestfin))
      {
 ?>
-      
+
                     <div class="col s12 m6 l4">
                         <div class="card large">
                             <div class="card-content white-text" style="background-color:#411B87; height:30%;">
@@ -160,7 +165,7 @@ while($name3= mysqli_fetch_array($namesel3))
 }
         }
 ?>
-                       
+
                         </div>
                         <div id="anotacoes<?php echo $fin['id'];?>">
                             <?php echo "<b>Observações: <br></b>".$fin['obs'];?>
@@ -168,7 +173,7 @@ while($name3= mysqli_fetch_array($namesel3))
                             </div>
                         </div>
                     </div>
-          
+
 
 
                 <?php
