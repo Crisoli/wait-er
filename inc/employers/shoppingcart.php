@@ -54,10 +54,7 @@
               }
             ?>
 
-            <form method='post'>
-              <input type='text' name='search'/>
-              <input type='submit'/>
-            </form>
+
 
             <?php
 
@@ -69,12 +66,7 @@
                     <div class="row">
 
                   <?php
-                  if(isset($_POST['search'])){
-                $query = $mysqli->query("SELECT * FROM `foodmenu` WHERE category_id = '".$rys['id']."' and name LIKE '".$_POST['search']."%' ORDER BY promo DESC");
-                  }
-                  else{
-                $query = $mysqli->query("SELECT * FROM foodmenu WHERE category_id = '".$rys['id']."' ORDER BY promo DESC");
-                      }
+
 
             while($row = mysqli_fetch_array($query))
             {
