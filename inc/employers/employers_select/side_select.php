@@ -35,9 +35,19 @@ if (!empty($_SESSION["shopping_cart"]))
                <div class="offset-l4 offset-s1 offset-m1"> R$ <?php
         echo $values["item_price"];
 ?> </div></p>
-               <a href="foodlist.php?action=delete&id=<?php
-        echo $values["item_id"];
+<?php if($_SESSION['admin']=='true'){ ?>
+  <a href="comanda.php?action=delete&id=<?php
+echo $values["item_id"];
 ?>"><p><div class="center-align"><span class="red-text">Remover pedido</span></div></p></a>
+<?php
+}
+else { ?>
+  <a href="foodlist.php?action=delete&id=<?php
+echo $values["item_id"];
+?>"><p><div class="center-align"><span class="red-text">Remover pedido</span></div></p></a>
+<?php
+}
+?>
 <div class="divider"></div>
 
           <?php
