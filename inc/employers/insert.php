@@ -53,11 +53,29 @@ $(document).ready(function side_show(){
 
                    setInterval(function side_show(){
             $('#tables_ajax').load('inc/employers/employers_select/table_select.php');
-         }, 60000) 
+         }, 60000)
 
 </script>
 <div id='tables_ajax'>
 </div>
+<div class="row">
+<div class="col s10 m12 l10 offset-l1 offset-s1">
 <input type="text" name="obs" placeholder="Observações"> </input>
-<input type="submit" name="submit"></input>
+<p><input type="submit" class="white-text" name="submit"style="border:none;
+          width:100%;
+          background-color:#44c767;
+          background-color:red;
+          border:none;
+          display:inline-block;
+          cursor:pointer;
+          color:#ffffff;
+          font-family:Arial;
+          font-size:20px;
+          color: black;
+          padding:15px 76px;
+          text-decoration:none;
+          border-radius: 5px;
+          "></input></p>
 </form>
+</div>
+</div>
