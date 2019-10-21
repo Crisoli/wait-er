@@ -45,8 +45,8 @@ if(isset($_SESSION['pagead'])){
    <?php
   }
 }
-if(isset($_SESSION['pagefu'])){
-  if($_SESSION['pagefu']==1){
+if(isset($_SESSION['slide'])){
+  if($_SESSION['slide']=='true'){
     ?>
     <div class='nav-content'>
       <ul class='tabs tabs-transparent'>
