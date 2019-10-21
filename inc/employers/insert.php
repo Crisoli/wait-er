@@ -28,7 +28,12 @@ foreach ($_SESSION["shopping_cart"] as $key => $values)
   $item_quantity        = $values['item_quantity'];
   $shopping_cart_insert = $mysqli->query("INSERT INTO requests VALUES (null, '" . $item_id . "', '" . $item_quantity . "','" . $lastid . "')");
 }
-
+foreach ($_SESSION["shopping_cart"] as $keys => $values)
+  {
+      {
+         unset($_SESSION["shopping_cart"][$keys]);
+      }
+  }
 }
 
 ?>
