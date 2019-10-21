@@ -12,7 +12,7 @@ if (session_status() == PHP_SESSION_NONE) {
 
      if($_SESSION['admin']=='true'){
          if(!isset($_SESSION['pagead'])){
-             $_SESSION['pagead']='1';
+             $_SESSION['pagead']='7';
          }
 if($_SESSION['pagead']=='1'){
     include('inc/admin/pedidos.php');
@@ -33,7 +33,10 @@ elseif($_SESSION['pagead']=='profile'){
     include('inc/profile.php');
 }
 elseif($_SESSION['pagead']=='6'){
-    include('inc/employers/shoppingcart.php');
+    include('inc/admin/shoppingcart.php');
+}
+elseif($_SESSION['pagead']=='7'){
+    include('inc/admin/homead.php');
 }
      }
      else{
