@@ -62,17 +62,7 @@ $categorys = $mysqli->query("SELECT * FROM category");
   ?>
 </ul>
 </div>
-  <form method='post'>
-    <input type='text' name='search'/>
-    <input type='submit'/>
-  </form>
   <?php
-  if(isset($_POST['search'])){
-$query = $mysqli->query("SELECT * FROM `foodmenu` WHERE category_id = '".$rys['id']."' and name LIKE '".$_POST['search']."%' ORDER BY promo DESC");
-  }
-  else{
-$query = $mysqli->query("SELECT * FROM foodmenu WHERE category_id = '".$rys['id']."' ORDER BY promo DESC");
-      }
 }
      ?>
 
@@ -83,19 +73,19 @@ $query = $mysqli->query("SELECT * FROM foodmenu WHERE category_id = '".$rys['id'
 
         <ul id="slide-out" class="side-nav " style="background-color:#010B1C;">
         <div class="user-view">
-          <a href="redirect.php?pagefu=profile&pagead=profile&foodlist=false"><img class="circle z-depth-2" style="max-height:200%; max-width:70px; position:relative; padding-top:30px;" src="<?php echo $_SESSION['img'];?>"></a>
-          <a href="redirect.php?pagefu=profile&pagead=profile&foodlist=false"><span class="white-text"><?php echo $_SESSION['username'];?></span></a>
+          <a href="redirect.php?pagefu=profile&pagead=profile&foodslide=false"><img class="circle z-depth-2" style="max-height:200%; max-width:70px; position:relative; padding-top:30px;" src="<?php echo $_SESSION['img'];?>"></a>
+          <a href="redirect.php?pagefu=profile&pagead=profile&foodslide=false"><span class="white-text"><?php echo $_SESSION['username'];?></span></a>
           <a href='logoff.php' name='logoff'><span class="white-text">Logoff</span></a>
         </div>
 <?php
 if($_SESSION['admin']=='true'){
   echo "
-  <li><a class='waves-effect white-text' href='redirect.php?pagead=5&foodlist=false'><i class='material-icons white-text'>archive</i>Estoque</a></li>
-  <li><a class='waves-effect white-text' href='redirect.php?profile_session=all&pagead=profile&foodlist=false'><i class='material-icons white-text'>assignment_ind</i>Funcionários</a></li>
-  <li><a class='waves-effect white-text' href='redirect.php?pagead=1&foodlist=false'><i class='material-icons white-text'>content_paste</i>Pedidos</a></li>
+  <li><a class='waves-effect white-text' href='redirect.php?pagead=5&foodslide=false'><i class='material-icons white-text'>archive</i>Estoque</a></li>
+  <li><a class='waves-effect white-text' href='redirect.php?profile_session=all&pagead=profile&foodslide=false'><i class='material-icons white-text'>assignment_ind</i>Funcionários</a></li>
+  <li><a class='waves-effect white-text' href='redirect.php?pagead=1&foodslide=false'><i class='material-icons white-text'>content_paste</i>Pedidos</a></li>
 <li><a class='waves-effect white-text' href='redirect.php?pagead=06&foodslide=true'><i class='material-icons white-text'>archive</i>Realizar Pedidos</a></li>
-  <li><a class='waves-effect white-text' href='redirect.php?pagead=3&foodlist=false'><i class='material-icons white-text'>archive</i>Adicionar ao Cardápio</a></li>
-  <li><a class='waves-effect white-text' href='redirect.php?pagead=4&foodlist=false'><i class='material-icons white-text'>archive</i>Registrar Funcionário</a></li>
+  <li><a class='waves-effect white-text' href='redirect.php?pagead=3&foodslide=false'><i class='material-icons white-text'>archive</i>Adicionar ao Cardápio</a></li>
+  <li><a class='waves-effect white-text' href='redirect.php?pagead=4&foodslide=false'><i class='material-icons white-text'>archive</i>Registrar Funcionário</a></li>
   ";
 };
 ?>
@@ -104,8 +94,8 @@ if($_SESSION['admin']=='true'){
 if($_SESSION['admin']=='false'){
 
   echo"
-  <li><a class='waves-effect white-text' href='redirect.php?pagefu=1&foodlist=true'><i class='material-icons white-text'>local_library</i>Cardápio</a></li>
-  <li><a class='waves-effect white-text' href='redirect.php?pagefu=2&foodlist=false'><i class='material-icons white-text'>people_outline</i>Ranking</a></li>
+  <li><a class='waves-effect white-text' href='redirect.php?pagefu=1&foodslide=true'><i class='material-icons white-text'>local_library</i>Cardápio</a></li>
+  <li><a class='waves-effect white-text' href='redirect.php?pagefu=2&foodslide=false'><i class='material-icons white-text'>people_outline</i>Ranking</a></li>
   ";
 
 };
