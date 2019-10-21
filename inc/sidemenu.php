@@ -8,19 +8,26 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
 
 <!-- HTML -->
+<style>
+html{
+background-image: url('inc/img/teste2.png');
+background-repeat: no-repeat;
+background-size: 100% 30%;}
+</style>
 <div id="page-container">
 <div id="content-wrap">
-
-  <nav id="navbar" class="nav-extended  sidenav-fixed">
+  <nav id="navbar" style="background-color:#22242C; height:20%;" class="nav-extended sidenav-fixed">
     <div class="nav-wrapper">
-    <a href="#" class="brand-logo center">  <img src='inc/img/Waiterlogo.png' style="position:static; max-height:50%; max-width:40%; padding-bottom:1px;"> </a>
+    <a href="#" class="brand-logo center">  <img src='inc/img/Waiterlogo.png' style="position:relative; max-height:50%; max-width:40%; margin-top:-6%;"> </a>
   <?php if(isset($_SESSION['slide'])){
     if($_SESSION['slide']=='true'){
+
+
     echo "
       <a href='#' data-activates='slide-out2' class='button-collapse show-on-medium-and-up right sidenav1 '><i class='material-icons'>menu</i></a>
       ";
+    };
   };
-};
   ?>
      <a href="#" data-activates="slide-out" class="button-collapse show-on-medium-and-up"><i class="material-icons">menu</i></a>
 
@@ -59,21 +66,21 @@ $categorys = $mysqli->query("SELECT * FROM category");
   </nav>
 
 
-        <ul id="slide-out" class="side-nav " style="background-color:black;">
+        <ul id="slide-out" class="side-nav " style="background-color:#010B1C;">
         <div class="user-view">
-          <a href="redirect.php?pagefu=profile&pagead=profile&foodslide=false"><img class="circle z-depth-2" style="max-height:200%; max-width:70px; position:relative; padding-top:30px;" src="<?php echo $_SESSION['img'];?>"></a>
-          <a href="redirect.php?pagefu=profile&pagead=profile&foodslide=false"><span class="white-text"><?php echo $_SESSION['username'];?></span></a>
+          <a href="redirect.php?pagefu=profile&pagead=profile&foodlist=false"><img class="circle z-depth-2" style="max-height:200%; max-width:70px; position:relative; padding-top:30px;" src="<?php echo $_SESSION['img'];?>"></a>
+          <a href="redirect.php?pagefu=profile&pagead=profile&foodlist=false"><span class="white-text"><?php echo $_SESSION['username'];?></span></a>
           <a href='logoff.php' name='logoff'><span class="white-text">Logoff</span></a>
         </div>
 <?php
 if($_SESSION['admin']=='true'){
   echo "
-  <li><a class='waves-effect white-text' href='redirect.php?pagead=5&foodslide=false'><i class='material-icons white-text'>archive</i>Estoque</a></li>
-  <li><a class='waves-effect white-text' href='redirect.php?profile_session=all&pagead=profile&foodslide=false'><i class='material-icons white-text'>assignment_ind</i>Funcionários</a></li>
-  <li><a class='waves-effect white-text' href='redirect.php?pagead=1&foodslide=false'><i class='material-icons white-text'>content_paste</i>Pedidos</a></li>
-  <li><a class='waves-effect white-text' href='redirect.php?pagead=6&foodslide=true'><i class='material-icons white-text'>archive</i>Realizar Pedidos</a></li>
-  <li><a class='waves-effect white-text' href='redirect.php?pagead=3&foodslide=false'><i class='material-icons white-text'>archive</i>Adicionar ao Cardápio".$_SESSION['slide']."</a></li>
-  <li><a class='waves-effect white-text' href='redirect.php?pagead=4&foodslide=false'><i class='material-icons white-text'>archive</i>Registrar Funcionário</a></li>
+  <li><a class='waves-effect white-text' href='redirect.php?pagead=5&foodlist=false'><i class='material-icons white-text'>archive</i>Estoque</a></li>
+  <li><a class='waves-effect white-text' href='redirect.php?profile_session=all&pagead=profile&foodlist=false'><i class='material-icons white-text'>assignment_ind</i>Funcionários</a></li>
+  <li><a class='waves-effect white-text' href='redirect.php?pagead=1&foodlist=false'><i class='material-icons white-text'>content_paste</i>Pedidos</a></li>
+<li><a class='waves-effect white-text' href='redirect.php?pagead=06&foodlist=true'><i class='material-icons white-text'>archive</i>Realizar Pedidos</a></li>
+  <li><a class='waves-effect white-text' href='redirect.php?pagead=3&foodlist=false'><i class='material-icons white-text'>archive</i>Adicionar ao Cardápio</a></li>
+  <li><a class='waves-effect white-text' href='redirect.php?pagead=4&foodlist=false'><i class='material-icons white-text'>archive</i>Registrar Funcionário</a></li>
   ";
 };
 ?>
@@ -82,8 +89,8 @@ if($_SESSION['admin']=='true'){
 if($_SESSION['admin']=='false'){
 
   echo"
-  <li><a class='waves-effect white-text' href='redirect.php?pagead=6&foodslide=true'><i class='material-icons white-text'>local_library</i>Cardápio</a></li>
-  <li><a class='waves-effect white-text' href='redirect.php?pagead=7&foodslide=false'><i class='material-icons white-text'>people_outline</i>Ranking</a></li>
+  <li><a class='waves-effect white-text' href='redirect.php?pagead=6&foodlist=true'><i class='material-icons white-text'>local_library</i>Cardápio</a></li>
+  <li><a class='waves-effect white-text' href='redirect.php?pagead=7&foodlist=false'><i class='material-icons white-text'>people_outline</i>Ranking</a></li>
   ";
 
 };
