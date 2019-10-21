@@ -3,8 +3,6 @@
      <body style="font-family: 'Exo 2', sans-serif;">
           <br/>
 
-
-
             <?php
 
             if (isset($_POST["add_to_cart"]))
@@ -55,20 +53,21 @@
 
               }
             ?>
-            <form method='post'>
-            <input type='text' name='search'/>
-            <input type='submit'/>
-            </form>
 
+            <form method='post'>
+              <input type='text' name='search'/>
+              <input type='submit'/>
+            </form>
 
             <?php
 
             $categorys = $mysqli->query("SELECT * FROM category");
-
                 while($rys = mysqli_fetch_array($categorys))
                 {
                   ?>
                   <div id='menu<?php echo $rys['id'];?>'>
+                    <div class="row">
+
                   <?php
                   if(isset($_POST['search'])){
                 $query = $mysqli->query("SELECT * FROM `foodmenu` WHERE category_id = '".$rys['id']."' and name LIKE '".$_POST['search']."%' ORDER BY promo DESC");
@@ -76,16 +75,18 @@
                   else{
                 $query = $mysqli->query("SELECT * FROM foodmenu WHERE category_id = '".$rys['id']."' ORDER BY promo DESC");
                       }
+
             while($row = mysqli_fetch_array($query))
             {
 
                 ?>
-
                              <form id='<?php echo $row['id'] ?>' method='post' action='foodlist.php?action=add&id=<?php echo $row['id'] ?>'>
+                                  <div class="col m5 l4 offset-m5">
                                     <div class='card'>
                                         <div class='card-image'>
+
                                           <img src='<?php echo $row['image'] ?>'/>
-                                          <span class='card-title black-text'><?php echo $row['name'] ?></span>
+                                          <span class='card-title black-text' style="background-color:white; height:5px;"><?php echo $row['name'] ?></span>
                                           <input type='hidden' name='hidden_name'  value='<?php echo $row['name'] ?>' />
                                           <input type='hidden' name='hidden_price' value='<?php echo $row['price'] ?>' />
 
@@ -96,11 +97,13 @@
                                           <h5 class=''>R$<?php echo $row['price']?></h5>
                                           <p><?php echo $row['promodesc']?></p>
                                         </div>
+                                        </div>
                                   </div>
                   </form>
                   <?php
                   }
                   ?>
+                </div>
                 </div>
                   <?php
                   }
