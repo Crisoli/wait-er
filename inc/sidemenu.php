@@ -59,11 +59,26 @@ $categorys = $mysqli->query("SELECT * FROM category");
       <?php
     }
   }
+  ?>
+</ul>
+</div>
+  <form method='post'>
+    <input type='text' name='search'/>
+    <input type='submit'/>
+  </form>
+  <?php
+  if(isset($_POST['search'])){
+$query = $mysqli->query("SELECT * FROM `foodmenu` WHERE category_id = '".$rys['id']."' and name LIKE '".$_POST['search']."%' ORDER BY promo DESC");
+  }
+  else{
+$query = $mysqli->query("SELECT * FROM foodmenu WHERE category_id = '".$rys['id']."' ORDER BY promo DESC");
+      }
 }
      ?>
-   </ul>
-   </div>
+
+
   </nav>
+
 
 
         <ul id="slide-out" class="side-nav " style="background-color:#010B1C;">
@@ -78,7 +93,7 @@ if($_SESSION['admin']=='true'){
   <li><a class='waves-effect white-text' href='redirect.php?pagead=5&foodlist=false'><i class='material-icons white-text'>archive</i>Estoque</a></li>
   <li><a class='waves-effect white-text' href='redirect.php?profile_session=all&pagead=profile&foodlist=false'><i class='material-icons white-text'>assignment_ind</i>Funcionários</a></li>
   <li><a class='waves-effect white-text' href='redirect.php?pagead=1&foodlist=false'><i class='material-icons white-text'>content_paste</i>Pedidos</a></li>
-<li><a class='waves-effect white-text' href='redirect.php?pagead=06&foodlist=true'><i class='material-icons white-text'>archive</i>Realizar Pedidos</a></li>
+<li><a class='waves-effect white-text' href='redirect.php?pagead=06&foodslide=true'><i class='material-icons white-text'>archive</i>Realizar Pedidos</a></li>
   <li><a class='waves-effect white-text' href='redirect.php?pagead=3&foodlist=false'><i class='material-icons white-text'>archive</i>Adicionar ao Cardápio</a></li>
   <li><a class='waves-effect white-text' href='redirect.php?pagead=4&foodlist=false'><i class='material-icons white-text'>archive</i>Registrar Funcionário</a></li>
   ";
@@ -89,8 +104,8 @@ if($_SESSION['admin']=='true'){
 if($_SESSION['admin']=='false'){
 
   echo"
-  <li><a class='waves-effect white-text' href='redirect.php?pagead=6&foodlist=true'><i class='material-icons white-text'>local_library</i>Cardápio</a></li>
-  <li><a class='waves-effect white-text' href='redirect.php?pagead=7&foodlist=false'><i class='material-icons white-text'>people_outline</i>Ranking</a></li>
+  <li><a class='waves-effect white-text' href='redirect.php?pagefu=1&foodlist=true'><i class='material-icons white-text'>local_library</i>Cardápio</a></li>
+  <li><a class='waves-effect white-text' href='redirect.php?pagefu=2&foodlist=false'><i class='material-icons white-text'>people_outline</i>Ranking</a></li>
   ";
 
 };
