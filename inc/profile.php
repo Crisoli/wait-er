@@ -15,7 +15,13 @@ while($pro = mysqli_fetch_array($profile)){
 (3)
 Codigo vai aqui.
 Lembra de abrir PHP e fechar assim que pegar do banco:
+<?php echo $pro['username']; ?>
+<?php echo $pro['img']; ?>
+<?php echo $pro['email']; ?>
+<?php echo $pro['phonenumber']; ?>
 <?php echo $pro['description']; ?>
+<?php echo $pro['password']; ?>
+<?php echo $pro['usertype']; ?>
 </div>
 <?php
 }
@@ -31,7 +37,13 @@ while($pro = mysqli_fetch_array($profile)){
 Codigo vai aqui.
 Lembra de abrir PHP e fechar assim que pegar do banco:
 <div id='Aqui aparece as conta tudo, só o admin pode acessar'>
+  <?php echo $pro['username']; ?>
+  <?php echo $pro['img']; ?>
+  <?php echo $pro['email']; ?>
+  <?php echo $pro['phonenumber']; ?>
   <?php echo $pro['description']; ?>
+  <?php echo $pro['password']; ?>
+  <?php echo $pro['usertype']; ?>
 
 <a id='Aqui vai aparecer o bagulho pra levar pros profile dos funcionario que só os admin pode ver'
  href='redirect.php?profile_id=<?php echo $pro['id']?>&profile_session=specific'></a>
@@ -48,7 +60,13 @@ while($pro = mysqli_fetch_array($profile)){
   ?>
   <div id='Aqui aparece a conta do funcionario que o admin quis acessar'>
     (1)
+    <?php echo $pro['username']; ?>
+    <?php echo $pro['img']; ?>
+    <?php echo $pro['email']; ?>
+    <?php echo $pro['phonenumber']; ?>
     <?php echo $pro['description']; ?>
+    <?php echo $pro['password']; ?>
+    <?php echo $pro['usertype']; ?>
   </div>
 <?php
 }
