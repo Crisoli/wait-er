@@ -53,11 +53,19 @@
 
               }
             ?>
-
-            <form method='post'>
-              <input type='text' name='search'/>
-              <input type='submit'/>
-            </form>
+            <div class="navbar" style="padding-top:-20%; position: relative;">
+            <nav>
+            <div class="nav-wrapper">
+                    <form method='post'>
+                       <div class="input-field">
+                      <input type='search' name='search' style="background-color:#2D2F40;"/>
+                      <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                     <i class="material-icons">close</i>
+                    </form>
+            </div>
+            </div>
+          </nav>
+          </div>
 
             <?php
 
@@ -81,11 +89,11 @@
 
                 ?>
                              <form id='<?php echo $row['id'] ?>' method='post' action='foodlist.php?action=add&id=<?php echo $row['id'] ?>'>
-                                  <div class="col m5 l4 offset-m5">
-                                    <div class='card'>
+                                  <div class="col m5 l3 offset-m5">
+                                    <div class='card' style="height:70%;  width:99%;">
                                         <div class='card-image'>
 
-                                          <img src='<?php echo $row['image'] ?>'/>
+                                          <img src='<?php echo $row['image'] ?>'  style="height:60%; width:100%;"/>
                                           <span class='card-title black-text' style="background-color:white; height:5px;"><?php echo $row['name'] ?></span>
                                           <input type='hidden' name='hidden_name'  value='<?php echo $row['name'] ?>' />
                                           <input type='hidden' name='hidden_price' value='<?php echo $row['price'] ?>' />
@@ -108,5 +116,9 @@
                   <?php
                   }
             ?>
-
+<script>
+$(document).ready(function(){
+  $('.sidenav').sidenav();
+});
+</script>
      </body>
