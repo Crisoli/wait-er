@@ -16,7 +16,7 @@ background-size: 100% 30%;}
 </style>
 <div id="page-container">
 <div id="content-wrap">
-  <nav id="navbar" style="background-color:#22242C; height:20%;" class="nav-extended sidenav-fixed">
+  <nav id="navbar" style="background-color:#2D2F40; height:20%;" class="nav-extended sidenav-fixed">
     <div class="nav-wrapper">
     <a href="#" class="brand-logo center">  <img src='inc/img/Waiterlogo.png' style="position:relative; max-height:50%; max-width:40%; margin-top:-6%;"> </a>
   <?php if(isset($_SESSION['slide'])){
@@ -71,7 +71,7 @@ $categorys = $mysqli->query("SELECT * FROM category");
 
 
 
-        <ul id="slide-out" class="side-nav " style="background-color:#010B1C;">
+        <ul id="slide-out" class="side-nav " style="background-color:#2D2F40;">
         <div class="user-view">
           <a href="redirect.php?pagefu=profile&pagead=profile&foodslide=false"><img class="circle z-depth-2" style="max-height:200%; max-width:70px; position:relative; padding-top:30px;" src="<?php echo $_SESSION['img'];?>"></a>
           <a href="redirect.php?pagefu=profile&pagead=profile&foodslide=false"><span class="white-text"><?php echo $_SESSION['username'];?></span></a>
