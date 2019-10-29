@@ -16,7 +16,7 @@ background-size: 100% 30%;}
 </style>
 <div id="page-container">
 <div id="content-wrap">
-  <nav id="navbar" style="background-color:#2D2F40; height:20%;" class="nav-extended sidenav-fixed">
+  <nav id="navbar" style="background-color:#2D2F40;" class="nav-extended sidenav-fixed">
     <div class="nav-wrapper">
     <a href="#" class="brand-logo center">  <img src='inc/img/Waiterlogo.png' style="position:relative; max-height:50%; max-width:40%; margin-top:-6%;"> </a>
   <?php if(isset($_SESSION['slide'])){
@@ -106,7 +106,6 @@ if(isset($_SESSION['slide'])){
   if($_SESSION['slide']=='true'){
 ?>
 
-<div class='container'>
     <ul id='slide-out2' class='side-nav' style='background-color:white; width:80%;'>
     <div id='slide-out2_ajax'>
     </div>
@@ -138,7 +137,6 @@ if(isset($_SESSION['slide'])){
 ?>
 
    </ul>
-</div>
 <?php
 }
 }
