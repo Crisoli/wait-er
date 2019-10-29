@@ -53,7 +53,7 @@
 
               }
             ?>
-            <div class="navbar" style="padding-top:-20%; position: relative;">
+            <div class="navbar" style=" position: relative;">
             <nav>
             <div class="nav-wrapper">
                     <form method='post'>
@@ -89,8 +89,8 @@
 
                 ?>
                              <form id='<?php echo $row['id'] ?>' method='post' action='foodlist.php?action=add&id=<?php echo $row['id'] ?>'>
-                                  <div class="col m5 l3 offset-m5">
-                                    <div class='card' style="height:70%;  width:99%;">
+                                  <div class="col m4 l3 offset-m5">
+                                    <div class='card' style=" width:99%;">
                                         <div class='card-image'>
 
                                           <img src='<?php echo $row['image'] ?>'  style="height:60%; width:100%;"/>
