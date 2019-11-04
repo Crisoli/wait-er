@@ -1,6 +1,6 @@
 
 <body>
-	<div class="container">
+	<div>
 		<form method="post" enctype="multipart/form-data">
 
 			<div class="col s12">
@@ -38,15 +38,36 @@ $categoryselect = $mysqli->query('SELECT * FROM category');
 		</form>
 		<a href="foodlist.php"><button class="btn waves-effect waves-light" name="action">Voltar ao Cardápio</button></a>
 	</div>
+	<?php
+	$categoryselect = $mysqli->query('SELECT * FROM category');
+		while($cat = mysqli_fetch_array($categoryselect))
+		{
+			?>
+	<form action='delete.php?catdel="<?php echo $cat['name']; ?>"' method="post">
+						<?php echo $cat['name'];?>
+	        <input type="hidden" name="name" value="<?php echo $cat['name']; ?>">
+	        <input type="submit" name="submit" value="Delete">
+	    </form> <br>
+	<?php
+	}
+	?>
+	<form method="post">
+		<input type='text' name='add' />
+		<input type='submit'/>
+	</form>
 </body>
 <?php
 
-
+	if(isset($_POST['add'])){
+		$catname = $_POST['add'];
+		$addcat = $mysqli->query("INSERT INTO category VALUES (null, '".$catname."', '".$_SESSION['userid']."')");
+	}
 
 	if(isset($_FILES['fileUpload'])){
 		date_default_timezone_set("Brazil/East"); //Definindo timezone padrão
-
-		$ext = strtolower(substr($_FILES['fileUpload']['name'],-4)); //Pegando extensão do arquivo
+		$path = $_FILES['fileUpload']['name'];
+		$ext = pathinfo($path, PATHINFO_EXTENSION);
+		 //Pegando extensão do arquivo
 		$new_name = date("Y.m.d-H.i.s") .".". $ext; //Definindo um novo nome para o arquivo
 		$dir = 'inc/img/uploads/menu/'; //Diretório para uploads
 
@@ -56,7 +77,7 @@ $categoryselect = $mysqli->query('SELECT * FROM category');
 		$desc= $_POST['productdesc'];
 		$value= $_POST['productval'];
 		$category= $_POST['category'];
-		$insert= "INSERT INTO foodmenu VALUES (null,'".$name."','".$direct."','".$value."','".$category."','".$_SESSION['userid']."','null','null','null')";
+		$insert= "INSERT INTO foodmenu VALUES (null,'".$name."','".$direct."','".$value."','".$category."','".$_SESSION['userid']."','null','null')";
 		if(!$mysqli->query($insert)){
 			echo "$mysqli->error";
 		}
