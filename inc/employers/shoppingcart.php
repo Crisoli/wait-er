@@ -89,33 +89,90 @@
 
                 ?>
                              <form id='<?php echo $row['id'] ?>' method='post' action='foodlist.php?action=add&id=<?php echo $row['id'] ?>'>
-                                  <div class="col m4 l3 offset-m5">
-                                    <div class='card' style=" width:99%;">
-                                        <div class='card-image'>
+                               <div class="col m4 l3 offset-m5">
+                                 <?php
+                                 if($row['promo']==1){
+                                 ?>
+                                 <div class='card promo' style=" width:99%;">
+                                     <div class='card-image'>
+                                       <img src='<?php echo $row['image'] ?>'/>
+                                       <span class='card-title promo black-text' style=" height:5px;"><?php echo $row['name'] ?></span>
+                                       <?php
+                                       }
+                                       else {
+                                       ?>
+                                       <div class='card com' style=" width:99%;">
+                                           <div class='card-image'>
+                                             <img src='<?php echo $row['image'] ?>'/>
+                                             <span class='card-title com black-text' style="background-color:white; height:5px;"><?php echo $row['name'] ?></span>
+                                       <?php
+                                       }
+                                       ?>
+                                       <input type='hidden' name='hidden_name'  value='<?php echo $row['name'] ?>' />
+                                       <input type='hidden' name='hidden_price' value='<?php echo $row['price'] ?>' />
 
-                                          <img src='<?php echo $row['image'] ?>'  style="height:60%; width:100%;"/>
-                                          <span class='card-title black-text' style="background-color:white; height:5px;"><?php echo $row['name'] ?></span>
-                                          <input type='hidden' name='hidden_name'  value='<?php echo $row['name'] ?>' />
-                                          <input type='hidden' name='hidden_price' value='<?php echo $row['price'] ?>' />
+                                       <input type='submit' class='btn-floating halfway-fab waves-light red darken-1' ; name='add_to_cart' style='border:none;' value='+'></input>
+                                     </div>
+                                     <input type='number' name='quantity' class='form-control' value='1' style='border-bottom: 2px solid black; background-color:; width:40%; position: absolute; right: 0px;'/>
+                                     <div class='card-content text'>
+                                       <h5 class=''>R$<?php echo $row['price']?> </h5>
 
-                                          <input type='submit' class='btn-floating halfway-fab waves-light red darken-1' ; name='add_to_cart' style='border:none;' value='+'></input>
-                                        </div>
-                                        <input type='number' name='quantity' class='form-control' value='1' style='border-bottom: 2px solid black; background-color:; width:40%; position: absolute; right: 0px;'/>
-                                        <div class='card-content'>
-                                          <h5 class=''>R$<?php echo $row['price']?></h5>
-                                          <p><?php echo $row['promodesc']?></p>
-                                        </div>
-                                        </div>
-                                  </div>
-                  </form>
-                  <?php
-                  }
-                  ?>
-                </div>
-                </div>
-                  <?php
-                  }
-            ?>
+                                       <?php
+                                       if($row['promo']==1){
+                                       ?>
+                                       <h5>PROMOÇÃO!</h5>
+                                       <p><?php echo $row['promodesc']?></p>
+                                       <?php
+                                       }
+                                       ?>
+                                       <style>
+                                         .com{
+                                           background: linear-gradient(277deg, #f8f8f8, #f9f9f9, #f7f7f7);
+                                           background-size: 600% 600%;
+
+                                            animation: content-wrap 59s ease infinite;
+
+                                            @keyframes content-wrap {
+                                                0%{background-position:0% 86%}
+                                                50%{background-position:100% 15%}
+                                                100%{background-position:0% 86%}
+                                            }
+                                         }
+                                         .text {
+text-transform: uppercase;
+background: linear-gradient(to right, #30CFD0 0%, #330867 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+font: {
+ size: 20vw;
+ family: $font;
+};
+}
+                                        .promo {
+                                          background: linear-gradient(270deg, #0d0d0d, #252525);
+                                           background-size: 400% 400%;
+
+                                           animation: AnimationName 30s ease infinite;
+
+                                           @keyframes AnimationName {
+                                               0%{background-position:0% 50%}
+                                               50%{background-position:100% 50%}
+                                               100%{background-position:0% 50%}
+}                                   }
+                                       </style>
+
+                                     </div>
+                                     </div>
+                               </div>
+               </form>
+               <?php
+               }
+               ?>
+             </div>
+             </div>
+               <?php
+               }
+         ?>
 <script>
 $(document).ready(function(){
   $('.sidenav').sidenav();
