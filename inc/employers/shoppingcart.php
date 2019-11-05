@@ -93,17 +93,17 @@
                                  <?php
                                  if($row['promo']==1){
                                  ?>
-                                 <div class='card promo' style=" width:99%;">
+                                 <div class='card promo' style="width:100%; height:500px;">
                                      <div class='card-image'>
-                                       <img src='<?php echo $row['image'] ?>'/>
+                                       <img src='<?php echo $row['image'] ?>' style="object-fit: cover; width:100%; height:300px;"/>
                                        <span class='card-title promo black-text' style=" height:5px;"><?php echo $row['name'] ?></span>
                                        <?php
                                        }
                                        else {
                                        ?>
-                                       <div class='card com' style=" width:99%;">
+                                       <div class='card com' style=" width:500px;">
                                            <div class='card-image'>
-                                             <img src='<?php echo $row['image'] ?>'/>
+                                             <img src='<?php echo $row['image'] ?>' style="object-fit:cover; width:100%; height:500px;"/>
                                              <span class='card-title com black-text' style="background-color:white; height:5px;"><?php echo $row['name'] ?></span>
                                        <?php
                                        }
