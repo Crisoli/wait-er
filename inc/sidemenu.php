@@ -16,21 +16,19 @@ background-size: 100% 30%;}
 </style>
 <div id="page-container">
 <div id="content-wrap">
-  <nav id="navbar" style="background-color:#2D2F40;" class="nav-extended sidenav-fixed">
+  <nav id="navbar" style="background-color:#2D2F40;" class="nav-extended navbar-fixed sidenav-fixed">
     <div class="nav-wrapper">
-    <a href="#" class="brand-logo center">  <img src='inc/img/Waiterlogo.png' style="position:relative; max-height:50%; max-width:40%; margin-top:-6%;"> </a>
   <?php if(isset($_SESSION['slide'])){
     if($_SESSION['slide']=='true'){
 
 
     echo "
-      <a href='#' data-activates='slide-out2' class='button-collapse show-on-medium-and-up right sidenav1 '><i class='material-icons'>menu</i></a>
+      <a href='#' data-activates='slide-out2' class='button-collapse show-on-medium-and-up right sidenav1 '><i class='material-icons'>chrome_reader_mode</i></a>
       ";
     };
   };
   ?>
      <a href="#" data-activates="slide-out" class="button-collapse show-on-medium-and-up"><i class="material-icons">menu</i></a>
-
 <?php
 if(isset($_SESSION['pagead'])){
   if($_SESSION['pagead']==1){
@@ -71,12 +69,24 @@ $categorys = $mysqli->query("SELECT * FROM category");
 
 
 
-        <ul id="slide-out" class="side-nav " style="background-color:#2D2F40;">
-        <div class="user-view">
-          <a href="redirect.php?pagefu=profile&pagead=profile&foodslide=false"><img class="circle z-depth-2" style="max-height:200%; max-width:70px; position:relative; padding-top:30px;" src="<?php echo $_SESSION['img'];?>"></a>
-          <a href="redirect.php?pagefu=profile&pagead=profile&foodslide=false"><span class="white-text"><?php echo $_SESSION['username'];?></span></a>
-          <a href='logoff.php' name='logoff'><span class="white-text">Logoff</span></a>
-        </div>
+  <ul id="slide-out" class="side-nav " style="background-color:#2D2F40;">
+  <div class="user-view">
+    <div class="center-align">
+    <img src="inc/img/Waiterlogo.png" style="position:top; max-height:30%; max-width:30%;">
+  </div>
+  <div class="background" style="background-color:;">
+  <br>
+  <div class="center-align">
+    <a href="redirect.php?pagefu=profile&pagead=profile&foodslide=false"><img style="width:100px; height:100px; object-fit: cover;" class="circle" src="<?php echo $_SESSION['img'];?>"></a>
+  </br>
+  <p>
+    <a href="redirect.php?pagefu=profile&pagead=profile&foodslide=false"><span class="white-text"><?php echo $_SESSION['username'];?></span></a>
+  </p>
+  </div>
+    <a href='logoff.php' name='logoff'><span class="red-text">Logoff</span></a>
+  </div>
+  </div>
+<br>
 <?php
 if($_SESSION['admin']=='true'){
   echo "
