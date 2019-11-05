@@ -16,7 +16,7 @@ while($pro = mysqli_fetch_array($profile)){
 Codigo vai aqui.
 Lembra de abrir PHP e fechar assim que pegar do banco:
 <?php echo $pro['username']; ?>
-<?php echo $pro['img']; ?>
+<img src="<?php echo $pro['img']; ?>" style="width:200px; height:200px; object-fit: cover;" class="circle">
 <?php echo $pro['email']; ?>
 <?php echo $pro['phonenumber']; ?>
 <?php echo $pro['description']; ?>
@@ -37,13 +37,52 @@ while($pro = mysqli_fetch_array($profile)){
 Codigo vai aqui.
 Lembra de abrir PHP e fechar assim que pegar do banco:
 <div id='Aqui aparece as conta tudo, só o admin pode acessar'>
-  <?php echo $pro['username']; ?>
-  <?php echo $pro['img']; ?>
-  <?php echo $pro['email']; ?>
-  <?php echo $pro['phonenumber']; ?>
-  <?php echo $pro['description']; ?>
-  <?php echo $pro['password']; ?>
-  <?php echo $pro['usertype']; ?>
+  <div class="row">
+    <div class="col s12 m5 l5">
+      <div class="card">
+                <div class="center-align">
+        <a href='redirect.php?profile_id=<?php echo $pro['id']; ?>&profile_session=specific&pagefu=profile&pagead=profile'>
+        <img src="<?php echo $pro['img']; ?>" style="width:150px; height:150px; object-fit: cover;" class="circle ">
+        </a>
+        <br>
+        <a href='redirect.php?profile_id=<?php echo $pro['id']; ?>&profile_session=specific&pagefu=profile&pagead=profile'
+        class="red-text">
+         <?php echo $pro['username'];?>
+       </a>
+                </div>
+        </br>
+        <div class="card-content">
+        <br>
+
+         <?php echo $pro['email']; ?>
+      </br>
+      <br>
+         <?php echo $pro['phonenumber']; ?>
+      </br>
+      <br>
+         <?php echo $pro['description']; ?>
+      </br>
+      <br>
+         <?php echo $pro['password']; ?>
+      </br>
+      <br>
+<?php if ($pro['usertype'] == 11){
+echo 'Admin';
+}
+elseif ($pro['usertype'] == 10){
+  echo 'MEUCU';
+}
+else {
+
+}
+  ?>
+
+      </br>
+    </div>
+      </div>
+        </div>
+        </div>
+
 
 <a id='Aqui vai aparecer o bagulho pra levar pros profile dos funcionario que só os admin pode ver'
  href='redirect.php?profile_id=<?php echo $pro['id']?>&profile_session=specific'></a>
@@ -61,7 +100,7 @@ while($pro = mysqli_fetch_array($profile)){
   <div id='Aqui aparece a conta do funcionario que o admin quis acessar'>
     (1)
     <?php echo $pro['username']; ?>
-    <?php echo $pro['img']; ?>
+    <img src="<?php echo $pro['img']; ?>" style="width:200px; height:200px; object-fit: cover;" class="circle ">
     <?php echo $pro['email']; ?>
     <?php echo $pro['phonenumber']; ?>
     <?php echo $pro['description']; ?>
