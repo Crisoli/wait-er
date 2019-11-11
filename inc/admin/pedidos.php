@@ -43,14 +43,15 @@ while($item1= mysqli_fetch_array($itemsel1))
         $namesel1 = $mysqli->query("SELECT * FROM foodmenu WHERE id = '".$item1['foodmenu_id']."'");
 while($name1= mysqli_fetch_array($namesel1))
 {
-    echo "<b>|Item:</b> ".$name1['name']." <b>|Preço:</b> ".$name1['price']." <b>|Quantidade:</b> ".$item1['quantity']."<br>";
+    ?><b>|Item:</b> <?php echo utf8_encode($name1['name']); ?> <b>|Preço:</b> <?php echo $name1['price']; ?> <b>|Quantidade:</b> <?php echo $item1['quantity']; ?> <br>
+<?php
 }
-        }
+}
 ?>
 
                         </div>
                         <div id="anotacoes<?php echo $pen['id'];?>">
-                            <?php echo "<b>Observações: <br></b>".$pen['obs'];?>
+                            <b>Observações: <br></b> <?php echo utf8_encode($pen['obs']);?>
                         </div>
                     </div>
                 </div>
@@ -106,14 +107,15 @@ while($item2= mysqli_fetch_array($itemsel2))
         $namesel2 = $mysqli->query("SELECT * FROM foodmenu WHERE id = '".$item2['foodmenu_id']."'");
 while($name2= mysqli_fetch_array($namesel2))
 {
-    echo "<b>|Item:</b> ".$name2['name']." <b>|Preço:</b> ".$name2['price']." <b>|Quantidade:</b> ".$item2['quantity']."<br>";
+    ?><b>|Item:</b> <?php echo utf8_encode($name2['name']); ?> <b>|Preço:</b> <?php echo $name2['price']; ?> <b>|Quantidade:</b> <?php echo $item2['quantity']; ?> <br>
+<?php
 }
         }
 ?>
 
                         </div>
                         <div id="anotacoes<?php echo $rec['id'];?>">
-                            <?php echo "<b>Observações: <br></b>".$rec['obs'];?>
+                        <b>Observações: <br></b> <?php echo utf8_encode($rec['obs']);?>
                         </div>
                     </div>
                 </div>
@@ -161,14 +163,15 @@ while($item3= mysqli_fetch_array($itemsel3))
         $namesel3 = $mysqli->query("SELECT * FROM foodmenu WHERE id = '".$item3['foodmenu_id']."'");
 while($name3= mysqli_fetch_array($namesel3))
 {
-    echo "<b>|Item:</b> ".$name3['name']." <b>|Preço:</b> ".$name3['price']." <b>|Quantidade:</b> ".$item3['quantity']."<br>";
+    ?><b>|Item:</b> <?php echo utf8_encode($name3['name']); ?> <b>|Preço:</b> <?php echo $name3['price']; ?> <b>|Quantidade:</b> <?php echo $item3['quantity']; ?> <br>
+    <?php
 }
         }
 ?>
 
                         </div>
                         <div id="anotacoes<?php echo $fin['id'];?>">
-                            <?php echo "<b>Observações: <br></b>".$fin['obs'];?>
+                        <b>Observações: <br></b> <?php echo utf8_encode($fin['obs']);?>
                                 </div>
                             </div>
                         </div>
@@ -186,6 +189,9 @@ while($name3= mysqli_fetch_array($namesel3))
    }
  }
       ?>
+
+
+      
                         <script type="text/javascript">
                         $(document).ready(function() {
                             $('.collapsible').collapsible();

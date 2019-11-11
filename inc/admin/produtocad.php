@@ -1,5 +1,8 @@
 
 <body>
+
+
+
 	<div>
 		<form method="post" enctype="multipart/form-data">
 
@@ -18,7 +21,7 @@ $categoryselect = $mysqli->query('SELECT * FROM category');
 	while($cat = mysqli_fetch_array($categoryselect))
 	{
 	?>
-		<option value="<?php echo $cat['id'];?>"><?php echo $cat['name'];?></option>
+		<option value="<?php echo $cat['id'];?>"><?php echo utf8_encode($cat['name']);?></option>
 <?php
 	};
 ?>
@@ -43,9 +46,9 @@ $categoryselect = $mysqli->query('SELECT * FROM category');
 		while($cat = mysqli_fetch_array($categoryselect))
 		{
 			?>
-	<form action='delete.php?catdel="<?php echo $cat['name']; ?>"' method="post">
-						<?php echo $cat['name'];?>
-	        <input type="hidden" name="name" value="<?php echo $cat['name']; ?>">
+	<form action='delete.php?catdel="<?php echo utf8_encode($cat['name']); ?>"' method="post">
+						<?php echo utf8_encode($cat['name']);?>
+	        <input type="hidden" name="name" value="<?php echo utf8_encode($cat['name']); ?>">
 	        <input type="submit" name="submit" value="Delete">
 	    </form> <br>
 	<?php

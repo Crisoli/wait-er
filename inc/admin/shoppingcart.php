@@ -97,7 +97,7 @@
                                     <div class='card promo' style=" width:99%;">
                                         <div class='card-image'>
                                           <img src='<?php echo $row['image'] ?>'/>
-                                          <span class='card-title promo black-text' style=" height:5px;"><?php echo $row['name'] ?></span>
+                                          <span class='card-title promo black-text' style=" height:5px;"><?php echo utf8_encode($row['name']); ?></span>
                                           <?php
                                           }
                                           else {
@@ -105,11 +105,11 @@
                                           <div class='card com' style=" width:99%;">
                                               <div class='card-image'>
                                                 <img src='<?php echo $row['image'] ?>'/>
-                                                <span class='card-title com black-text' style="background-color:white; height:5px;"><?php echo $row['name'] ?></span>
+                                                <span class='card-title com black-text' style="background-color:white; height:5px;"><?php echo utf8_encode($row['name']); ?></span>
                                           <?php
                                           }
                                           ?>
-                                          <input type='hidden' name='hidden_name'  value='<?php echo $row['name'] ?>' />
+                                          <input type='hidden' name='hidden_name'  value='<?php echo utf8_encode($row['name']); ?>' />
                                           <input type='hidden' name='hidden_price' value='<?php echo $row['price'] ?>' />
 
                                           <input type='submit' class='btn-floating halfway-fab waves-light red darken-1' ; name='add_to_cart' style='border:none;' value='+'></input>
@@ -122,7 +122,7 @@
                                           if($row['promo']==1){
                                           ?>
                                           <h5>PROMOÇÃO!</h5>
-                                          <p><?php echo $row['promodesc']?></p>
+                                          <p><?php echo utf8_encode($row['promodesc']);?></p>
                                           <?php
                                           }
                                           ?>
@@ -140,15 +140,15 @@
                                                }
                                             }
                                             .text {
-	text-transform: uppercase;
-	background: linear-gradient(to right, #30CFD0 0%, #330867 100%);
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-	font: {
-		size: 20vw;
-		family: $font;
-	};
-}
+                                            text-transform: uppercase;
+                                            background: linear-gradient(to right, #30CFD0 0%, #330867 100%);
+                                            -webkit-background-clip: text;
+                                            -webkit-text-fill-color: transparent;
+                                            font: {
+                                              size: 20vw;
+                                              family: $font;
+                                            };
+                                          }
                                            .promo {
                                              background: linear-gradient(270deg, #0d0d0d, #252525);
                                               background-size: 400% 400%;
@@ -159,13 +159,53 @@
                                                   0%{background-position:0% 50%}
                                                   50%{background-position:100% 50%}
                                                   100%{background-position:0% 50%}
-}                                   }
+                                          }
+                                          }
                                           </style>
 
+                                        </div>
+                                        <div class="card-action">
+                                        <!-- Modal Trigger -->
+                                        <button data-target="modal<?php echo $row['id'];?>" class="btn modal-trigger">Open the modal</button>
                                         </div>
                                         </div>
                                   </div>
                   </form>
+                <!-- Modal Structure -->
+                <form method="post">
+              <div id="modal<?php echo $row['id'];?>" class="modal">
+                <div class="modal-content">
+ <div class="container">
+		<form method="post">
+        <input type="text" disabled="disabled" value="<?php echo $row['id']?>" name="hide"></input>
+				<input type="text" name="newname">
+				<input type="number" name="newprice" >
+				<input type="text" name="newdesc">
+        <?php
+        if($row['promo']==1){
+        ?>
+          <label for="check<?php echo $row['id'];?>"><div> Promoção<input type="checkbox" id="check<?php echo $row['id'];?>" name="promo" class="filled-in" checked="checked"> </div></label>
+        <?php
+        }
+        else{
+        ?>
+          <label for="check<?php echo $row['id'];?>"><div> Promoção<input type="checkbox" id="check<?php echo $row['id'];?>" name="promo" class="filled-in" > </div></label>
+        <?php
+        }
+        ?>
+      </div>
+                </div>
+                <div class="modal-footer">
+                  <input type="submit" class="modal-close waves-effect waves-green btn-flat">Alterar</input>
+                  <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
+                </div>
+              </div>
+<?php if(isset($_POST['newname'])){
+ $update = $mysqli->query("UPDATE foodmenu SET name = '".$_POST['newname']."' WHERE id = '".$_POST['hide']."'");
+}
+?>
+              </form>
+                
                   <?php
                   }
                   ?>
@@ -176,3 +216,16 @@
             ?>
 
      </body>
+
+
+
+     <script>
+ document.addEventListener('DOMContentLoaded', function() {
+  var elems = document.querySelectorAll('.modal');
+  var instances = M.Modal.init(elems);
+});
+   </script>
+
+
+
+
