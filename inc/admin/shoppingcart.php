@@ -177,10 +177,12 @@
                 <div class="modal-content">
  <div class="container">
 		<form method="post">
-        <input type="text" disabled="disabled" value="<?php echo $row['id']?>" name="hide"></input>
+        <input type="text" readonly hidden value="<?php echo $row['id']?>" name="hide"></input>
 				<input type="text" name="newname">
 				<input type="number" name="newprice" >
 				<input type="text" name="newdesc">
+        <input type="file" name="newImage">
+
         <?php
         if($row['promo']==1){
         ?>
@@ -196,12 +198,38 @@
       </div>
                 </div>
                 <div class="modal-footer">
-                  <input type="submit" class="modal-close waves-effect waves-green btn-flat">Alterar</input>
+                  <input type="submit" class="modal-close waves-effect waves-green btn-flat" value="Alterar"></input>
                   <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
                 </div>
               </div>
-<?php if(isset($_POST['newname'])){
+<?php if(!empty($_POST['newname'])){
  $update = $mysqli->query("UPDATE foodmenu SET name = '".$_POST['newname']."' WHERE id = '".$_POST['hide']."'");
+}
+      if(!empty($_POST['newprice'])){
+ $update = $mysqli->query("UPDATE foodmenu SET price = '".$_POST['newprice']."' WHERE id = '".$_POST['hide']."'");
+ }
+      if(!empty($_POST['newdesc'])){
+ $update = $mysqli->query("UPDATE foodmenu SET promodesc = '".$_POST['newdesc']."' WHERE id = '".$_POST['hide']."'");
+}
+if(!empty($_POST['newdesc'])){
+  $update = $mysqli->query("UPDATE foodmenu SET promodesc = '".$_POST['newdesc']."' WHERE id = '".$_POST['hide']."'");
+ }
+ if(!empty($_FILES['newImage'])){
+  date_default_timezone_set("Brazil/East"); //Definindo timezone padrão
+  $path = $_FILES['newImage']['name'];
+  $ext = pathinfo($path, PATHINFO_EXTENSION);
+   //Pegando extensão do arquivo
+  $new_name = date("Y.m.d-H.i.s") .".". $ext; //Definindo um novo nome para o arquivo
+  $dir = 'inc/img/uploads/menu/'; //Diretório para uploads
+  move_uploaded_file($_FILES['newImage']['tmp_name'], $dir.$new_name); //Fazer upload do arquivo
+  $direct= $dir.$new_name;
+  $selectimg = $mysqli->query("SELECT * FROM foodmenu WHERE id = '".$_POST['hide']."'");
+  while($delimg = mysqli_fetch_array($selectimg)){
+    
+     unlink($delimg['image']);
+
+  }
+  $update = $mysqli->query("UPDATE foodmenu SET image = '".$direct."' WHERE id = '".$_POST['hide']."'");
 }
 ?>
               </form>
