@@ -172,11 +172,10 @@
                                   </div>
                   </form>
                 <!-- Modal Structure -->
-                <form method="post">
+                <form method="post" enctype="multipart/form-data">
               <div id="modal<?php echo $row['id'];?>" class="modal">
                 <div class="modal-content">
  <div class="container">
-		<form method="post">
         <input type="text" readonly hidden value="<?php echo $row['id']?>" name="hide"></input>
 				<input type="text" name="newname">
 				<input type="number" name="newprice" >
@@ -225,15 +224,16 @@ if(!empty($_POST['newdesc'])){
   $direct= $dir.$new_name;
   $selectimg = $mysqli->query("SELECT * FROM foodmenu WHERE id = '".$_POST['hide']."'");
   while($delimg = mysqli_fetch_array($selectimg)){
-    
-     unlink($delimg['image']);
+
+    $file = basename($delimg['image']);
+    rename($delimg['image'], 'inc/img/uploads/menu/old_images/'.$file);
 
   }
   $update = $mysqli->query("UPDATE foodmenu SET image = '".$direct."' WHERE id = '".$_POST['hide']."'");
 }
 ?>
               </form>
-                
+
                   <?php
                   }
                   ?>
@@ -253,7 +253,3 @@ if(!empty($_POST['newdesc'])){
   var instances = M.Modal.init(elems);
 });
    </script>
-
-
-
-
