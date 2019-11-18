@@ -56,23 +56,16 @@
             <div class="navbar" style=" position: relative;">
             <nav>
             <div class="nav-wrapper">
-              <form method='post'>
-                 <div class="input-field">
-
-                <input type='search' name='search' style="background-color:#2D2F40;"/>
-                <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-                <i onclick="document.getElementById('all').click()" class="material-icons">close</i>
-              </form>
-
-
-      </div>
-      </div>
-    </nav>
-    </div>
-    <form method='post'>
-    <input type='submit' name='all' id='all' hidden style="background-color:#2D2F40;"/>
-  </form>
-
+                    <form method='post'>
+                       <div class="input-field">
+                      <input type='search' name='search' style="background-color:#2D2F40;"/>
+                      <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                     <i class="material-icons">close</i>
+                    </form>
+            </div>
+            </div>
+          </nav>
+          </div>
 
             <?php
 
@@ -120,7 +113,7 @@
 
                                        <input type='submit' class='btn-floating halfway-fab waves-light red darken-1' ; name='add_to_cart' style='border:none;' value='+'></input>
                                      </div>
-                                     <input type='number' name='quantity' class='form-control' value='1' style='border-bottom: 2px solid black; background-color:; width:40%; position: absolute; right: 0px;'/>
+                                     <input type='number' name='quantity' class='form-control' value='1' style='border-bottom: 1px solid black; background-color:; width:40%; position: absolute; right: 0px;'/>
                                      <div class='card-content text'>
                                        <h5 class=''>R$<?php echo $row['price']?> </h5>
 
@@ -132,41 +125,6 @@
                                        <?php
                                        }
                                        ?>
-                                       <style>
-                                         .com{
-                                           background: linear-gradient(277deg, #f8f8f8, #f9f9f9, #f7f7f7);
-                                           background-size: 600% 600%;
-
-                                            animation: content-wrap 59s ease infinite;
-
-                                            @keyframes content-wrap {
-                                                0%{background-position:0% 86%}
-                                                50%{background-position:100% 15%}
-                                                100%{background-position:0% 86%}
-                                            }
-                                         }
-                                         .text {
-text-transform: uppercase;
-background: linear-gradient(to right, #30CFD0 0%, #330867 100%);
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
-font: {
- size: 20vw;
- family: $font;
-};
-}
-                                        .promo {
-                                          background: linear-gradient(270deg, #0d0d0d, #252525);
-                                           background-size: 400% 400%;
-
-                                           animation: AnimationName 30s ease infinite;
-
-                                           @keyframes AnimationName {
-                                               0%{background-position:0% 50%}
-                                               50%{background-position:100% 50%}
-                                               100%{background-position:0% 50%}
-}                                   }
-                                       </style>
 
                                      </div>
                                      </div>
