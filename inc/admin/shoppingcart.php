@@ -223,12 +223,6 @@ if(!empty($_POST['newdesc'])){
   move_uploaded_file($_FILES['newImage']['tmp_name'], $dir.$new_name); //Fazer upload do arquivo
   $direct= $dir.$new_name;
   $selectimg = $mysqli->query("SELECT * FROM foodmenu WHERE id = '".$_POST['hide']."'");
-  while($delimg = mysqli_fetch_array($selectimg)){
-
-    $file = basename($delimg['image']);
-    rename($delimg['image'], 'inc/img/uploads/menu/old_images/'.$file);
-
-  }
   $update = $mysqli->query("UPDATE foodmenu SET image = '".$direct."' WHERE id = '".$_POST['hide']."'");
 }
 ?>

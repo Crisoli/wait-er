@@ -41,6 +41,9 @@ $categoryselect = $mysqli->query('SELECT * FROM category');
 		</form>
 		<a href="foodlist.php"><button class="btn waves-effect waves-light" name="action">Voltar ao Cardápio</button></a>
 	</div>
+	<div id="modal" class="modal modal-fixed-footer">
+		<div class="modal-content">
+	<div class="container">
 	<?php
 	$categoryselect = $mysqli->query('SELECT * FROM category');
 		while($cat = mysqli_fetch_array($categoryselect))
@@ -54,10 +57,17 @@ $categoryselect = $mysqli->query('SELECT * FROM category');
 	<?php
 	}
 	?>
+</div>
+</div>
+<div class="modal-footer">
 	<form method="post">
 		<input type='text' name='add' />
 		<input type='submit'/>
+		<a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
 	</form>
+</div>
+</div>
+
 </body>
 <?php
 
@@ -93,7 +103,19 @@ $categoryselect = $mysqli->query('SELECT * FROM category');
 	}
 ?>
 
+<button data-target="modal" class="btn modal-trigger">Open the modal</button>
+
+<form method="post" enctype="multipart/form-data">
+
+
+
+
 <script>
+document.addEventListener('DOMContentLoaded', function() {
+ var elems = document.querySelectorAll('.modal');
+ var instances = M.Modal.init(elems);
+});
+
 $(document).ready(function() {
     $('#a').material_select();
 });

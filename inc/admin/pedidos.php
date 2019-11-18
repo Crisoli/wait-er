@@ -20,6 +20,7 @@ if(mysqli_num_rows($requestpen) > 0)
                         <p>
                             <h4> Mesa: <?php echo $pen['id_table'];?></h4> N° do pedido:
                             <?php echo $pen['id'];?>
+                            <br><input type="submit" name="cancel" value="Cancelar Pedido"></input>
                             <br><input type="submit" name="update" value="Finalizar Pedido"></input>
 
                         </p>
@@ -63,6 +64,10 @@ while($name1= mysqli_fetch_array($namesel1))
 
     if(isset($_POST['id'])){
     $finalizar = $mysqli->query("UPDATE requests_numbers SET status='Finalizado',finished='".$date."',finished_hour='".$hour."', finish_id='".$_SESSION['userid']."' WHERE id = '".$_POST['id']."'");
+    echo '<script>window.location="comanda.php"</script>';
+    }
+    if(isset($_POST['cancel'])){
+    $finalizar = $mysqli->query("UPDATE requests_numbers SET status='Cancelado',finished='".$date."',finished_hour='".$hour."', finish_id='".$_SESSION['userid']."' WHERE id = '".$_POST['id']."'");
     echo '<script>window.location="comanda.php"</script>';
     }
 
@@ -184,6 +189,66 @@ while($name3= mysqli_fetch_array($namesel3))
     }
 ?>
 </div>
+
+<div id="can">
+   <?php
+//Echo pedidos finalizados
+$requestcan = $mysqli->query("SELECT * FROM requests_numbers WHERE status = 'Cancelado'");
+if(mysqli_num_rows($requestcan) > 0)
+{
+    while($can = mysqli_fetch_array($requestcan))
+    {
+?>
+
+                   <div class="col s12 m6 l4">
+                       <div class="card large">
+                           <div class="card-content white-text" style="background-color:#411B87; height:30%;">
+                               <p>
+                                   <h4> Mesa: <?php echo $can['id_table'];?></h4> N° do pedido:
+                                   <?php echo $can['id'];?>
+                               </p>
+                           </div>
+                           <div class="card-tabs">
+                               <ul class="tabs tabs-fixed-width">
+                               <li class="tab"><a class="active" href="#status<?php echo $can['id'];?>">Status</a></li>
+                           <li class="tab"><a href="#itens<?php echo $can['id'];?>">Itens</a></li>
+                           <li class="tab"><a href="#anotacoes<?php echo $can['id'];?>">Anotações</a></li>
+                       </ul>
+                   </div>
+                   <div class="card-content grey lighten-4">
+                       <div id="status<?php echo $can['id'];?>">
+                           <?php echo "Cancelado";?>
+                       </div>
+                       <div id="itens<?php echo $can['id'];?>">
+<?php
+$itemsel3 = $mysqli->query("SELECT * FROM requests WHERE requests_numbers_id = '".$can['id']."'");
+while($item3= mysqli_fetch_array($itemsel3))
+       {
+       $namesel3 = $mysqli->query("SELECT * FROM foodmenu WHERE id = '".$item3['foodmenu_id']."'");
+while($name3= mysqli_fetch_array($namesel3))
+{
+   ?><b>|Item:</b> <?php echo utf8_encode($name3['name']); ?> <b>|Preço:</b> <?php echo $name3['price']; ?> <b>|Quantidade:</b> <?php echo $item3['quantity']; ?> <br>
+   <?php
+}
+       }
+?>
+
+                       </div>
+                       <div id="anotacoes<?php echo $can['id'];?>">
+                       <b>Observações: <br></b> <?php echo utf8_encode($can['obs']);?>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+
+
+
+               <?php
+}
+   }
+?>
+</div>
+
     </div>
     <?php
    }
@@ -191,7 +256,7 @@ while($name3= mysqli_fetch_array($namesel3))
       ?>
 
 
-      
+
                         <script type="text/javascript">
                         $(document).ready(function() {
                             $('.collapsible').collapsible();
