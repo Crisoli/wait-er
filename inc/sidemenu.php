@@ -23,7 +23,7 @@ background-size: 100% 30%;}
 
 
     echo "
-      <a href='#' data-activates='slide-out2' class='button-collapse show-on-medium-and-up right sidenav1 '><i class='material-icons'>chrome_reader_mode</i></a>
+      <a href='#' data-activates='slide-out2' class='button-collapse show-on-medium-and-up right sidenav1 '><i class='material-icons'>format_align_right</i></a>
       ";
     };
   };
@@ -78,10 +78,10 @@ $categorys = $mysqli->query("SELECT * FROM category");
   <div class="background" style="background-color:;">
   <br>
   <div class="center-align">
-    <a href="redirect.php?pagefu=profile&pagead=profile&foodslide=false"><img style="width:100px; height:100px; object-fit: cover;" class="circle" src="<?php echo $_SESSION['img'];?>"></a>
+    <a href="redirect.php?profile_session=my&pagefu=profile&pagead=profile"><img style="width:85px; height:85px; object-fit: cover;" class="circle" src="<?php echo $_SESSION['img'];?>"></a>
   </br>
   <p>
-    <a href="redirect.php?pagefu=profile&pagead=profile&foodslide=false"><span class="white-text"><?php echo $_SESSION['username'];?></span></a>
+    <a href="redirect.php?profile_session=my&pagefu=profile&pagead=profile"><span class="white-text"><?php echo $_SESSION['username'];?></span></a>
   </p>
   </div>
     <a href='logoff.php' name='logoff'><span class="red-text">Logoff</span></a>
@@ -92,8 +92,8 @@ $categorys = $mysqli->query("SELECT * FROM category");
 if($_SESSION['admin']=='true'){
   echo "
   <li><a class='waves-effect white-text' href='redirect.php?profile_session=all&pagead=profile&foodslide=false'><i class='material-icons white-text'>assignment_ind</i>Funcionários</a></li>
-  <li><a class='waves-effect white-text' href='redirect.php?pagead=1&foodslide=false'><i class='material-icons white-text'>content_paste</i>Pedidos</a></li>
-<li><a class='waves-effect white-text' href='redirect.php?pagead=06&foodslide=true'><i class='material-icons white-text'>archive</i>Realizar Pedidos</a></li>
+  <li><a class='waves-effect white-text' href='redirect.php?pagead=1&foodslide=false'><i class='material-icons white-text'>content_paste</i>Comandas</a></li>
+<li><a class='waves-effect white-text' href='redirect.php?pagead=06&foodslide=true'><i class='material-icons white-text'>archive</i>Cardápio</a></li>
   <li><a class='waves-effect white-text' href='redirect.php?pagead=3&foodslide=false'><i class='material-icons white-text'>archive</i>Adicionar ao Cardápio</a></li>
   <li><a class='waves-effect white-text' href='redirect.php?pagead=4&foodslide=false'><i class='material-icons white-text'>archive</i>Registrar Funcionário</a></li>
   ";
