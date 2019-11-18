@@ -12,7 +12,6 @@ $mysqli = new mysqli($HOST, $DB_USERNAME, $DB_PASS,$DB_NAME);
   <?php
   date_default_timezone_set('America/Sao_Paulo');
   $date = date('Y-m-d', time());
-  echo $date;
   // WHERE started BETWEEN '2019-08-21' and '2019-08-21'
   $rankcountrec = $mysqli->query("SELECT COUNT(*), starter_id FROM requests_numbers WHERE started BETWEEN '".$date."' and '".$date."' GROUP BY starter_id DESC");
   while($countrec = mysqli_fetch_array($rankcountrec))
