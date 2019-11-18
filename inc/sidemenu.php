@@ -38,6 +38,7 @@ if(isset($_SESSION['pagead'])){
     <li class='tab'><a href='#pen'>Pendentes</a></li>
     <li class='tab'><a href='#fin'>Finalizados</a></li>
     <li class='tab'><a href='#rec'>Finalizados recentemente</a></li>
+    <li class='tab'><a href='#can'>Cancelado</a></li>
   </ul>
    </div>
    <?php
@@ -52,9 +53,9 @@ if(isset($_SESSION['slide'])){
 $categorys = $mysqli->query("SELECT * FROM category");
     while($rys = mysqli_fetch_array($categorys))
     {
-      
+
     echo utf8_encode ("<li class='tab'><a href='#menu".$rys['id']."'>".$rys['name']."</a></li>");
-      
+
     }
   }
   ?>
