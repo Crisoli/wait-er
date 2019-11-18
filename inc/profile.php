@@ -89,6 +89,9 @@ else {
 if($_SESSION['profile'] == 'all')
 {
 $profile = $mysqli->query('SELECT * FROM accounts');
+?>
+<button data-target='modalfun' class='btn modal-trigger'>Adicionar Funcionario</button>
+<?php
 while($pro = mysqli_fetch_array($profile)){
 ?>
 <div id='Aqui aparece as conta tudo, só o admin pode acessar'>
