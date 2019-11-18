@@ -59,21 +59,14 @@
             <div class="nav-wrapper">
                     <form method='post'>
                        <div class="input-field">
-
                       <input type='search' name='search' style="background-color:#2D2F40;"/>
                       <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-                      <i onclick="document.getElementById('all').click()" class="material-icons">close</i>
+                     <i class="material-icons">close</i>
                     </form>
-
-
             </div>
             </div>
           </nav>
           </div>
-          <form method='post'>
-          <input type='submit' name='all' id='all' hidden style="background-color:#2D2F40;"/>
-        </form>
-
 
             <?php
 
@@ -91,40 +84,38 @@
                   else{
                 $query = $mysqli->query("SELECT * FROM foodmenu WHERE category_id = '".$rys['id']."' ORDER BY promo DESC");
                       }
-                  if(isset($_POST['all'])){
-                    $query = $mysqli->query("SELECT * FROM foodmenu WHERE category_id = '".$rys['id']."' ORDER BY promo DESC");
-                  }
 
             while($row = mysqli_fetch_array($query))
             {
 
                 ?>
                              <form id='<?php echo $row['id'] ?>' method='post' action='comanda.php?action=add&id=<?php echo $row['id'] ?>'>
-                                  <div class="col m4 l3 offset-m5">
+                                  <div class="col m4 l3" >
+                                  <div class='card' style="height:80%; width:auto">
                                     <?php
                                     if($row['promo']==1){
                                     ?>
-                                    <div class='card promo' style=" width:99%;">
+
                                         <div class='card-image'>
-                                          <img src='<?php echo $row['image'] ?>'/>
+                                          <img src='<?php echo $row['image'] ?>' style="object-fit:cover; height:300px;"/>
                                           <span class='card-title promo black-text' style=" height:5px;"><?php echo utf8_encode($row['name']); ?></span>
                                           <?php
                                           }
                                           else {
                                           ?>
-                                          <div class='card com' style=" width:99%;">
                                               <div class='card-image'>
-                                                <img src='<?php echo $row['image'] ?>'/>
+                                                <img src='<?php echo $row['image'] ?>' style="object-fit:cover; height:300px;"/>
                                                 <span class='card-title com black-text' style="background-color:white; height:5px;"><?php echo utf8_encode($row['name']); ?></span>
                                           <?php
                                           }
                                           ?>
-                                          <input type='hidden' name='hidden_name'  value='<?php echo utf8_encode($row['name']); ?>' />
+
                                           <input type='hidden' name='hidden_price' value='<?php echo $row['price'] ?>' />
+                                          <input type='hidden' name='hidden_name'  value='<?php echo utf8_encode($row['name']); ?>' />                                          
 
                                           <input type='submit' class='btn-floating halfway-fab waves-light red darken-1' ; name='add_to_cart' style='border:none;' value='+'></input>
                                         </div>
-                                        <input type='number' name='quantity' class='form-control' value='1' style='border-bottom: 2px solid black; background-color:; width:40%; position: absolute; right: 0px;'/>
+                                        <input type='number' name='quantity' class='form-control' value='1' min="1" max="100" style='border-bottom: 1px solid black; background-color:; width:40%; position: absolute; right: 0px;'/>
                                         <div class='card-content text'>
                                           <h5 class=''>R$<?php echo $row['price']?> </h5>
 
@@ -136,49 +127,13 @@
                                           <?php
                                           }
                                           ?>
-                                          <style>
-                                            .com{
-                                              background: linear-gradient(277deg, #f8f8f8, #f9f9f9, #f7f7f7);
-                                              background-size: 600% 600%;
-
-                                               animation: content-wrap 59s ease infinite;
-
-                                               @keyframes content-wrap {
-                                                   0%{background-position:0% 86%}
-                                                   50%{background-position:100% 15%}
-                                                   100%{background-position:0% 86%}
-                                               }
-                                            }
-                                            .text {
-                                            text-transform: uppercase;
-                                            background: linear-gradient(to right, #30CFD0 0%, #330867 100%);
-                                            -webkit-background-clip: text;
-                                            -webkit-text-fill-color: transparent;
-                                            font: {
-                                              size: 20vw;
-                                              family: $font;
-                                            };
-                                          }
-                                           .promo {
-                                             background: linear-gradient(270deg, #0d0d0d, #252525);
-                                              background-size: 400% 400%;
-
-                                              animation: AnimationName 30s ease infinite;
-
-                                              @keyframes AnimationName {
-                                                  0%{background-position:0% 50%}
-                                                  50%{background-position:100% 50%}
-                                                  100%{background-position:0% 50%}
-                                          }
-                                          }
-                                          </style>
 
                                         </div>
                                         <div class="card-action">
                                         <!-- Modal Trigger -->
-                                        <button data-target="modal<?php echo $row['id'];?>" class="btn modal-trigger">Open the modal</button>
+                                        <button data-target="modal<?php echo $row['id'];?>" class="btn modal-trigger">Editar</button>
                                         </div>
-                                        </div>
+
                                   </div>
                   </form>
                 <!-- Modal Structure -->
@@ -237,11 +192,11 @@ if(!empty($_POST['newdesc'])){
 }
 ?>
               </form>
-
+                </div>
                   <?php
                   }
                   ?>
-                </div>
+
                 </div>
                   <?php
                   }
