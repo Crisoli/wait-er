@@ -56,16 +56,23 @@
             <div class="navbar" style=" position: relative;">
             <nav>
             <div class="nav-wrapper">
-                    <form method='post'>
-                       <div class="input-field">
-                      <input type='search' name='search' style="background-color:#2D2F40;"/>
-                      <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-                     <i class="material-icons">close</i>
-                    </form>
-            </div>
-            </div>
-          </nav>
-          </div>
+              <form method='post'>
+                 <div class="input-field">
+
+                <input type='search' name='search' style="background-color:#2D2F40;"/>
+                <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                <i onclick="document.getElementById('all').click()" class="material-icons">close</i>
+              </form>
+
+
+      </div>
+      </div>
+    </nav>
+    </div>
+    <form method='post'>
+    <input type='submit' name='all' id='all' hidden style="background-color:#2D2F40;"/>
+  </form>
+
 
             <?php
 
