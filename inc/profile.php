@@ -1,12 +1,12 @@
 
-<!--
+
 <a id='Esses 3 botões são para mudar o $_SESSION e so vai ficar aqui enquanto eu não terminar a pagina'
  href='redirect.php?profile_id=6&profile_session=specific&pagefu=profile&pagead=profile'>(1)Pagina do funcionario (Admin que vizualiza essa pagina)</a><br>
  <a id='Esses 3 botões são para mudar o $_SESSION e so vai ficar aqui enquanto eu não terminar a pagina'
   href='redirect.php?profile_session=all&pagefu=profile&pagead=profile'>(2)Pagina que leva pros profile dos funcionarios (Admin que vizualiza essa pagina)</a><br>
  <a id='Esses 3 botões são para mudar o $_SESSION e so vai ficar aqui enquanto eu não terminar a pagina'
   href='redirect.php?profile_session=my&pagefu=profile&pagead=profile'>(3)Pagina do funcionario/admin (Funcionario/admin que vizualiza essa pagina e você precisa ter logado antes de vir pra essa pagina)</a><br>
----->
+
 
 
   <!--- Perfil individual ---->
@@ -102,6 +102,84 @@ $profile = $mysqli->query('SELECT * FROM accounts');
 ?>
 
 <button data-target='modalfun' class='btn-floating btn-large modal-trigger circle red' style="position:absolute; position:fixed; right:1%; bottom:2%;"><i class="material-icons">add</i></button>
+
+<div id="modalfun" class="modal modal-fixed-footer">
+  <div class="modal-content">
+<div class="container">
+<div class="row">
+    <form method="post" enctype="multipart/form-data">
+      <div class="col s6 m6">Nome:<input type="text" name="username" placeholder="Digite seu nome aqui." required=""></input></div>
+      <div class="col s6 m6">E-mail:<input type="text" name="useremail" placeholder="Digite seu e-mail aqui." required=""></input></div></p>
+      <div class="col s12 m12"><SPAN>Tipo de usuário:</SPAN></br>
+        <label>
+              <input class="with-gap" name="usertype" type="radio" value='10' checked />
+              <span>Funcionário</span>
+            </label>
+          <label>
+              <input class="with-gap" name="usertype" type="radio" value='11'/>
+              <span>Administrador</span>
+          </label></p></div>
+      <div class="col s6 m6">Número de telefone:<input type="text" name="userphone" placeholder="Digite o seu numéro para contato." required=""></input></p></div>
+      <div class="col s6 m6">Descrição: <input type="text" name="description" placeholder="Faça uma breve descrição" required=""></p></div>
+      <div class="col s12 m12">Senha:<input type="password" name="userpassword" placeholder="Digite sua senha aqui." required=""></p></div></p>
+      </div>
+      <div class="file-field input-field">
+            <div class="btn">
+              <span>Imagem</span>
+              <input type="file" name="fileUpload">
+            </div>
+            <div class="file-path-wrapper">
+              <input class="file-path validate" type="text" required="">
+            </div>
+        </div>
+        <button class="btn waves-effect waves-light" type="submit" name="action">Registrar Funcionario</button>
+    </form>
+  </div>
+</div>
+<div class="modal-footer">
+  <form method="post">
+    <input type='text' name='add' />
+    <input type='submit'/>
+    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
+  </form>
+</div>
+</div>
+<?php
+
+if (isset($_FILES['fileUpload'])) {
+
+date_default_timezone_set("Brazil/East"); //Definindo timezone padrão
+
+$path = $_FILES['fileUpload']['name'];
+$ext = pathinfo($path, PATHINFO_EXTENSION);
+$new_name = $_POST['username'] .".". $ext; //Definindo um novo nome para o arquivo
+$dir = 'inc/img/uploads/perfil/'; //Diretório para uploads
+move_uploaded_file($_FILES['fileUpload']['tmp_name'], $dir.$new_name); //Fazer upload do arquivo
+$direct= $dir.$new_name;
+if(isset($_POST['usertype'])) {
+  $name= $_POST['username'];
+  $usertype= $_POST['usertype'];
+  $email= $_POST['useremail'];
+  $phone= $_POST['userphone'];
+  $password= $_POST['userpassword'];
+  $description= $_POST['description'];
+
+  //mysql insert//
+  $userinsert= "INSERT INTO accounts VALUES (NULL, '$name','$direct', '$email', '$phone', '$description', '$password', '$usertype,', '".$_SESSION['userid']."')";
+  if ($mysqli->query($userinsert) === TRUE) {
+  } else {
+      echo "Error: " . $userinsert . "<br>" . $mysqli->error;
+  }
+}
+}
+?>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+ var elems = document.querySelectorAll('.modal');
+ var instances = M.Modal.init(elems);
+});
+</script>
 
 <?php
 while($pro = mysqli_fetch_array($profile)){
