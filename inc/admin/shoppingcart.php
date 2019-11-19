@@ -1,10 +1,8 @@
 
-
      <body style="font-family: 'Exo 2', sans-serif;">
           <br/>
 
             <?php
-
             if (isset($_POST["add_to_cart"]))
               {
                 if (isset($_SESSION["shopping_cart"]))
@@ -50,7 +48,6 @@
                           }
                       }
                   }
-
               }
             ?>
 
@@ -61,15 +58,18 @@
                        <div class="input-field">
                       <input type='search' name='search' style="background-color:#2D2F40;"/>
                       <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-                     <i class="material-icons">close</i>
+                      <i onclick="document.getElementById('all').click()" class="material-icons">close</i>
                     </form>
             </div>
             </div>
           </nav>
           </div>
+          <form method='post'>
+          <input type='submit' name='all' id='all' hidden style="background-color:#2D2F40;"/>
+        </form>
+
 
             <?php
-
             $categorys = $mysqli->query("SELECT * FROM category");
                 while($rys = mysqli_fetch_array($categorys))
                 {
@@ -84,18 +84,18 @@
                   else{
                 $query = $mysqli->query("SELECT * FROM foodmenu WHERE category_id = '".$rys['id']."' ORDER BY promo DESC");
                       }
-
+                      if(isset($_POST['all'])){
+                          $query = $mysqli->query("SELECT * FROM foodmenu WHERE category_id = '".$rys['id']."' ORDER BY promo DESC");
+                        }
             while($row = mysqli_fetch_array($query))
             {
-
                 ?>
                              <form id='<?php echo $row['id'] ?>' method='post' action='comanda.php?action=add&id=<?php echo $row['id'] ?>'>
                                   <div class="col m4 l3" >
-                                  <div class='card' style="height:80%; width:auto">
                                     <?php
                                     if($row['promo']==1){
                                     ?>
-
+                                    <div class='card' style="height:80%; width:auto">
                                         <div class='card-image'>
                                           <img src='<?php echo $row['image'] ?>' style="object-fit:cover; height:300px;"/>
                                           <span class='card-title promo black-text' style=" height:5px;"><?php echo utf8_encode($row['name']); ?></span>
@@ -103,20 +103,19 @@
                                           }
                                           else {
                                           ?>
+                                          <div class='card com' style=" width:99%;">
                                               <div class='card-image'>
                                                 <img src='<?php echo $row['image'] ?>' style="object-fit:cover; height:300px;"/>
                                                 <span class='card-title com black-text' style="background-color:white; height:5px;"><?php echo utf8_encode($row['name']); ?></span>
                                           <?php
                                           }
                                           ?>
-
+                                          <input type='hidden' name='hidden_name'  value='<?php echo utf8_encode($row['name']); ?>' />
                                           <input type='hidden' name='hidden_price' value='<?php echo $row['price'] ?>' />
-                                          <input type='hidden' name='hidden_name'  value='<?php echo utf8_encode($row['name']); ?>' />                                          
 
                                           <input type='submit' class='btn-floating halfway-fab waves-light red darken-1' ; name='add_to_cart' style='border:none;' value='+'></input>
                                         </div>
-                                        <input type='number' name='quantity' class='form-control' value='1' min="1" max="100" style='border-bottom: 1px solid black; background-color:; width:40%; position: absolute; right: 0px;'/>
-                                        <div class='card-content text'>
+<input type='number' name='quantity' class='form-control' value='1' min="1" max="100" style='border-bottom: 1px solid black; background-color:; width:40%; position: absolute; right: 0px;'/>                                        <div class='card-content text'>
                                           <h5 class=''>R$<?php echo $row['price']?> </h5>
 
                                           <?php
@@ -128,12 +127,12 @@
                                           }
                                           ?>
 
+
                                         </div>
                                         <div class="card-action">
                                         <!-- Modal Trigger -->
-                                        <button data-target="modal<?php echo $row['id'];?>" class="btn modal-trigger">Editar</button>
+                                     <button data-target="modal<?php echo $row['id'];?>" class="btn modal-trigger">Editar</button>                                        </div>
                                         </div>
-
                                   </div>
                   </form>
                 <!-- Modal Structure -->
@@ -188,15 +187,19 @@ if(!empty($_POST['newdesc'])){
   move_uploaded_file($_FILES['newImage']['tmp_name'], $dir.$new_name); //Fazer upload do arquivo
   $direct= $dir.$new_name;
   $selectimg = $mysqli->query("SELECT * FROM foodmenu WHERE id = '".$_POST['hide']."'");
+  while($delimg = mysqli_fetch_array($selectimg)){
+    $file = basename($delimg['image']);
+    rename($delimg['image'], 'inc/img/uploads/menu/old_images/'.$file);
+  }
   $update = $mysqli->query("UPDATE foodmenu SET image = '".$direct."' WHERE id = '".$_POST['hide']."'");
 }
 ?>
               </form>
-                </div>
+
                   <?php
                   }
                   ?>
-
+                </div>
                 </div>
                   <?php
                   }
