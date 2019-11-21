@@ -60,15 +60,12 @@
                        <div class="input-field">
                       <input type='search' name='search' style="background-color:#2D2F40;"/>
                       <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-                     <i onclick="document.getElementById('all').click()" class="material-icons">close</i>
+                     <i class="material-icons">close</i>
                     </form>
             </div>
             </div>
           </nav>
           </div>
-          <form method='post'>
-          <input type='submit' name='all' id='all' hidden style="background-color:#2D2F40;"/>
-        </form>
 
             <?php
 
@@ -81,13 +78,10 @@
 
                   <?php
                   if(isset($_POST['search'])){
-                $query = $mysqli->query("SELECT * FROM `foodmenu` WHERE name LIKE '".$_POST['search']."%' ORDER BY promo DESC");
+                $query = $mysqli->query("SELECT * FROM `foodmenu` WHERE category_id = '".$rys['id']."' and name LIKE '".$_POST['search']."%' ORDER BY promo DESC");
                   }
                   else{
                 $query = $mysqli->query("SELECT * FROM foodmenu WHERE category_id = '".$rys['id']."' ORDER BY promo DESC");
-                      }
-                      if(isset($_POST['all'])){
-                        $query = $mysqli->query("SELECT * FROM foodmenu WHERE category_id = '".$rys['id']."' ORDER BY promo DESC");
                       }
 
             while($row = mysqli_fetch_array($query))
@@ -95,7 +89,7 @@
 
                 ?>
                              <form id='<?php echo $row['id'] ?>' method='post' action='foodlist.php?action=add&id=<?php echo $row['id'] ?>'>
-                               <div class="col m4 l3 offset-m5">
+                               <div class="col s12 m4 l3 offset-m5">
                                  <?php
                                  if($row['promo']==1){
                                  ?>
@@ -107,7 +101,7 @@
                                        }
                                        else {
                                        ?>
-                                       <div class='card com' style=" width:500px;">
+                                       <div class='card com' style="">
                                            <div class='card-image'>
                                              <img src='<?php echo $row['image'] ?>' style="object-fit:cover; width:100%; height:500px;"/>
                                              <span class='card-title com black-text' style="background-color:white; height:5px;"><?php echo $row['name'] ?></span>
