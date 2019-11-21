@@ -1,5 +1,5 @@
 
-
+<!---
 <a id='Esses 3 botões são para mudar o $_SESSION e so vai ficar aqui enquanto eu não terminar a pagina'
  href='redirect.php?profile_id=6&profile_session=specific&pagefu=profile&pagead=profile'>(1)Pagina do funcionario (Admin que vizualiza essa pagina)</a><br>
  <a id='Esses 3 botões são para mudar o $_SESSION e so vai ficar aqui enquanto eu não terminar a pagina'
@@ -7,7 +7,7 @@
  <a id='Esses 3 botões são para mudar o $_SESSION e so vai ficar aqui enquanto eu não terminar a pagina'
   href='redirect.php?profile_session=my&pagefu=profile&pagead=profile'>(3)Pagina do funcionario/admin (Funcionario/admin que vizualiza essa pagina e você precisa ter logado antes de vir pra essa pagina)</a><br>
 
-
+--->
 
   <!--- Perfil individual ---->
 
@@ -56,8 +56,8 @@ while($pro = mysqli_fetch_array($profile)){
 <img src="<?php echo $pro['img']; ?>" class="circle" style=" margin-top: -0.1%; width:100px; height:100px; object-fit: cover;">
   </div>
 </div>
-
     </div>
+
   <div class="col s12 m5 l5">
 <div class="center-align">
 <h3 class="black-text">
@@ -104,7 +104,7 @@ $profile = $mysqli->query('SELECT * FROM accounts');
 <button data-target='modalfun' class='btn-floating btn-large modal-trigger circle red' style="position:absolute; position:fixed; right:1%; bottom:2%;"><i class="material-icons">add</i></button>
 
 <div id="modalfun" class="modal modal-fixed-footer">
-  <div class="modal-content">
+  <div class="modal-content" >
 <div class="container">
 <div class="row">
     <form method="post" enctype="multipart/form-data">
@@ -198,7 +198,7 @@ while($pro = mysqli_fetch_array($profile)){
         color-stop(50%,white));
         border: none;
         border-radius: 5px;
-        height:50%;"
+        width:auto;"
         <?php
         }
         elseif ($pro['usertype'] == 10){
@@ -208,7 +208,7 @@ while($pro = mysqli_fetch_array($profile)){
           color-stop(50%,white));
           border: none;
           border-radius: 5px;
-          height:50%;"
+          width:auto;"
           <?php
           echo 'Funcionário';
         }
@@ -274,7 +274,7 @@ while($pro = mysqli_fetch_array($profile)){
   <div class="center-align">
   <div class="row" style="padding-top:6%;">
     <div class="col s12 m5 l6 offset-l3 offset-m3">
-      <div class="card"
+      <div class="card, N/A transparent"
       <?php if ($pro['usertype'] == 11){
       ?>
       style="background:
@@ -296,13 +296,20 @@ while($pro = mysqli_fetch_array($profile)){
 
       }
         ?>
-      >
-      <div class="col s12 m5 l6">
-      <div class="hide-on-small-only">
-  <img src="<?php echo $pro['img']; ?>" style="margin-left:-11%; margin-top: -0.1%; width:105%; height:100%; object-fit: cover;
-  -webkit-clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 0 51%, 0% 0%);">
+        >
+        <div class="col s12 m5 l6">
+        <div class="hide-on-small-only">
+    <div class="card-image"><img src="<?php echo $pro['img']; ?>" style="margin-left:-11%; margin-top: -0.1%; width:100%; height:100%; object-fit: cover;
+    -webkit-clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 0 51%, 0% 0%);">
+        </div></div>
+
+    <div class="hide-on-med-and-up">
+      <div class="center-align">
+    <img src="<?php echo $pro['img']; ?>" class="circle" style=" margin-top: -0.1%; width:100px; height:100px; object-fit: cover;">
       </div>
-      </div>
+    </div>
+
+        </div>
     <div class="col s12 m5 l5">
   <div class="center-align">
   <h3 class="black-text">
