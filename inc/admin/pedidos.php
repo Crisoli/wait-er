@@ -15,8 +15,8 @@ if(mysqli_num_rows($requestpen) > 0)
 ?>
       <input type="hidden" value=<?php echo $pen['id'];?> name="id">
             <div class="col s12 m6 l4">
-                <div class="card large">
-                    <div class="card-content white-text" style="background-color:#FF3028; height:30%;">
+                <div class="card large" style="height:auto;">
+                    <div class="card-content white-text" style="background-color:#FF4831; height:30%;">
                         <p>
                             <h4> Mesa: <?php echo $pen['id_table'];?></h4> N° do pedido:
                             <?php echo $pen['id'];?>
@@ -32,9 +32,9 @@ if(mysqli_num_rows($requestpen) > 0)
                             <li class="tab"><a href="#anotacoes<?php echo $pen['id'];?>">Anotações</a></li>
                         </ul>
                     </div>
-                    <div class="card-content grey lighten-4">
+                    <div class="card-content">
                         <div id="status<?php echo $pen['id'];?>">
-                            <?php echo "Pendente";?>
+                            <div class="center-align"> <h6><?php echo "Pendente";?></h6> </div>
                         </div>
                         <div id="itens<?php echo $pen['id'];?>">
 <?php
@@ -44,15 +44,32 @@ while($item1= mysqli_fetch_array($itemsel1))
         $namesel1 = $mysqli->query("SELECT * FROM foodmenu WHERE id = '".$item1['foodmenu_id']."'");
 while($name1= mysqli_fetch_array($namesel1))
 {
-    ?><b>|Item:</b> <?php echo utf8_encode($name1['name']); ?> <b>|Preço:</b> <?php echo $name1['price']; ?> <b>|Quantidade:</b> <?php echo $item1['quantity']; ?> <br>
-<?php
-}
-}
-?>
+    ?>
+    <div class="col s6 m6 l9">
+    <p><h6><?php echo utf8_encode($name1['name']); ?></h6>
+    </div>
+    <div class="col s6 m6 l3">
+    <h6 class="right-align">
+    <?php echo $item1['quantity']; ?>
+    </div>
+  </h6>
+    </p>
+    <div class="col s12 m12 l3 offset-l9">
+    <h6 class="right-align">
+    <?php echo $name1['price']; ?>
+    </h6>
+    </div>
 
+    <?php
+    }
+    ?>
+
+    <?php
+            }
+    ?>
                         </div>
                         <div id="anotacoes<?php echo $pen['id'];?>">
-                            <b>Observações: <br></b> <?php echo utf8_encode($pen['obs']);?>
+                            <br><?php echo utf8_encode($pen['obs']);?></br>
                         </div>
                     </div>
                 </div>
@@ -75,34 +92,35 @@ while($name1= mysqli_fetch_array($namesel1))
     </div>
     </form>
     <div id="rec">
+
+
+
     <?php
 //Finalizados recentemente
-
 $requestrec = $mysqli->query("SELECT * FROM requests_numbers WHERE status = 'Finalizado' AND finished = '".$date."'");
 if(mysqli_num_rows($requestrec) > 0)
 {
      while($rec = mysqli_fetch_array($requestrec))
      {
 ?>
-
-            <div class="col s12 m6 l4">
-                <div class="card large">
-                    <div class="card-content white-text" style="background-color:#411B87; height:30%;">
+                <div class="col s12 m6 l4">
+                <div class="card large" style="height:auto;">
+                    <div class="card-content white-text" style="background-color:#638EEB; height:30%;">
                         <p>
                             <h4> Mesa: <?php echo $rec['id_table'];?></h4> N° do pedido:
                             <?php echo $rec['id'];?>
                         </p>
                     </div>
                     <div class="card-tabs">
-                        <ul class="tabs tabs-fixed-width">
+                        <ul class="blue-text tabs tabs-fixed-width" >
                         <li class="tab"><a class="active" href="#status<?php echo $rec['id'];?>">Status</a></li>
-                            <li class="tab"><a href="#itens<?php echo $rec['id'];?>">Itens</a></li>
-                            <li class="tab"><a href="#anotacoes<?php echo $rec['id'];?>">Anotações</a></li>
+                        <li class="tab"><a href="#itens<?php echo $rec['id'];?>">Itens</a></li>
+                        <li class="tab"><a href="#anotacoes<?php echo $rec['id'];?>">Anotações</a></li>
                         </ul>
                     </div>
-                    <div class="card-content grey lighten-4">
+                    <div class="card-content">
                         <div id="status<?php echo $rec['id'];?>">
-                            <?php echo "Finalizado";?>
+                          <div class="center-align"> <h6><?php echo "Finalizado Recentemente";?></h6> </div>
                         </div>
                         <div id="itens<?php echo $rec['id'];?>">
 <?php
@@ -112,24 +130,47 @@ while($item2= mysqli_fetch_array($itemsel2))
         $namesel2 = $mysqli->query("SELECT * FROM foodmenu WHERE id = '".$item2['foodmenu_id']."'");
 while($name2= mysqli_fetch_array($namesel2))
 {
-    ?><b>|Item:</b> <?php echo utf8_encode($name2['name']); ?> <b>|Preço:</b> <?php echo $name2['price']; ?> <b>|Quantidade:</b> <?php echo $item2['quantity']; ?> <br>
+    ?>
+    <div class="col s6 m6 l9">
+    <p><h6><?php echo utf8_encode($name2['name']); ?></h6>
+    </div>
+    <div class="col s6 m6 l3">
+    <h6 class="right-align">
+    <?php echo $item2['quantity']; ?>
+    </div>
+  </h6>
+    </p>
+    <div class="col s12 m12 l3 offset-l9">
+    <h6 class="right-align">
+    <?php echo $name2['price']; ?>
+    </h6>
+    </div>
+
 <?php
 }
+?>
+
+<?php
         }
 ?>
 
                         </div>
                         <div id="anotacoes<?php echo $rec['id'];?>">
-                        <b>Observações: <br></b> <?php echo utf8_encode($rec['obs']);?>
+                        <p><?php echo utf8_encode($rec['obs']);?></p>
                         </div>
                     </div>
-                </div>
-            </div>
+                    </div>
+                  </div>
+
 
         <?php
 }
+?>
+
+<?php
     }
 ?>
+
  </div>
  <div id="fin">
     <?php
@@ -142,7 +183,7 @@ if(mysqli_num_rows($requestfin) > 0)
 ?>
 
                     <div class="col s12 m6 l4">
-                        <div class="card large">
+                        <div class="card large" style="height:auto;">
                             <div class="card-content white-text" style="background-color:#411B87; height:30%;">
                                 <p>
                                     <h4> Mesa: <?php echo $fin['id_table'];?></h4> N° do pedido:
@@ -156,9 +197,9 @@ if(mysqli_num_rows($requestfin) > 0)
                             <li class="tab"><a href="#anotacoes<?php echo $fin['id'];?>">Anotações</a></li>
                         </ul>
                     </div>
-                    <div class="card-content grey lighten-4">
+                    <div class="card-content">
                         <div id="status<?php echo $fin['id'];?>">
-                            <?php echo "Finalizado Recentemente";?>
+                          <h6 class="center-align"><?php echo "Finalizado";?></h6>
                         </div>
                         <div id="itens<?php echo $fin['id'];?>">
 <?php
@@ -168,15 +209,30 @@ while($item3= mysqli_fetch_array($itemsel3))
         $namesel3 = $mysqli->query("SELECT * FROM foodmenu WHERE id = '".$item3['foodmenu_id']."'");
 while($name3= mysqli_fetch_array($namesel3))
 {
-    ?><b>|Item:</b> <?php echo utf8_encode($name3['name']); ?> <b>|Preço:</b> <?php echo $name3['price']; ?> <b>|Quantidade:</b> <?php echo $item3['quantity']; ?> <br>
+    ?>
+    <div class="col s6 m6 l9">
+    <p><h6><?php echo utf8_encode($name3['name']); ?></h6>
+    </div>
+    <div class="col s6 m6 l3">
+    <h6 class="right-align">
+    <?php echo $item3['quantity']; ?>
+    </div>
+  </h6>
+    </p>
+    <div class="col s12 m12 l3 offset-l9">
+    <h6 class="right-align">
+    <?php echo $name3['price']; ?>
+    </h6>
+    </div>
+
+
     <?php
 }
         }
 ?>
-
                         </div>
                         <div id="anotacoes<?php echo $fin['id'];?>">
-                        <b>Observações: <br></b> <?php echo utf8_encode($fin['obs']);?>
+                        <div class="center-align"><?php echo utf8_encode($fin['obs']);?></div>
                                 </div>
                             </div>
                         </div>
@@ -192,7 +248,7 @@ while($name3= mysqli_fetch_array($namesel3))
 
 <div id="can">
    <?php
-//Echo pedidos finalizados
+//Echo CANCELADO
 $requestcan = $mysqli->query("SELECT * FROM requests_numbers WHERE status = 'Cancelado'");
 if(mysqli_num_rows($requestcan) > 0)
 {
@@ -201,8 +257,8 @@ if(mysqli_num_rows($requestcan) > 0)
 ?>
 
                    <div class="col s12 m6 l4">
-                       <div class="card large">
-                           <div class="card-content white-text" style="background-color:#411B87; height:30%;">
+                       <div class="card large" style="height:auto;">
+                           <div class="card-content white-text" style="background-color:black; height:30%;">
                                <p>
                                    <h4> Mesa: <?php echo $can['id_table'];?></h4> N° do pedido:
                                    <?php echo $can['id'];?>
@@ -217,7 +273,7 @@ if(mysqli_num_rows($requestcan) > 0)
                    </div>
                    <div class="card-content grey lighten-4">
                        <div id="status<?php echo $can['id'];?>">
-                           <?php echo "Cancelado";?>
+                           <div class="center-align"> <h6><?php echo "Cancelado";?></h6> </div>
                        </div>
                        <div id="itens<?php echo $can['id'];?>">
 <?php
@@ -227,7 +283,22 @@ while($item3= mysqli_fetch_array($itemsel3))
        $namesel3 = $mysqli->query("SELECT * FROM foodmenu WHERE id = '".$item3['foodmenu_id']."'");
 while($name3= mysqli_fetch_array($namesel3))
 {
-   ?><b>|Item:</b> <?php echo utf8_encode($name3['name']); ?> <b>|Preço:</b> <?php echo $name3['price']; ?> <b>|Quantidade:</b> <?php echo $item3['quantity']; ?> <br>
+   ?>
+   <div class="col s6 m6 l9">
+   <p><h6><?php echo utf8_encode($name3['name']); ?></h6>
+   </div>
+   <div class="col s6 m6 l3">
+   <h6 class="right-align">
+   <?php echo $item3['quantity']; ?>
+   </div>
+ </h6>
+   </p>
+   <div class="col s12 m12 l3 offset-l9">
+   <h6 class="right-align">
+   <?php echo $name3['price']; ?>
+   </h6>
+   </div>
+
    <?php
 }
        }
@@ -235,7 +306,7 @@ while($name3= mysqli_fetch_array($namesel3))
 
                        </div>
                        <div id="anotacoes<?php echo $can['id'];?>">
-                       <b>Observações: <br></b> <?php echo utf8_encode($can['obs']);?>
+                      <br><?php echo utf8_encode($can['obs']);?></br>
                                </div>
                            </div>
                        </div>
@@ -254,8 +325,6 @@ while($name3= mysqli_fetch_array($namesel3))
    }
  }
       ?>
-
-
 
                         <script type="text/javascript">
                         $(document).ready(function() {
