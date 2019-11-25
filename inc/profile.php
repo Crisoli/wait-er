@@ -27,22 +27,14 @@ while($pro = mysqli_fetch_array($profile)){
 <div class="center-align">
 <div class="row" style="padding-top:6%;">
   <div class="col s12 m5 l6 offset-l3 offset-m3">
-    <div class="card, N/A transparent"
     <?php if ($pro['usertype'] == 11){
     ?>
-    style="background:
-    border: none;
-    border-radius: 5px;
-    height:60%;
-    "
+    <div class="card, N/A transparent" style="border:none; border-radius: 5px; height:60%" >
     <?php
     }
     elseif ($pro['usertype'] == 10){
       ?>
-      style="
-      border: none;
-      border-radius: 5px;
-      height:60%;"
+    <div class="card, N/A transparent" style="border:none; border-radius: 5px; height:60%" >
       <?php
       echo 'Funcionário';
     }
@@ -53,8 +45,7 @@ while($pro = mysqli_fetch_array($profile)){
     >
     <div class="col s12 m5 l6">
     <div class="hide-on-small-only">
-<img src="<?php echo $pro['img']; ?>" style="margin-left:-11%; margin-top: -0.1%; width:105%; height:100%; object-fit: cover;
--webkit-clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 0 51%, 0% 0%);">
+<img src='<?php echo $pro['img']; ?>' style="margin-left:-11%; margin-top: -0.1%; width:105%; height:100%; object-fit: cover; -webkit-clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 0 51%, 0% 0%);">
     </div>
 
 <div class="hide-on-med-and-up">
@@ -206,22 +197,12 @@ while($pro = mysqli_fetch_array($profile)){
         <div class="card"
         <?php if ($pro['usertype'] == 11){
         ?>
-        style="background: -webkit-gradient(linear, left top, left bottom,
-        color-stop(50%,#5433FF),
-        color-stop(50%,white));
-        border: none;
-        border-radius: 5px;
-        width:auto;"
+      <div class="card" style="background: -webkit-gradient(linear, left top, left bottom, color-stop(50%,#5433FF), color-stop(50%,white)); border: none; border-radius: 5px; width:auto;" >
         <?php
         }
         elseif ($pro['usertype'] == 10){
           ?>
-          style="background: -webkit-gradient(linear, left top, left bottom,
-          color-stop(50%,#20BDFF),
-          color-stop(50%,white));
-          border: none;
-          border-radius: 5px;
-          width:auto;"
+        <div class="card" style="background: -webkit-gradient(linear, left top, left bottom, color-stop(50%,#20BDFF), color-stop(50%,white)); border: none; border-radius: 5px; width:auto;" >
           <?php
           echo 'Funcionário';
         }
@@ -229,11 +210,10 @@ while($pro = mysqli_fetch_array($profile)){
 
         }
           ?>
-          >
+
         <div class="center-align" style="padding-top:25%;">
         <a href='redirect.php?profile_id=<?php echo $pro['id']; ?>&profile_session=specific&pagefu=profile&pagead=profile'>
-        <img src="<?php echo $pro['img']; ?>" style="width:150px; height:150px; object-fit:cover;
-        polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%);"
+        <img src="<?php echo $pro['img']; ?>" style="width:150px; height:150px; object-fit:cover; polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%);"
         class="circle ">
         </div>
         </a>
@@ -259,18 +239,20 @@ while($pro = mysqli_fetch_array($profile)){
 
         }
           ?>
+
         </div>
-
-
+        <center>
+        <button data-target="modaltodelete<?php echo $pro['id'];?>" class="btn modal-trigger">Deletar Funcionario</button>
+        <button data-target="modaltoedit<?php echo $pro['id'];?>" class="btn modal-trigger">Editar</button>
+      </center>
         </a>
         </div>
         </div>
-        <form method="post">
+        <form method="post" enctype="multipart/form-data">
 
         <div id="modaltoedit<?php echo $pro['id'];?>" class="modal">
           <div class="modal-content">
             <div class="container">
-                <input type="text" readonly hidden value="<?php echo $pro['id']?>" name="hide"></input>
           			<div class="input-field">
           				<label for="newname">Nome</label><input type="text" name="newname">
           			</div>
@@ -288,16 +270,43 @@ while($pro = mysqli_fetch_array($profile)){
           			</div>
           			<div class="col s12 m6"><SPAN>Tipo de usuário:</SPAN></br>
           				<label>
-          			        <input class="with-gap" name="newusertype" type="radio" value='13' checked />
+                        <?php
+                        if($pro['usertype']==10){
+                          ?>
+                          <input class="with-gap" name="newusertype" type="radio" value='13' checked />
+                          <?php
+                        }
+                        else{
+                          ?>
+                          <input class="with-gap" name="newusertype" type="radio" value='13' />
+                          <?php
+                        }
+                        ?>
           			        <span>Funcionário</span>
           			    </label>
           			    <label>
-          			        <input class="with-gap" name="newusertype" type="radio" value='11'/>
+                      <?php
+                      if($pro['usertype']==11){
+                        ?>
+                        <input class="with-gap" name="newusertype" type="radio" checked value='11'/>
+                        <?php
+                      }
+                      else{
+                        ?>
+                        <input class="with-gap" name="newusertype" type="radio" value='11'/>
+                        <?php
+                      }
+                      ?>
           			        <span>Administrador</span>
-          			    </label></p></div>
+          			    </label></p>
+                  </div>
+
+                            <input type="file" name="newImage">
+
           	</div>
         </div>
         <div class="modal-footer">
+          <input type="text" readonly value="<?php echo $pro['id']?>" name="hide"></input>
         <input type="submit" class="modal-close waves-effect waves-green btn-flat" name='edit' value="Editar Funcionario"></input>
         <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
         </div>
@@ -315,7 +324,6 @@ while($pro = mysqli_fetch_array($profile)){
         </div>
         <div class="modal-footer">
           <form method="post">
-            <input type="text" readonly hidden value="<?php echo $pro['id']?>" name="hide"></input>
         <input type="submit" class="modal-close waves-effect waves-green btn-flat" name='delete' value="Deletar Funcionario"></input>
         <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
       </form>
@@ -324,38 +332,67 @@ while($pro = mysqli_fetch_array($profile)){
 
 <a id='Aqui vai aparecer o bagulho pra levar pros profile dos funcionario que só os admin pode ver'
  href='redirect.php?profile_id=<?php echo $pro['id']?>&profile_session=specific'></a>
+
 </div>
-<button data-target="modaltodelete<?php echo $pro['id'];?>" class="btn modal-trigger">Deletar Funcionario</button>
-<button data-target="modaltoedit<?php echo $pro['id'];?>" class="btn modal-trigger">Editar</button>
+
 <?php
   if(isset($_POST['edit'])){
     $hide = $_POST['hide'];
     }
+    if(isset($_FILES['newImage'])){
+     date_default_timezone_set("Brazil/East"); //Definindo timezone padrão
+     $path = $_FILES['newImage']['name'];
+     $ext = pathinfo($path, PATHINFO_EXTENSION);
+     $filename = pathinfo($_FILES['newImage']['name'], PATHINFO_FILENAME);
+     $rest = substr($filename, 0, 8);
+     $new_name = $rest.date("Y.m.d-H") .".". $ext; //Definindo um novo nome para o arquivo
+     $dir = 'inc/img/uploads/perfil/'; //Diretório para uploads
+     move_uploaded_file($_FILES['newImage']['tmp_name'], $dir.$new_name); //Fazer upload do arquivo
+     $direct= $dir.$new_name;
+     if(!empty($_FILES['newImage'])){
+     $updateimg=$mysqli->query("UPDATE accounts SET img = N'".$direct."' WHERE id = $hide");
+   }
+   elseif(empty($_FILES['newImage'])){
+}
+     echo "<meta http-equiv='refresh' content='0'>";
+   }
+
 if(!empty($_POST['newname'])){
   $name = $_POST['newname'];
-  $update=$mysqli->query("UPDATE accounts SET username = $name WHERE id = $hide");
+  $update=$mysqli->query("UPDATE accounts SET username = '".$_POST['newname']."' WHERE id = $hide");
   echo "<meta http-equiv='refresh' content='0'>";
   }
   if(!empty($_POST['email'])){
     $email = $_POST['email'];
-    $update2= $mysqli->query("UPDATE accounts SET email = $email WHERE id = $hide");
+    $update2= $mysqli->query("UPDATE accounts SET email = '".$_POST['email']."' WHERE id = $hide");
     echo "<meta http-equiv='refresh' content='0'>";
     }
   if(!empty($_POST['newnumb'])){
     $phone = $_POST['newnumb'];
-    $update3= $mysqli->query("UPDATE accounts SET phonenumber = $phone WHERE id = $hide");
+    $update3= $mysqli->query("UPDATE accounts SET phonenumber = '".$_POST['newnumb']."' WHERE id = $hide");
     echo "<meta http-equiv='refresh' content='0'>";
     }
   if(!empty($_POST['newpass'])){
     $password = $_POST['newpass'];
-    $update4= $mysqli->query("UPDATE accounts SET password = $password WHERE id = $hide");
+    $update4= $mysqli->query("UPDATE accounts SET password = '".$_POST['newpass']."' WHERE id = $hide");
     echo "<meta http-equiv='refresh' content='0'>";
     }
   if(!empty($_POST['newdesc'])){
     $desc = $_POST['newdesc'];
-    $update5= $mysqli->query("UPDATE accounts SET description = $desc WHERE id = $hide");
+    $update5= $mysqli->query("UPDATE accounts SET description = '".$_POST['newdesc']."' WHERE id = $hide");
     echo "<meta http-equiv='refresh' content='0'>";
     }
+    if(!empty($_POST['newusertype'])){
+      if($_POST['newusertype']==11){
+        $update6= $mysqli->query("UPDATE accounts SET usertype = 11 WHERE id = $hide");
+        echo "<meta http-equiv='refresh' content='0'>";
+      }
+      else{
+        $update6= $mysqli->query("UPDATE accounts SET usertype = 10 WHERE id = $hide");
+        echo "<meta http-equiv='refresh' content='0'>";
+      }
+      }
+
 
 if(isset($_POST['delete'])){
   $deletefrommenu = $mysqli->query("DELETE FROM accounts WHERE id = '".$_POST['hide']."'");
@@ -386,21 +423,14 @@ while($pro = mysqli_fetch_array($profile)){
   <div class="center-align">
   <div class="row" style="padding-top:6%;">
     <div class="col s12 m5 l6 offset-l3 offset-m3">
-      <div class="card, N/A transparent"
       <?php if ($pro['usertype'] == 11){
       ?>
-      style="background:
-      border: none;
-      border-radius: 5px;
-      height:60%;"
+      <div class="card, N/A transparent" style="background: border: none; border-radius: 5px; height:60%;" >
       <?php
       }
       elseif ($pro['usertype'] == 10){
         ?>
-        style="
-        border: none;
-        border-radius: 5px;
-        height:60%;"
+        <div class="card, N/A transparent" style="border: none; border-radius: 5px; height:60%;" >
         <?php
         echo 'Funcionário';
       }
@@ -411,8 +441,7 @@ while($pro = mysqli_fetch_array($profile)){
         >
         <div class="col s12 m5 l6">
         <div class="hide-on-small-only">
-    <div class="card-image"><img src="<?php echo $pro['img']; ?>" style="margin-left:-11%; margin-top: -0.1%; width:100%; height:100%; object-fit: cover;
-    -webkit-clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 0 51%, 0% 0%);">
+    <div class="card-image"><img src="<?php echo $pro['img']; ?>" style="margin-left:-11%; margin-top: -0.1%; width:100%; height:100%; object-fit: cover; -webkit-clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 0 51%, 0% 0%);">
         </div></div>
 
     <div class="hide-on-med-and-up">
