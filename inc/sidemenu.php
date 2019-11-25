@@ -16,12 +16,10 @@ background-size: 100% 30%;}
 </style>
 <div id="page-container">
 <div id="content-wrap">
-  <nav id="navbar" style="background-color:#2D2F40;" class="nav-extended navbar-fixed sidenav-fixed">
+  <nav id="navbar" style="background-color:#292029;" class="nav-extended navbar-fixed sidenav-fixed">
     <div class="nav-wrapper">
   <?php if(isset($_SESSION['slide'])){
     if($_SESSION['slide']=='true'){
-
-
     echo "
       <a href='#' data-activates='slide-out2' class='button-collapse show-on-medium-and-up right sidenav1 '><i class='material-icons'>format_align_right</i></a>
       ";
@@ -53,9 +51,7 @@ if(isset($_SESSION['slide'])){
 $categorys = $mysqli->query("SELECT * FROM category");
     while($rys = mysqli_fetch_array($categorys))
     {
-
     echo utf8_encode ("<li class='tab'><a href='#menu".$rys['id']."'>".$rys['name']."</a></li>");
-
     }
   }
   ?>
@@ -70,7 +66,7 @@ $categorys = $mysqli->query("SELECT * FROM category");
 
 
 
-  <ul id="slide-out" class="side-nav " style="background-color:#2D2F40;">
+  <ul id="slide-out" class="side-nav " style="background-color:#292029;">
   <div class="user-view">
     <div class="center-align">
     <img src="inc/img/Waiterlogo.png" style="position:top; max-height:30%; max-width:30%;">
@@ -81,7 +77,7 @@ $categorys = $mysqli->query("SELECT * FROM category");
     <a href="redirect.php?profile_session=my&pagefu=profile&pagead=profile"><img style="width:85px; height:85px; object-fit: cover;" class="circle" src="<?php echo $_SESSION['img'];?>"></a>
   </br>
   <p>
-    <a href="redirect.php?profile_session=my&pagefu=profile&pagead=profile"><span class="white-text"><?php echo $_SESSION['username'];?></span></a>
+    <a href="redirect.php?profile_session=my&pagefu=profile&pagead=profile"><span class="white-text" style="text-transform: capitalize;"><?php echo $_SESSION['username'];?></span></a>
   </p>
   </div>
     <a href='logoff.php' name='logoff'><span class="red-text">Logoff</span></a>
@@ -102,12 +98,10 @@ if($_SESSION['admin']=='true'){
 
 <?php
 if($_SESSION['admin']=='false'){
-
   echo"
   <li><a class='waves-effect white-text' href='redirect.php?pagefu=1&foodslide=true'><i class='material-icons white-text'>local_library</i>Cardápio</a></li>
   <li><a class='waves-effect white-text' href='redirect.php?pagefu=2&foodslide=false'><i class='material-icons white-text'>people_outline</i>Ranking</a></li>
   ";
-
 };
 ?>
   </ul>
@@ -131,11 +125,9 @@ if(isset($_SESSION['slide'])){
      myRequest.send();
      document.getElementById('reveal').style.display = 'none';
                        });
-
                        setInterval(function side_show(){
                 $('#slide-out2_ajax').load('inc/employers/employers_select/side_select.php');
              }, 2000) /* time in milliseconds (ie 2 seconds)*/
-
     </script>
 <?php
           include 'inc/employers/insert.php';
