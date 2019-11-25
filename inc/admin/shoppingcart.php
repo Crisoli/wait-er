@@ -1,7 +1,11 @@
 
      <body style="font-family: 'Exo 2', sans-serif;">
           <br/>
-
+<style>
+html, body {
+  height:100%;
+}
+</style>
             <?php
             if (isset($_POST["add_to_cart"]))
               {
@@ -98,7 +102,7 @@
                                     <div class='card' style="height:80%; width:auto">
                                         <div class='card-image'>
                                           <img src='<?php echo $row['image'] ?>' style="object-fit:cover; height:300px;"/>
-                                          <span class='card-title promo black-text' style=" height:5px;"><?php echo utf8_encode($row['name']); ?></span>
+                                          <span class='card-title promo black-text' style=" height:5px; text-transform: capitalize;"><?php echo utf8_encode($row['name']); ?></span>
                                           <?php
                                           }
                                           else {
@@ -106,7 +110,7 @@
                                           <div class='card com' style=" width:99%;">
                                               <div class='card-image'>
                                                 <img src='<?php echo $row['image'] ?>' style="object-fit:cover; height:300px;"/>
-                                                <span class='card-title com black-text' style="background-color:white; height:5px;"><?php echo utf8_encode($row['name']); ?></span>
+                                                <span class='card-title com black-text' style="background-color:white; height:5px; text-transform: capitalize;"><?php echo utf8_encode($row['name']); ?></span>
                                           <?php
                                           }
                                           ?>
@@ -131,7 +135,10 @@
                                         </div>
                                         <div class="card-action">
                                         <!-- Modal Trigger -->
-                                     <button data-target="modal<?php echo $row['id'];?>" class="btn modal-trigger">Editar</button>                                        </div>
+                                     <button data-target="modal<?php echo $row['id'];?>" class="btn modal-trigger">Editar</button>
+                                     <button data-target="modaltodelete<?php echo $row['id'];?>" class="btn modal-trigger">Excluir</button>
+                                        
+                                   </div>
                                         </div>
                                   </div>
                   </form>
@@ -164,37 +171,56 @@
                   <input type="submit" class="modal-close waves-effect waves-green btn-flat" value="Alterar"></input>
                   <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
                 </div>
-              </div>
+                </div>
+
+                <div id="modaltodelete<?php echo $row['id'];?>" class="modal">
+    <div class="modal-footer">
+      <input type="submit" class="modal-close waves-effect waves-green btn-flat" name='delete' value="Deletar do Cardapio"></input>
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
+    </div>
+    </div>
+
 <?php if(!empty($_POST['newname'])){
  $update = $mysqli->query("UPDATE foodmenu SET name = '".$_POST['newname']."' WHERE id = '".$_POST['hide']."'");
+ echo "<meta http-equiv='refresh' content='0'>";
+
 }
       if(!empty($_POST['newprice'])){
  $update = $mysqli->query("UPDATE foodmenu SET price = '".$_POST['newprice']."' WHERE id = '".$_POST['hide']."'");
+ echo "<meta http-equiv='refresh' content='0'>";
+
  }
       if(!empty($_POST['newdesc'])){
  $update = $mysqli->query("UPDATE foodmenu SET promodesc = '".$_POST['newdesc']."' WHERE id = '".$_POST['hide']."'");
+ echo "<meta http-equiv='refresh' content='0'>";
+
 }
 if(!empty($_POST['newdesc'])){
   $update = $mysqli->query("UPDATE foodmenu SET promodesc = '".$_POST['newdesc']."' WHERE id = '".$_POST['hide']."'");
+  echo "<meta http-equiv='refresh' content='0'>";
+
  }
  if(!empty($_FILES['newImage'])){
   date_default_timezone_set("Brazil/East"); //Definindo timezone padrão
   $path = $_FILES['newImage']['name'];
   $ext = pathinfo($path, PATHINFO_EXTENSION);
    //Pegando extensão do arquivo
-  $new_name = date("Y.m.d-H.i.s") .".". $ext; //Definindo um novo nome para o arquivo
+  $filename = pathinfo($_FILES['newImage']['name'], PATHINFO_FILENAME);
+  $new_name = $filename.date("Y.m.d-H") .".". $ext; //Definindo um novo nome para o arquivo
   $dir = 'inc/img/uploads/menu/'; //Diretório para uploads
   move_uploaded_file($_FILES['newImage']['tmp_name'], $dir.$new_name); //Fazer upload do arquivo
   $direct= $dir.$new_name;
-  $selectimg = $mysqli->query("SELECT * FROM foodmenu WHERE id = '".$_POST['hide']."'");
-  while($delimg = mysqli_fetch_array($selectimg)){
-    $file = basename($delimg['image']);
-    rename($delimg['image'], 'inc/img/uploads/menu/old_images/'.$file);
-  }
   $update = $mysqli->query("UPDATE foodmenu SET image = '".$direct."' WHERE id = '".$_POST['hide']."'");
+  echo "<meta http-equiv='refresh' content='0'>";
+}
+if(isset($_POST['delete'])){
+  $deletefrommenu = $mysqli->query("DELETE FROM foodmenu WHERE id = '".$_POST['hide']."'");
 }
 ?>
+
               </form>
+
+
 
                   <?php
                   }
