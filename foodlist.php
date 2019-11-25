@@ -15,9 +15,6 @@ if (session_status() == PHP_SESSION_NONE) {
 if($_SESSION['pagefu']=='1'){
     include('inc/employers/shoppingcart.php');
 }
-elseif($_SESSION['pagefu']=='2'){
-    include('inc/employers/ranking.php');
-}
 elseif($_SESSION['pagefu']=='3'){
     include('inc/employers/homefu.php');
 }
