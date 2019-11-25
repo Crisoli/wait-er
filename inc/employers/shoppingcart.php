@@ -57,18 +57,15 @@
             <nav>
             <div class="nav-wrapper">
                     <form method='post'>
-                       <div class="input-field" style="">
-                      <input type='search' name='search' style="background-color:#2D2F40; " />
+                       <div class="input-field">
+                      <input type='search' name='search' style="background-color:#2D2F40;"/>
                       <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-                     <i onclick="document.getElementById('all').click()" class="material-icons">close</i>
+                     <i class="material-icons">close</i>
                     </form>
             </div>
             </div>
           </nav>
           </div>
-          <form method='post'>
-          <input type='submit' name='all' id='all' hidden style="background-color:#2D2F40;"/>
-        </form>
 
             <?php
 
@@ -81,64 +78,57 @@
 
                   <?php
                   if(isset($_POST['search'])){
-                $query = $mysqli->query("SELECT * FROM `foodmenu` WHERE name LIKE '".$_POST['search']."%' ORDER BY promo DESC");
+                $query = $mysqli->query("SELECT * FROM `foodmenu` WHERE category_id = '".$rys['id']."' and name LIKE '".$_POST['search']."%' ORDER BY promo DESC");
                   }
                   else{
                 $query = $mysqli->query("SELECT * FROM foodmenu WHERE category_id = '".$rys['id']."' ORDER BY promo DESC");
-                      }
-                      if(isset($_POST['all'])){
-                        $query = $mysqli->query("SELECT * FROM foodmenu WHERE category_id = '".$rys['id']."' ORDER BY promo DESC");
                       }
 
             while($row = mysqli_fetch_array($query))
             {
 
                 ?>
-                <form id='<?php echo $row['id'] ?>' method='post' action='comanda.php?action=add&id=<?php echo $row['id'] ?>'>
-                     <div class="col s12 m4 l3" >
-                       <?php
-                       if($row['promo']==1){
-                       ?>
-                       <div class='card ' style="">
-                           <div class='card-image'>
-                             <img src='<?php echo $row['image'] ?>' class="activator" style="object-fit:cover; height:250px;"/>
-                             <br><h6><span class='black-text' style="background-color:white; padding-left: 1.8em; text-transform: capitalize; "><?php echo utf8_encode($row['name']); ?></span></h6></br>
-                             <?php
-                             }
-                       else {
-                             ?>
-                             <div class='card com' style="">
-                                 <div class='card-image '>
-                                   <img src='<?php echo $row['image'] ?>' class="" style="object-fit:cover; height:250px;"/>
-                                   <br><h6><span class='black-text' style="background-color:white; padding-left: 1.8em; text-transform: capitalize;"><?php echo utf8_encode($row['name']); ?></span></h6></br>
-                             <?php
-                             }
-                             ?>
-                             <h7><input type='hidden' name='hidden_name' value='<?php echo utf8_encode($row['name']); ?>'/></h7>
-                             <h7><input type='hidden' name='hidden_price' value='<?php echo $row['price'] ?>'/></h7>
+                             <form id='<?php echo $row['id'] ?>' method='post' action='foodlist.php?action=add&id=<?php echo $row['id'] ?>'>
+                               <div class="col s12 m4 l3 offset-m5">
+                                 <?php
+                                 if($row['promo']==1){
+                                 ?>
+                                 <div class='card promo' style="width:100%; height:500px;">
+                                     <div class='card-image'>
+                                       <img src='<?php echo $row['image'] ?>' style="object-fit: cover; width:100%; height:300px;"/>
+                                       <span class='card-title promo black-text' style=" height:5px;"><?php echo $row['name'] ?></span>
+                                       <?php
+                                       }
+                                       else {
+                                       ?>
+                                       <div class='card com' style="">
+                                           <div class='card-image'>
+                                             <img src='<?php echo $row['image'] ?>' style="object-fit:cover; width:100%; height:500px;"/>
+                                             <span class='card-title com black-text' style="background-color:white; height:5px;"><?php echo utf8_encode($row['name']) ?></span>
+                                       <?php
+                                       }
+                                       ?>
+                                       <input type='hidden' name='hidden_name'  value='<?php echo $row['name'] ?>' />
+                                       <input type='hidden' name='hidden_price' value='<?php echo $row['price'] ?>' />
 
-                             <input type='submit' class='btn-floating halfway-fab waves-light red darken-1' ; name='add_to_cart' style='border:none;' value='+'></input>
-                             </div>
-                             <div class="col s4 m5 l4 offset-l8 offset-m7 offset-s8">
-                             <input type='number' name='quantity' class='form-control' value='1' min="1" max="100" style=''/>
-                             </div>
+                                       <input type='submit' class='btn-floating halfway-fab waves-light red darken-1' ; name='add_to_cart' style='border:none;' value='+'></input>
+                                     </div>
+                                     <input type='number' name='quantity' class='form-control' value='1' style='border-bottom: 1px solid black; background-color:; width:40%; position: absolute; right: 0px;'/>
+                                     <div class='card-content text'>
+                                       <h5 class=''>R$<?php echo $row['price']?> </h5>
 
-                             <div class='card-content text'>
-                             <h6 class=''>R$<?php echo $row['price']?> </h6>
-                            </div>
-                              <?php
-                              if($row['promo']==1){
-                              ?>
-                              <div class="white-text" style="clip-path: inset(0 0 0 0); background-color:red; width:130px;
-                              margin-left:-1%; margin-top:-420px; padding-left: 1.8em; position: absolute;">Em promoção</div>
+                                       <?php
+                                       if($row['promo']==1){
+                                       ?>
+                                       <h5>PROMOÇÃO!</h5>
+                                       <p><?php echo utf8_encode($row['promodesc'])?></p>
+                                       <?php
+                                       }
+                                       ?>
 
-                              <?php
-                              }
-                              ?>
-                              </div>
-
-                              </div>
-
+                                     </div>
+                                     </div>
+                               </div>
                </form>
                <?php
                }
@@ -148,7 +138,6 @@
                <?php
                }
          ?>
-
 <script>
 $(document).ready(function(){
   $('.sidenav').sidenav();
