@@ -26,9 +26,17 @@ if($rowcount == 1){
 }
 else {
 	echo "
-	<div class='alert alert-danger' role='alert'>
-	<p><div class='card-panel #f44336 red'><strong>ERRO:</strong>Seu usuario e/ou sua senha esta incorreto. </div></p>
+	<div class='alert alert-danger' role='alert' id='deletesuccess' >
+	<p><div class='card-panel #f44336 red white-text' style='position:absolute' id='deletesuccess' ><strong>ERRO:</strong>Seu usuario e/ou sua senha esta incorreto. </div></p>
 	</div>";
 }
 	    }
 			?>
+<script>
+
+	$(document).ready( function() {
+		$('#deletesuccess').delay(1000).fadeOut();
+	});
+</script>
+
+</script>
