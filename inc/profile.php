@@ -9,8 +9,14 @@
 
 --->
 
-  <!--- Perfil individual ---->
 
+<style>
+html, body {
+  height:100%;
+}
+</style>
+
+  <!--- Perfil individual ---->
 <?php
 if($_SESSION['profile'] == 'my')
 {
@@ -60,7 +66,7 @@ while($pro = mysqli_fetch_array($profile)){
 
   <div class="col s12 m5 l5">
 <div class="center-align">
-<h3 class="black-text">
+<h3 class="black-text" style="text-transform: capitalize;">
 <?php echo  utf8_encode($pro['username']); ?>
 </h3>
 <p><h5 class="blue-text"><?php if ($pro['usertype'] == 11){
@@ -93,6 +99,11 @@ else {
 }
 ?>
 <!--- Lista de funcionário ---->
+
+
+
+
+
 <div class="row">
 <div class="col s12 m12 l12">
 <?php
@@ -101,6 +112,7 @@ if($_SESSION['profile'] == 'all')
 $profile = $mysqli->query('SELECT * FROM accounts');
 ?>
 
+<!-- Modal pra add fun -->
 <button data-target='modalfun' class='btn-floating btn-large modal-trigger circle red' style="position:absolute; position:fixed; right:1%; bottom:2%;"><i class="material-icons">add</i></button>
 
 <div id="modalfun" class="modal modal-fixed-footer">
@@ -150,14 +162,15 @@ if (isset($_FILES['fileUpload'])) {
 
 date_default_timezone_set("Brazil/East"); //Definindo timezone padrão
 
-$path = $_FILES['fileUpload']['name'];
+ $path = $_FILES['fileUpload']['name'];
 $ext = pathinfo($path, PATHINFO_EXTENSION);
-$new_name = $_POST['username'] .".". $ext; //Definindo um novo nome para o arquivo
+$filename = pathinfo($_FILES['newImage']['name'], PATHINFO_FILENAME);
+$new_name = $filename.date("Y.m.d-H") .".". $ext; //Definindo um novo nome para o arquivo
 $dir = 'inc/img/uploads/perfil/'; //Diretório para uploads
 move_uploaded_file($_FILES['fileUpload']['tmp_name'], $dir.$new_name); //Fazer upload do arquivo
 $direct= $dir.$new_name;
 if(isset($_POST['usertype'])) {
-  $name= $_POST['username'];
+   $name= $_POST['username'];
   $usertype= $_POST['usertype'];
   $email= $_POST['useremail'];
   $phone= $_POST['userphone'];
@@ -165,8 +178,9 @@ if(isset($_POST['usertype'])) {
   $description= $_POST['description'];
 
   //mysql insert//
-  $userinsert= "INSERT INTO accounts VALUES (NULL, '$name','$direct', '$email', '$phone', '$description', '$password', '$usertype,', '".$_SESSION['userid']."')";
+  $userinsert= "INSERT INTO accounts VALUES (NULL, N'$name',N'$direct', '$email', '$phone', '$description', '$password', '$usertype,', '".$_SESSION['userid']."')";
   if ($mysqli->query($userinsert) === TRUE) {
+    echo "<meta http-equiv='refresh' content='0'>";
   } else {
       echo "Error: " . $userinsert . "<br>" . $mysqli->error;
   }
@@ -174,16 +188,15 @@ if(isset($_POST['usertype'])) {
 }
 ?>
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
- var elems = document.querySelectorAll('.modal');
- var instances = M.Modal.init(elems);
-});
-</script>
+
+
 
 <?php
 while($pro = mysqli_fetch_array($profile)){
 ?>
+
+
+
 <div id='Aqui aparece as conta tudo, só o admin pode acessar'>
 
 
@@ -228,7 +241,7 @@ while($pro = mysqli_fetch_array($profile)){
         class="black-text">
 
         <div class="center-align">
-        <h5>
+        <h5 class="" style="text-transform: capitalize;">
          <?php echo  utf8_encode($pro['username']);?>
         </h5>
         <?php if ($pro['usertype'] == 11){
@@ -239,6 +252,8 @@ while($pro = mysqli_fetch_array($profile)){
         }
         elseif ($pro['usertype'] == 10){
           echo 'Funcionário';
+        ?>
+        <?php
         }
         else {
 
@@ -250,11 +265,102 @@ while($pro = mysqli_fetch_array($profile)){
         </a>
         </div>
         </div>
+        <form method="post">
+
+        <div id="modaltoedit<?php echo $pro['id'];?>" class="modal">
+          <div class="modal-content">
+            <div class="container">
+                <input type="text" readonly hidden value="<?php echo $pro['id']?>" name="hide"></input>
+          			<div class="input-field">
+          				<label for="newname">Nome</label><input type="text" name="newname">
+          			</div>
+          			<div class="input-field">
+          				<label for="email">Email</label><input type="text" name="email">
+          			</div>
+          			<div class="input-field">
+          				<label for="newpass">Senha</label><input type="password" name="newpass">
+          			</div>
+          			<div class="input-field">
+          				<label for="newdesc">Descrição</label><input type="text" name="newdesc">
+          			</div>
+          			<div class="input-field">
+          				<label for="newnumb">Telefone</label><input type="number" name="newnumb">
+          			</div>
+          			<div class="col s12 m6"><SPAN>Tipo de usuário:</SPAN></br>
+          				<label>
+          			        <input class="with-gap" name="newusertype" type="radio" value='13' checked />
+          			        <span>Funcionário</span>
+          			    </label>
+          			    <label>
+          			        <input class="with-gap" name="newusertype" type="radio" value='11'/>
+          			        <span>Administrador</span>
+          			    </label></p></div>
+          	</div>
+        </div>
+        <div class="modal-footer">
+        <input type="submit" class="modal-close waves-effect waves-green btn-flat" name='edit' value="Editar Funcionario"></input>
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
+        </div>
+        </div>
+      </form>
+
+        <?php
+
+        ?>
+
+        <div id="modaltodelete<?php echo $pro['id'];?>" class="modal">
+          <div class="modal-content">
+        <div class="container">
+        </div>
+        </div>
+        <div class="modal-footer">
+          <form method="post">
+            <input type="text" readonly hidden value="<?php echo $pro['id']?>" name="hide"></input>
+        <input type="submit" class="modal-close waves-effect waves-green btn-flat" name='delete' value="Deletar Funcionario"></input>
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
+      </form>
+        </div>
+        </div>
 
 <a id='Aqui vai aparecer o bagulho pra levar pros profile dos funcionario que só os admin pode ver'
  href='redirect.php?profile_id=<?php echo $pro['id']?>&profile_session=specific'></a>
 </div>
+<button data-target="modaltodelete<?php echo $pro['id'];?>" class="btn modal-trigger">Deletar Funcionario</button>
+<button data-target="modaltoedit<?php echo $pro['id'];?>" class="btn modal-trigger">Editar</button>
 <?php
+  if(isset($_POST['edit'])){
+    $hide = $_POST['hide'];
+    }
+if(!empty($_POST['newname'])){
+  $name = $_POST['newname'];
+  $update=$mysqli->query("UPDATE accounts SET username = $name WHERE id = $hide");
+  echo "<meta http-equiv='refresh' content='0'>";
+  }
+  if(!empty($_POST['email'])){
+    $email = $_POST['email'];
+    $update2= $mysqli->query("UPDATE accounts SET email = $email WHERE id = $hide");
+    echo "<meta http-equiv='refresh' content='0'>";
+    }
+  if(!empty($_POST['newnumb'])){
+    $phone = $_POST['newnumb'];
+    $update3= $mysqli->query("UPDATE accounts SET phonenumber = $phone WHERE id = $hide");
+    echo "<meta http-equiv='refresh' content='0'>";
+    }
+  if(!empty($_POST['newpass'])){
+    $password = $_POST['newpass'];
+    $update4= $mysqli->query("UPDATE accounts SET password = $password WHERE id = $hide");
+    echo "<meta http-equiv='refresh' content='0'>";
+    }
+  if(!empty($_POST['newdesc'])){
+    $desc = $_POST['newdesc'];
+    $update5= $mysqli->query("UPDATE accounts SET description = $desc WHERE id = $hide");
+    echo "<meta http-equiv='refresh' content='0'>";
+    }
+
+if(isset($_POST['delete'])){
+  $deletefrommenu = $mysqli->query("DELETE FROM accounts WHERE id = '".$_POST['hide']."'");
+  echo "<meta http-equiv='refresh' content='0'>";
+}
 }
 ?>
 </div>
@@ -263,6 +369,12 @@ while($pro = mysqli_fetch_array($profile)){
 <?php
 }
 ?>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+ var elems = document.querySelectorAll('.modal');
+ var instances = M.Modal.init(elems);
+});
+</script>
 
 <!--- Perfil escolhido ---->
 <?php
@@ -312,7 +424,7 @@ while($pro = mysqli_fetch_array($profile)){
         </div>
     <div class="col s12 m5 l5">
   <div class="center-align">
-  <h3 class="black-text">
+  <h3 class="black-text" style="text-transform: capitalize;">
   <?php echo  utf8_encode($pro['username']); ?>
   </h3>
   <p><h5 class="blue-text"><?php if ($pro['usertype'] == 11){
