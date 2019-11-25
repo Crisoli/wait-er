@@ -1,4 +1,4 @@
-<?php 
+<?php
 	include('config.php');
 	include('header.php');
  ?>
@@ -25,10 +25,6 @@
 			        <input class="with-gap" name="newusertype" type="radio" value='13' checked />
 			        <span>Funcionário</span>
 			    </label>
-				<label>
-				    <input class="with-gap" name="newusertype" type="radio" value='12' />
-			        <span>Gerente</span>
-			    </label>
 			    <label>
 			        <input class="with-gap" name="newusertype" type="radio" value='11'/>
 			        <span>Administrador</span>
@@ -39,9 +35,10 @@
 		</form>
 	</div>
 </body>
-<?php 
+<?php
 	if(isset($_POST['newname'])){
 		$update="UPDATE `accounts` SET `username` = 'Galinho morta' WHERE `accounts`.`id` = 7";
+	}
 		if ($mysqli->query($update) === TRUE) {
 	    echo "Nome alterado";
 		} else {
@@ -49,40 +46,42 @@
 		}
 		if( isset($_POST['email'])){
 			$update2= "UPDATE `accounts` SET `email` = 'Galinho morta' WHERE `accounts`.`id` = 7";
+		}
 			if ($mysqli->query($update2)=== TRUE) {
 				echo "email alterado";
 			}
 			else{
 			echo $mysqli->error;
 			}
-		}
+
 		if( isset($_POST['newnumb'])){
 			$update3= "UPDATE `accounts` SET `phonenumber` = 1213141516 WHERE `accounts`.`id` = 7";
+		}
 			if ($mysqli->query($update3)=== TRUE) {
 				echo "Telefone alterado";
 			}
 			else{
 			echo $mysqli->error;
 			}
-		}
+
 		if( isset($_POST['newpass'])){
 			$update4= "UPDATE `accounts` SET `password` = 'guarapari' WHERE `accounts`.`id` = 7";
+		}
 			if ($mysqli->query($update4)=== TRUE) {
 				echo "senha alterado";
 			}
 			else{
 			echo $mysqli->error;
 			}
-		}
+
 		if( isset($_POST['newdesc'])){
 			$update5= "UPDATE `accounts` SET `description` = 'Galinho morta' WHERE `accounts`.`id` = 7";
+		}
 			if ($mysqli->query($update5)=== TRUE) {
 				echo "Descrição alterada";
 			}
 			else{
 			echo $mysqli->error;
 			}
-		}		
-		header('location:userupdate.php');
-	}
+	
 ?>
