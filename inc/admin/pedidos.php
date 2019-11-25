@@ -56,6 +56,7 @@ while($name1= mysqli_fetch_array($namesel1))
     </p>
     <div class="col s12 m12 l3 offset-l9">
     <h6 class="right-align">
+
     <?php echo $name1['price']; ?>
     </h6>
     </div>
@@ -221,12 +222,15 @@ while($name3= mysqli_fetch_array($namesel3))
     </p>
     <div class="col s12 m12 l3 offset-l9">
     <h6 class="right-align">
-    <?php echo $name3['price']; ?>
+    <?php echo $name3['price'];
+    ?>
     </h6>
     </div>
 
 
     <?php
+    echo $fin['total'];
+
 }
         }
 ?>
@@ -277,25 +281,25 @@ if(mysqli_num_rows($requestcan) > 0)
                        </div>
                        <div id="itens<?php echo $can['id'];?>">
 <?php
-$itemsel3 = $mysqli->query("SELECT * FROM requests WHERE requests_numbers_id = '".$can['id']."'");
-while($item3= mysqli_fetch_array($itemsel3))
+$itemsel4 = $mysqli->query("SELECT * FROM requests WHERE requests_numbers_id = '".$can['id']."'");
+while($item4= mysqli_fetch_array($itemsel4))
        {
-       $namesel3 = $mysqli->query("SELECT * FROM foodmenu WHERE id = '".$item3['foodmenu_id']."'");
-while($name3= mysqli_fetch_array($namesel3))
+       $namesel4 = $mysqli->query("SELECT * FROM foodmenu WHERE id = '".$item3['foodmenu_id']."'");
+while($name4= mysqli_fetch_array($namesel4))
 {
    ?>
    <div class="col s6 m6 l9">
-   <p><h6><?php echo utf8_encode($name3['name']); ?></h6>
+   <p><h6><?php echo utf8_encode($name4['name']); ?></h6>
    </div>
    <div class="col s6 m6 l3">
    <h6 class="right-align">
-   <?php echo $item3['quantity']; ?>
+   <?php echo $item4['quantity']; ?>
    </div>
  </h6>
    </p>
    <div class="col s12 m12 l3 offset-l9">
    <h6 class="right-align">
-   <?php echo $name3['price']; ?>
+   <?php echo $name4['price']; ?>
    </h6>
    </div>
 
