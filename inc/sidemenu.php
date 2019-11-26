@@ -14,7 +14,7 @@ background-image: url('inc/img/teste2.png');
 background-repeat: no-repeat;
 background-size: 100% 30%;}
 </style>
-<div id="page-container">
+<div id="page-container" style="overflow-x: hidden;">
 <div id="content-wrap">
   <nav id="navbar" style="background-color:#2D2F40;" class="nav-extended navbar-fixed sidenav-fixed">
     <div class="nav-wrapper">
