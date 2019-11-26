@@ -139,13 +139,6 @@ $profile = $mysqli->query('SELECT * FROM accounts');
     </form>
   </div>
 </div>
-<div class="modal-footer">
-  <form method="post">
-    <input type='text' name='add' />
-    <input type='submit'/>
-    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
-  </form>
-</div>
 </div>
 <?php
 
@@ -204,7 +197,6 @@ while($pro = mysqli_fetch_array($profile)){
           ?>
         <div class="card" style="background: -webkit-gradient(linear, left top, left bottom, color-stop(50%,#20BDFF), color-stop(50%,white)); border: none; border-radius: 5px; width:auto;" >
           <?php
-          echo 'Funcionário';
         }
         else {
 
