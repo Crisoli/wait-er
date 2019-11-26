@@ -42,7 +42,6 @@ while($pro = mysqli_fetch_array($profile)){
 
     }
       ?>
-    >
     <div class="col s12 m5 l6">
     <div class="hide-on-small-only">
 <img src='<?php echo $pro['img']; ?>' style="margin-left:-11%; margin-top: -0.1%; width:105%; height:100%; object-fit: cover; -webkit-clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 0 51%, 0% 0%);">
@@ -317,7 +316,7 @@ while($pro = mysqli_fetch_array($profile)){
         <div class="modal-footer">
           <form method="post">
             <input type="text" readonly hidden value="<?php echo $pro['id']?>" name="hide"></input>
-        <input type="submit" class="modal-close waves-effect waves-green btn-flat" name='delete' value="Deletar Funcionario"></input>
+        <input type="submit" class="modal-close waves-effect waves-green btn-flat" name='delete' value="Deletar Funcionario"><</input>
         <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
       </form>
         </div>
