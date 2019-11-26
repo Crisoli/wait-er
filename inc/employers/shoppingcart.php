@@ -103,7 +103,7 @@
                                      <div class='card ' style="">
                                          <div class='card-image'>
                                            <img src='<?php echo $row['image'] ?>' class="activator" style="object-fit:cover; height:250px;"/>
-                                           <br><h6><span class='black-text' style="background-color:white; padding-left: 1.8em; text-transform: capitalize; "><?php echo utf8_encode($row['name']); ?></span></h6></br>
+                                           <br><h5><span class='black-text' style="background-color:white; padding-left: 1.8em; text-transform: capitalize; "><?php echo utf8_encode($row['name']); ?></span></h5></br>
                                            <?php
                                            }
                                      else {
@@ -111,7 +111,7 @@
                                            <div class='card com' style="">
                                                <div class='card-image '>
                                                  <img src='<?php echo $row['image'] ?>' class="" style="object-fit:cover; height:250px;"/>
-                                                 <br><h6><span class='black-text' style="background-color:white; padding-left: 1.8em; text-transform: capitalize;"><?php echo utf8_encode($row['name']); ?></span></h6></br>
+                                                 <br><h5><span class='black-text' style="background-color:white; padding-left: 1.8em; text-transform: capitalize;"><?php echo utf8_encode($row['name']); ?></span></h5></br>
                                            <?php
                                            }
                                            ?>
@@ -125,7 +125,7 @@
                                            </div>
 
                                            <div class='card-content text'>
-                                           <h6 class=''>R$<?php echo $row['price']?> </h6>
+                                           <h5 class=''>R$<?php echo $row['price']?> </h5>
                                           </div>
                                             <?php
                                             if($row['promo']==1){
@@ -154,3 +154,9 @@ $(document).ready(function(){
 });
 </script>
      </body>
+     <script>
+     document.addEventListener('DOMContentLoaded', function() {
+      var elems = document.querySelectorAll('.modal');
+      var instances = M.Modal.init(elems);
+     });
+     </script>
