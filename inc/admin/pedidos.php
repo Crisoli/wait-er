@@ -20,8 +20,31 @@ if(mysqli_num_rows($requestpen) > 0)
                         <p>
                             <h4> Mesa: <?php echo $pen['id_table'];?></h4> N° do pedido:
                             <?php echo $pen['id'];?>
-                            <br><input type="submit" name="cancel" value="Cancelar Pedido"></input>
-                            <br><input type="submit" name="update" value="Finalizar Pedido"></input>
+                            <p><div class="left-align"><input type="submit" name="cancel" class="hidden" value="Cancelar Pedido" style="border:none;
+                            background-color: #DB2E2B;
+                            -moz-border-radius:17px;
+                            -webkit-border-radius:17px;
+                            border-radius:37px;
+                            display:inline-block;
+                            font-family:Arial;
+                            font-size:13px;
+                            color: white;
+                            padding:7px 7px;
+                            text-decoration:none;
+                            " ></input></div></p>
+                            <p><input type="submit" name="update" value="Finalizar Pedido" style="border:none;
+
+                            background-color: #3A4299;
+                            -moz-border-radius:17px;
+                            -webkit-border-radius:17px;
+                            border-radius:37px;
+                            display:inline-block;
+                            font-family:Arial;
+                            font-size:13px;
+                            color: white;
+                            padding:7px 7px;
+                            text-decoration:none;
+                            "></input></p>
 
                         </p>
                     </div>
