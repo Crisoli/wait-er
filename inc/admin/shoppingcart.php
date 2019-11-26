@@ -1,12 +1,7 @@
 
      <body style="font-family: 'Exo 2', sans-serif;">
           <br/>
-<style>
-html, body {
-  height:100%;
-}
-</style>
-            <?php
+<?php
             if (isset($_POST["add_to_cart"]))
               {
                 if (isset($_SESSION["shopping_cart"]))
@@ -83,8 +78,8 @@ html, body {
 
                   <?php
                   if(isset($_POST['search'])){
-                $query = $mysqli->query("SELECT * FROM `foodmenu` WHERE category_id = '".$rys['id']."' and name LIKE '".$_POST['search']."%' ORDER BY promo DESC");
-                                             }
+                    $query = $mysqli->query("SELECT * FROM `foodmenu` WHERE name LIKE '".$_POST['search']."%' ORDER BY promo DESC");
+                                  }
                   else{
                 $query = $mysqli->query("SELECT * FROM foodmenu WHERE category_id = '".$rys['id']."' ORDER BY promo DESC");
                       }
@@ -99,18 +94,18 @@ html, body {
                                     <?php
                                     if($row['promo']==1){
                                     ?>
-                                    <div class='card' style="height:80%; width:auto">
+                                    <div class='card'>
                                         <div class='card-image'>
-                                          <img src='<?php echo $row['image'] ?>' style="object-fit:cover; height:300px;"/>
-                                          <span class='card-title promo black-text' style=" height:5px; text-transform: capitalize;"><?php echo utf8_encode($row['name']); ?></span>
+                                        <img src='<?php echo $row['image'] ?>' class="activator" style="object-fit:cover; height:250px;"/>
+                                          <br><h5><span class='black-text' style="background-color:white; padding-left: 1.8em; text-transform: capitalize; "><?php echo utf8_encode($row['name']); ?></span></h5></br>
                                           <?php
                                           }
                                           else {
                                           ?>
-                                          <div class='card com' style=" width:99%;">
-                                              <div class='card-image'>
-                                                <img src='<?php echo $row['image'] ?>' style="object-fit:cover; height:300px;"/>
-                                                <span class='card-title com black-text' style="background-color:white; height:5px; text-transform: capitalize;"><?php echo utf8_encode($row['name']); ?></span>
+                                          <div class='card com'>
+                                            <div class="card-image waves-effect waves-block waves-light">
+                                                <img src='<?php echo $row['image'] ?>' style="object-fit:cover; height:250px;"/>
+                                                 <br><h5><span class='black-text' style="background-color:white; padding-left: 1.8em; text-transform: capitalize;"><?php echo utf8_encode($row['name']); ?></span></h5></br>
                                           <?php
                                           }
                                           ?>
@@ -118,26 +113,35 @@ html, body {
                                           <input type='hidden' name='hidden_price' value='<?php echo $row['price'] ?>' />
 
                                           <input type='submit' class='btn-floating halfway-fab waves-light red darken-1' ; name='add_to_cart' style='border:none;' value='+'></input>
-                                        </div>
-<input type='number' name='quantity' class='form-control' value='1' min="1" max="100" style='border-bottom: 1px solid black; background-color:; width:40%; position: absolute; right: 0px;'/>                                        <div class='card-content text'>
-                                          <h5 class=''>R$<?php echo $row['price']?> </h5>
+                                                 </div>
+                                                 <div class="col s4 m5 l4 offset-l8 offset-m7 offset-s8">
+                                            <input type='number' name='quantity' class='form-control' value='1' min="1" max="100" style='border-bottom: 1px solid black; background-color:; width:40%; position: absolute; right: 0px;'/>
+                                          </div>
 
-                                          <?php
-                                          if($row['promo']==1){
-                                          ?>
-                                          <h5>PROMOÇÃO!</h5>
-                                          <p><?php echo utf8_encode($row['promodesc']);?></p>
-                                          <?php
-                                          }
-                                          ?>
+                                          <div class='card-content text'>
+                                        <h5 class=''>R$<?php echo $row['price']?> </h5>
+                                       </div>
 
+                                       <div class="card-reveal">
+                                         <span class="card-title grey-text text-darken-4">Extras<i class="material-icons right">close</i></span>
+                                         <p><?php echo $row['promodesc'];?></p>
+                                       </div>
 
-                                        </div>
+                                         <?php
+                                         if($row['promo']==1){
+                                         ?>
+                                         <div class="white-text" style="clip-path: inset(0 0 0 0); background-color:red; width:130px;
+                                         margin-left:-1%; margin-top:-420px; padding-left: 1.8em; position: absolute;">Em promoção</div>
+
+                                            <?php
+                                            }
+                                            ?>
+
                                         <div class="card-action">
                                         <!-- Modal Trigger -->
                                      <button data-target="modal<?php echo $row['id'];?>" class="btn modal-trigger">Editar</button>
                                      <button data-target="modaltodelete<?php echo $row['id'];?>" class="btn modal-trigger">Excluir</button>
-                                        
+
                                    </div>
                                         </div>
                                   </div>
@@ -218,26 +222,23 @@ if(isset($_POST['delete'])){
 }
 ?>
 
-              </form>
-
-
-
-                  <?php
-                  }
-                  ?>
-                </div>
-                </div>
-                  <?php
-                  }
-            ?>
-
-     </body>
-
-
-
-     <script>
- document.addEventListener('DOMContentLoaded', function() {
-  var elems = document.querySelectorAll('.modal');
-  var instances = M.Modal.init(elems);
+</form>
+   <?php
+   }
+   ?>
+ </div>
+ </div>
+   <?php
+   }
+?>
+<script>
+$(document).ready(function(){
+$('.sidenav').sidenav();
 });
-   </script>
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+ var elems = document.querySelectorAll('.modal');
+ var instances = M.Modal.init(elems);
+});
+</script>
