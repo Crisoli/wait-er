@@ -298,7 +298,7 @@ while($pro = mysqli_fetch_array($profile)){
           	</div>
         </div>
         <div class="modal-footer">
-          <input type="text" readonly value="<?php echo $pro['id']?>" name="hide"></input>
+          <input type="text" readonly hidden value="<?php echo $pro['id']?>" name="hide"></input>
         <input type="submit" class="modal-close waves-effect waves-green btn-flat" name='edit' value="Editar Funcionario"></input>
         <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
         </div>
@@ -316,6 +316,7 @@ while($pro = mysqli_fetch_array($profile)){
         </div>
         <div class="modal-footer">
           <form method="post">
+            <input type="text" readonly hidden value="<?php echo $pro['id']?>" name="hide"></input>
         <input type="submit" class="modal-close waves-effect waves-green btn-flat" name='delete' value="Deletar Funcionario"></input>
         <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
       </form>
