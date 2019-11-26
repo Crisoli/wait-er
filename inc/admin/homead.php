@@ -2,7 +2,7 @@
        	<div class="container responsive">
             <div class="row responsive">
                 <div class=" col s4 master">
-                    <a href="\wait-er-master\foodlist.php"><div class="card horizontal">
+                    <a href='redirect.php?pagead=06&foodslide=true'><div class="card horizontal">
                         <div class="card-image">
                             <img src="inc\img\dashboard\cardapio.png" id="menu" alt="" class="circle"></img>
                         </div>
@@ -14,19 +14,19 @@
                     </div></a>
                 </div>
                 <div class=" col s4 master">
-                    <a href="#"><div class="card horizontal">
+                    <a href='redirect.php?pagead=3&foodslide=false'><div class="card horizontal">
                         <div class="card-image">
                             <img src="inc\img\dashboard\estoque.png" id="estoque">
                         </div>
                         <div class="card-stacked">
                         </div>
                         <div class="card-action" style="background-color: black;">
-                            <span class="card-title">Estoque</span>
+                            <span class="card-title">Adicionar ao Cardapio</span>
                         </div>
                     </div></a>
                 </div>
                 <div class=" col s4 master">
-                    <a href="pedidos.php"><div class="card horizontal">
+                    <a href='redirect.php?pagead=1&foodslide=false'><div class="card horizontal">
                         <div class="card-image">
                             <img src="inc\img\dashboard\pedidos.png" id="pedidos">
                         </div>
@@ -40,7 +40,7 @@
             </div>
             <div class="row">
             	<div class="col s6 master">
-            		<a href="#"><div class="card horizontal" style="height: 200px;">
+            		<a href='redirect.php?profile_session=all&pagead=profile&foodslide=false'><div class="card horizontal" style="height: 200px;">
             			<div class="card-image">
             				<img src="inc\img\dashboard\funcionario.png" id="funcionario">
             			</div>
@@ -56,7 +56,7 @@
             		</div></a>
             	</div>
             	<div class="col s6 master">
-            		<a href="ranking.php"><div class="card horizontal"  style="height: 200px;">
+            		<a href='redirect.php?pagead=8&foodslide=false'><div class="card horizontal"  style="height: 200px;">
                         <div class="card-image">
                             <img src="inc\img\dashboard\rank.png" id="ranking">
                         </div>
