@@ -47,9 +47,10 @@
             			<div class="card-action" style="background-color: black; width: 100%; margin-left: 3%;">
             				<span class="card-title" style="margin-left: 10%;">Funcionário</span>
             				<div class="card-content" style="margin-left: 10%;">
-            					Roberto <br>
-            					Waldisney<br>
-            					Rogérinho
+            				1.<br>
+										2. <br>
+            				3.
+
             				</div>
             			</div>
             		</div></a>
@@ -62,9 +63,9 @@
                         <div class="card-action" style="background-color: black; width: 100%; margin-left: 3%;">
                             <span class="card-title" style="margin-left: 10%;">Ranking</span>
                             <div class="card-content" style="margin-left: 10%;">
-                                1º-Waldisney <br>
-                                2º-Luquinhas<br>
-                                3º-Roberto
+															1.<br>
+															2. <br>
+					            				3.
                             </div>
                         </div>
             		</div></a>
