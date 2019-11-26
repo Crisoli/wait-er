@@ -85,6 +85,8 @@ while($name1= mysqli_fetch_array($namesel1))
     </div>
 
     <?php
+    echo $name1['total'];
+
     }
     ?>
 
@@ -166,7 +168,7 @@ while($name2= mysqli_fetch_array($namesel2))
     </p>
     <div class="col s12 m12 l3 offset-l9">
     <h6 class="right-align">
-    <?php echo $name2['price']; ?>
+    <?php echo $name2h5; ?>
     </h6>
     </div>
 
@@ -307,7 +309,7 @@ if(mysqli_num_rows($requestcan) > 0)
 $itemsel4 = $mysqli->query("SELECT * FROM requests WHERE requests_numbers_id = '".$can['id']."'");
 while($item4= mysqli_fetch_array($itemsel4))
        {
-       $namesel4 = $mysqli->query("SELECT * FROM foodmenu WHERE id = '".$item3['foodmenu_id']."'");
+       $namesel4 = $mysqli->query("SELECT * FROM foodmenu WHERE id = '".$item4['foodmenu_id']."'");
 while($name4= mysqli_fetch_array($namesel4))
 {
    ?>
@@ -327,6 +329,8 @@ while($name4= mysqli_fetch_array($namesel4))
    </div>
 
    <?php
+   echo $can['total'];
+
 }
        }
 ?>
