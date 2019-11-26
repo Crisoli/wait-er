@@ -2,11 +2,7 @@
 </main>
 </div>
 <footer id="footer">
-			<div class="footer-copyright">
-				<div class="container">
-				© 2019 Waiter Copyright
-				</div>
-			</div>
+
 		</footer>
 </div>
 <style>
