@@ -95,7 +95,6 @@ if($_SESSION['admin']=='true'){
   <li><a class='waves-effect white-text' href='redirect.php?pagead=1&foodslide=false'><i class='material-icons white-text'>content_paste</i>Comandas</a></li>
 <li><a class='waves-effect white-text' href='redirect.php?pagead=06&foodslide=true'><i class='material-icons white-text'>archive</i>Cardápio</a></li>
   <li><a class='waves-effect white-text' href='redirect.php?pagead=3&foodslide=false'><i class='material-icons white-text'>archive</i>Adicionar ao Cardápio</a></li>
-  <li><a class='waves-effect white-text' href='redirect.php?pagead=4&foodslide=false'><i class='material-icons white-text'>archive</i>Registrar Funcionário</a></li>
   <li><a class='waves-effect white-text' href='redirect.php?pagead=8&foodslide=false'><i class='material-icons white-text'>people_outline</i>Ranking</a></li>
   ";
 };
