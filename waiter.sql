@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Máquina: localhost
--- Data de Criação: 18-Nov-2019 às 13:09
+-- Data de Criação: 26-Nov-2019 às 12:07
 -- Versão do servidor: 5.6.13
 -- versão do PHP: 5.4.17
 
@@ -118,9 +118,8 @@ INSERT INTO `foodmenu` (`id`, `name`, `image`, `price`, `category_id`, `accounts
 (1005, 'Camarão', 'inc/img/uploads/camarao.jpg', '25.00', 6, 1, 1, 'nopromo'),
 (1006, 'Cebola Empanada', 'inc/img/uploads/cebola.jpg', '8.00', 6, 1, 1, 'nopromo'),
 (1007, 'Coca Cola (Lata)', 'inc/img/uploads/coca.jpg', '5.00', 13, 1, 1, 'nopromo'),
-(1008, 'Simba 2L', 'inc/img/uploads/simba.jpg', '3.00', 13, 1, 1, 'nopromo'),
-(1009, 'Parmenides (Atomo)', 'inc/img/uploads/parmenides.jpg', '250.00', 13, 1, 1, 'nopromo'),
-(1010, 'X-Burguer', 'inc/img/uploads/xburguer.jpg', '7.00', 10, 1, 1, 'nopromo'),
+(1008, 'Simba 2L', 'inc/img/uploads/menu/download (15)2019.11.26-10.jpg', '3.00', 13, 1, 1, 'nopromo'),
+(1010, 'X-Burguer', 'inc/img/uploads/menu/download (12)2019.11.26-10.jpg', '7.00', 10, 1, 1, 'nopromo'),
 (1011, 'Mandioca frita', 'inc/img/uploads/menu/2019.11.13-09.31.54.jpg', '15.00', 6, 6, 0, 'null'),
 (1012, 'Polenta frita', 'inc/img/uploads/menu/2019.11.13-09.33.49.jpg', '15.00', 6, 6, 0, 'null'),
 (1013, 'Torresmo', 'inc/img/uploads/menu/2019.11.13-09.34.43.jpg', '35.00', 6, 6, 0, 'null'),
@@ -191,25 +190,25 @@ INSERT INTO `foodmenu` (`id`, `name`, `image`, `price`, `category_id`, `accounts
 (1078, ' Porquinho e fritas (+5 latas)', 'inc/img/uploads/menu/2019.11.18-10.13.01.jpg', '85.00', 11, 6, 0, 'null'),
 (1079, 'Camarão e fritas(+5 latas)', 'inc/img/uploads/menu/2019.11.18-10.13.46.jpg', '95.00', 11, 6, 0, 'null'),
 (1080, 'tilápia e fritas(+5 latas)', 'inc/img/uploads/menu/2019.11.18-10.14.37.jpg', '90.00', 11, 6, 0, 'null'),
-(1081, 'Provolone a milanesa e fritas(+5 latas)', 'inc/img/uploads/menu/2019.11.18-10.16.07.jpg', '95.00', 11, 6, 0, 'null'),
-(1082, 'Porquinho e camarão(+5 latas)', 'inc/img/uploads/menu/2019.11.18-10.17.40.jpg', '119.00', 11, 6, 0, 'null'),
+(1081, 'Provolone a milanesa e fritas(+5 latas)', 'inc/img/uploads/menu/download (13)2019.11.26-10.jpg', '95.00', 11, 6, 0, 'null'),
+(1082, 'Porquinho e camarão(+5 latas)', 'inc/img/uploads/menu/download (14)2019.11.26-10.jpg', '119.00', 11, 6, 0, 'null'),
 (1083, 'Peixe ao forno(serve 4 pessoas)', 'inc/img/uploads/menu/2019.11.18-10.19.32.jpg', '120.00', 15, 6, 0, 'null'),
 (1084, 'Peixe ao forno(serve 6 pessoas)', 'inc/img/uploads/menu/2019.11.18-10.19.54.jpg', '180.00', 15, 6, 0, 'null'),
 (1085, 'Peixe ao forno(serve 8 pessoas)', 'inc/img/uploads/menu/2019.11.18-10.20.12.jpg', '240.00', 15, 6, 0, 'null'),
-(1086, 'Açaí(300ml)-3 acompanhamenos', 'inc/img/uploads/menu/2019.11.18-10.23.38.jpg', '10.00', 23, 6, 0, 'null'),
-(1087, 'Açaí(500ml)-3 acompanhamenos', 'inc/img/uploads/menu/2019.11.18-10.24.04.jpg', '15.00', 23, 6, 0, 'null'),
-(1088, 'Banana', 'inc/img/uploads/menu/2019.11.18-10.26.34.jpg', '1.00', 14, 6, 0, 'null'),
-(1089, 'Morango', 'inc/img/uploads/menu/2019.11.18-10.27.12.jpg', '1.00', 14, 6, 0, 'null'),
-(1090, 'leite em po', 'inc/img/uploads/menu/2019.11.18-10.27.45.jpg', '1.00', 14, 6, 0, 'null'),
-(1091, 'leite condensado', 'inc/img/uploads/menu/2019.11.18-10.28.22.jpg', '1.00', 14, 6, 0, 'null'),
-(1092, 'sucrilhos', 'inc/img/uploads/menu/2019.11.18-10.28.48.jpg', '1.00', 14, 6, 0, 'null'),
-(1093, 'chcoco ball', 'inc/img/uploads/menu/2019.11.18-10.31.25.jpg', '1.00', 14, 6, 0, 'null'),
-(1094, 'amendoim', 'inc/img/uploads/menu/2019.11.18-10.32.32.jpg', '1.00', 14, 6, 0, 'null'),
-(1095, 'granulado', 'inc/img/uploads/menu/2019.11.18-10.33.12.jpg', '1.00', 14, 6, 0, 'null'),
-(1096, 'paçoca', 'inc/img/uploads/menu/2019.11.18-10.33.41.jpg', '1.00', 14, 6, 0, 'null'),
-(1097, 'marshmello', 'inc/img/uploads/menu/2019.11.18-10.35.17.jpg', '1.00', 14, 6, 0, 'null'),
-(1098, 'm&m´s', 'inc/img/uploads/menu/2019.11.18-10.35.52.jpg', '1.00', 14, 6, 0, 'null'),
-(1099, 'granola', 'inc/img/uploads/menu/2019.11.18-10.36.30.jpg', '1.00', 14, 6, 0, 'null');
+(1086, 'Açaí(300ml)-3 acompanhamenos', 'inc/img/uploads/menu/acai2019.11.26-09.jpg', '10.00', 23, 6, 0, 'null'),
+(1087, 'Açaí(500ml)-3 acompanhamenos', 'inc/img/uploads/menu/download2019.11.26-09.jpg', '15.00', 23, 6, 0, 'null'),
+(1088, 'Banana', 'inc/img/uploads/menu/download (1)2019.11.26-09.jpg', '1.00', 14, 6, 0, 'null'),
+(1089, 'Morango', 'inc/img/uploads/menu/download (10)2019.11.26-10.jpg', '1.00', 14, 6, 0, 'null'),
+(1090, 'leite em po', 'inc/img/uploads/menu/download (9)2019.11.26-10.jpg', '1.00', 14, 6, 0, 'null'),
+(1091, 'leite condensado', 'inc/img/uploads/menu/download (8)2019.11.26-10.jpg', '1.00', 14, 6, 0, 'null'),
+(1092, 'sucrilhos', 'inc/img/uploads/menu/download (7)2019.11.26-10.jpg', '1.00', 14, 6, 0, 'null'),
+(1093, 'chcoco ball', 'inc/img/uploads/menu/REDONDOS-DE-CHOCOLATE2019.11.26-10.jpg', '1.00', 14, 6, 0, 'null'),
+(1094, 'amendoim', 'inc/img/uploads/menu/download (6)2019.11.26-10.jpg', '1.00', 14, 6, 0, 'null'),
+(1095, 'granulado', 'inc/img/uploads/menu/download (5)2019.11.26-10.jpg', '1.00', 14, 6, 0, 'null'),
+(1096, 'paçoca', 'inc/img/uploads/menu/download (4)2019.11.26-10.jpg', '1.00', 14, 6, 0, 'null'),
+(1097, 'marshmello', 'inc/img/uploads/menu/download (3)2019.11.26-09.jpg', '1.00', 14, 6, 0, 'null'),
+(1098, 'm&m´s', 'inc/img/uploads/menu/download (2)2019.11.26-09.jpg', '1.00', 14, 6, 0, 'null'),
+(1099, 'granola', 'inc/img/uploads/menu/download (11)2019.11.26-10.jpg', '1.00', 14, 6, 0, 'null');
 
 -- --------------------------------------------------------
 
