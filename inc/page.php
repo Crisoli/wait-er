@@ -62,10 +62,10 @@ font-color:white;
                             <div class="row">
                             </div>
                             <div class="col s12 m12 l7 offset-l8">
-                              <div class="card-panel">
+                              <div class="card-panel" style="margin-top:-70px;">
                               <div class="col l10 offset-l1">
                                       <div class="center-align">
-                                          <img src="inc/img/Waiterlogo.png" style="position:top; max-height:30%; max-width:50%; margin-top:-90%;">
+                                          <img src="inc/img/Waiter.png" style="position:top; max-height:30%; max-width:50%; ">
                                       </div>
                                       <div class="row">
                                           <div class="col-12"></div>
@@ -110,7 +110,7 @@ font-color:white;
                                       	border-radius:37px;
                                       	display:inline-block;
                                       	font-family:Arial;
-                                      	font-size:20px;
+                                      	font-size:15px;
                                         color: white;
                                       	padding:15px 76px;
                                       	text-decoration:none;
