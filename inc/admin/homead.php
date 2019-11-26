@@ -4,7 +4,7 @@
                 <div class=" col s4 master">
                     <a href="\wait-er-master\foodlist.php"><div class="card horizontal">
                         <div class="card-image">
-                            <img src="inc\admin\img\cardapio.png" id="menu" alt="" class="circle"></img>
+                            <img src="inc\img\dashboard\cardapio.png" id="menu" alt="" class="circle"></img>
                         </div>
                         <div class="card-stacked">
                         </div>
@@ -16,7 +16,7 @@
                 <div class=" col s4 master">
                     <a href="#"><div class="card horizontal">
                         <div class="card-image">
-                            <img src="inc\admin\img\estoque.png" id="estoque">
+                            <img src="inc\img\dashboard\estoque.png" id="estoque">
                         </div>
                         <div class="card-stacked">
                         </div>
@@ -28,7 +28,7 @@
                 <div class=" col s4 master">
                     <a href="pedidos.php"><div class="card horizontal">
                         <div class="card-image">
-                            <img src="inc\admin\img\pedidos.png" id="pedidos">
+                            <img src="inc\img\dashboard\pedidos.png" id="pedidos">
                         </div>
                         <div class="card-stacked">
                         </div>
@@ -40,36 +40,36 @@
             </div>
             <div class="row">
             	<div class="col s6 master">
-            		<a href="#"><div class="card horizontal" style="height: 200px;">	
+            		<a href="#"><div class="card horizontal" style="height: 200px;">
             			<div class="card-image">
-            				<img src="inc\admin\img\funcionario.png" id="funcionario">
+            				<img src="inc\img\dashboard\funcionario.png" id="funcionario">
             			</div>
-            			<div class="card-action" style="background-color: black; width: 100%; margin-left: 3%;">	
+            			<div class="card-action" style="background-color: black; width: 100%; margin-left: 3%;">
             				<span class="card-title" style="margin-left: 10%;">Funcionário</span>
             				<div class="card-content" style="margin-left: 10%;">
-            					Roberto <br> 
+            					Roberto <br>
             					Waldisney<br>
             					Rogérinho
-            				</div>	
+            				</div>
             			</div>
             		</div></a>
             	</div>
             	<div class="col s6 master">
-            		<a href="ranking.php"><div class="card horizontal"  style="height: 200px;">	
+            		<a href="ranking.php"><div class="card horizontal"  style="height: 200px;">
                         <div class="card-image">
-                            <img src="inc\admin\img\ranking.png" id="ranking">
+                            <img src="inc\img\dashboard\rank.png" id="ranking">
                         </div>
-                        <div class="card-action" style="background-color: black; width: 100%; margin-left: 3%;">   
+                        <div class="card-action" style="background-color: black; width: 100%; margin-left: 3%;">
                             <span class="card-title" style="margin-left: 10%;">Ranking</span>
                             <div class="card-content" style="margin-left: 10%;">
-                                1º-Waldisney <br> 
+                                1º-Waldisney <br>
                                 2º-Luquinhas<br>
                                 3º-Roberto
-                            </div>  
+                            </div>
                         </div>
             		</div></a>
             	</div>
-            </div>	
+            </div>
         </div>
     </div>
     <style>
@@ -80,11 +80,11 @@
             padding-top: 2%;
             color: black	;
         }
-        
+
         .row {
             height: 25%;
         }
-        
+
         .card {
             display: block;
             position: relative;
@@ -95,11 +95,11 @@
             background-color: #dfdce3;
             color: white;
         }
-        
+
         .master {
             height: 100%;
         }
-        
+
         #menu {
             width: 60%;
             position: relative;
@@ -107,7 +107,7 @@
             top: 10%;
             color: white;
         }
-        
+
         #estoque {
             width: 75%;
             position: relative;
@@ -115,7 +115,7 @@
             top: 10%;
             color: white;
         }
-        
+
         #pedidos {
             width: 70%;
             position: relative;
