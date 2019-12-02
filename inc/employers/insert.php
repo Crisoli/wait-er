@@ -18,6 +18,7 @@ $date = date('Y-m-d', time());
 $hour= date('h:i:s', time());
 $request_create = $mysqli->query("INSERT INTO requests_numbers VALUES (null, '" . $_SESSION['total'] . "','Pendente',N'" . $_SESSION['obs'] . "','" . $_SESSION['table'] . "','" . $date . "','" . $hour . "','1',null,null,null)");
 $request        = $mysqli->query("SELECT id FROM requests_numbers ORDER BY id DESC LIMIT 1");
+//$request2        = $mysqli->query("UPDATE tables SET status ='Em uso' WHERE table_number = ".$_SESSION['nmesa']."");
 while ($rowid = mysqli_fetch_array($request))
 {
   $lastid = $rowid['id'];
