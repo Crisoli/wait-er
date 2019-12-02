@@ -1,4 +1,17 @@
 	<div class="body">
+
+		<?php
+		//No funcionario você tem que mudar o "pagead=06" pra pagefu=1
+		$tablesreq = $mysqli->query("SELECT * FROM tables where status ='Livre'");
+		while ($rowtable = mysqli_fetch_array($tablesreq))
+		{
+
+	echo "<li><a  href='redirect.php?nmesa=".$rowtable['table_number']."&tmesa=".$rowtable['size']."&pagead=06&pagefu=1&foodslide=true'><i class='material-icons white-text'>assignment_ind</i>Mesa ".$rowtable['table_number']."</a></li>";
+
+		}
+		?>
+
+
        	<div class="container responsive">
             <div class="row responsive">
                 <div class=" col s4 master">
@@ -18,6 +31,7 @@
                         <div class="card-image">
                             <img src="inc\img\dashboard\estoque.png" id="estoque">
                         </div>
+
                         <div class="card-stacked">
                         </div>
                         <div class="card-action" style="background-color: black;">
@@ -49,7 +63,7 @@
             				<div class="card-content" style="margin-left: 10%;">
             				1.<br>
 										2. <br>
-            				3.
+            				3. <br>
 
             				</div>
             			</div>
