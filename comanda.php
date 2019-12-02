@@ -41,6 +41,9 @@ elseif($_SESSION['pagead']=='7'){
 elseif($_SESSION['pagead']=='8'){
     include('inc/admin/ranking.php');
 }
+elseif($_SESSION['pagead']=='9'){
+    include('inc/mesas.php');
+}
      }
      else{
        echo "<script>window.location.href = 'index.php'</script>";

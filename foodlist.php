@@ -10,18 +10,17 @@ if (session_status() == PHP_SESSION_NONE) {
 
      if(isset($_SESSION['admin'])){
          if(!isset($_SESSION['pagefu'])){
-             $_SESSION['pagefu']='3';
+             $_SESSION['pagefu']='2';
          }
 if($_SESSION['pagefu']=='1'){
     include('inc/employers/shoppingcart.php');
 }
-elseif($_SESSION['pagefu']=='3'){
-    include('inc/employers/homefu.php');
-}
 elseif($_SESSION['pagefu']=='profile'){
     include('inc/profile.php');
 }
-
+elseif($_SESSION['pagefu']=='2'){
+    include('inc/mesas.php');
+}
      }
 
 ?>
