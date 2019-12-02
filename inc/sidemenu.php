@@ -93,7 +93,7 @@ if($_SESSION['admin']=='true'){
   echo "
   <li><a class='waves-effect white-text' href='redirect.php?profile_session=all&pagead=profile&foodslide=false'><i class='material-icons white-text'>assignment_ind</i>Funcionários</a></li>
   <li><a class='waves-effect white-text' href='redirect.php?pagead=1&foodslide=false'><i class='material-icons white-text'>content_paste</i>Comandas</a></li>
-<li><a class='waves-effect white-text' href='redirect.php?pagead=06&foodslide=true'><i class='material-icons white-text'>archive</i>Cardápio</a></li>
+<li><a class='waves-effect white-text' href='redirect.php?pagead=09&foodslide=false'><i class='material-icons white-text'>archive</i>Cardápio</a></li>
   <li><a class='waves-effect white-text' href='redirect.php?pagead=3&foodslide=false'><i class='material-icons white-text'>archive</i>Adicionar ao Cardápio</a></li>
   <li><a class='waves-effect white-text' href='redirect.php?pagead=8&foodslide=false'><i class='material-icons white-text'>people_outline</i>Ranking</a></li>
   ";
@@ -104,7 +104,7 @@ if($_SESSION['admin']=='true'){
 if($_SESSION['admin']=='false'){
 
   echo"
-  <li><a class='waves-effect white-text' href='redirect.php?pagefu=1&foodslide=true'><i class='material-icons white-text'>local_library</i>Cardápio</a></li>
+  <li><a class='waves-effect white-text' href='redirect.php?pagefu=2&foodslide=false'><i class='material-icons white-text'>local_library</i>Cardápio</a></li>
   ";
 
 };
