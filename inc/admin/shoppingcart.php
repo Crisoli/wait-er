@@ -90,22 +90,22 @@
             {
                 ?>
                              <form id='<?php echo $row['id'] ?>' method='post' action='comanda.php?action=add&id=<?php echo $row['id'] ?>'>
-                                  <div class="col m4 l3" >
+                                  <div class="col s12 m4 l3" >
                                     <?php
                                     if($row['promo']==1){
                                     ?>
-                                    <div class='card'>
+                                    <div class='card' style="max-height:98%;">
                                         <div class='card-image'>
                                         <img src='<?php echo $row['image'] ?>' class="activator" style="object-fit:cover; height:250px;"/>
-                                          <br><h5><span class='black-text' style="background-color:white; padding-left: 1.8em; text-transform: capitalize; "><?php echo utf8_encode($row['name']); ?></span></h5></br>
+                                          <br><h6><span class='black-text' style="background-color:white; padding-left: 0.5em; text-transform: capitalize; "><?php echo utf8_encode($row['name']); ?></span></h6></br>
                                           <?php
                                           }
                                           else {
                                           ?>
-                                          <div class='card com'>
+                                          <div class='card com' style="max-height:98%;">
                                             <div class="card-image waves-effect waves-block waves-light">
                                                 <img src='<?php echo $row['image'] ?>' style="object-fit:cover; height:250px;"/>
-                                                 <br><h5><span class='black-text' style="background-color:white; padding-left: 1.8em; text-transform: capitalize;"><?php echo utf8_encode($row['name']); ?></span></h5></br>
+                                                 <br><h6><span class='black-text' style="background-color:white; padding-left: 0.5em; text-transform: capitalize;"><?php echo utf8_encode($row['name']); ?></span></h6></br>
                                           <?php
                                           }
                                           ?>
